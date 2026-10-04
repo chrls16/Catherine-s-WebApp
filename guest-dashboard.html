@@ -1,0 +1,2028 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Guest Dashboard | Catherine's
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/guest-dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <div class="app-shell">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- BRAND -->
+
+            <a
+                href="index.html"
+                class="sidebar-brand"
+            >
+
+                <img
+                    src="assets/Catherine's Logo.png"
+                    alt="Catherine's Logo"
+                    class="brand-logo"
+                >
+
+
+                <div class="brand-text">
+
+                    <strong>
+                        Catherine’s
+                    </strong>
+
+                    <span>
+                        LIGHTHOUSE COMMAND
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- CONNECTION STATUS -->
+
+            <div class="hardware-status">
+
+                <span class="hardware-dot"></span>
+
+
+                <div>
+
+                    <strong>
+                        Diorama System Online
+                    </strong>
+
+                    <span>
+                        9 Node Mesh
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="sidebar-label">
+                GUEST PORTAL
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+
+                <!-- DASHBOARD -->
+
+                <button
+                    type="button"
+                    class="sidebar-item active"
+                    data-section="dashboard"
+                >
+
+                    <i class="fa-solid fa-gauge-high"></i>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </button>
+
+
+                <!-- MY RESERVATION -->
+
+                <button
+                    type="button"
+                    class="sidebar-item"
+                    id="reservationButton"
+                    onclick="window.location.href='my-reservation.html'"
+                >
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                    <span>
+                        My Reservation
+                    </span>
+
+                </button>
+
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+
+                <div class="beacon-status">
+
+                    <span>
+                        Lighthouse Beacon
+                    </span>
+
+                    <strong>
+                        Sweeping 4.2 RPM
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="visitor-site-btn"
+                    id="visitorSiteBtn"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    Visitor Website
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-sidebar-btn"
+                    id="logoutBtn"
+                    aria-label="Log out"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN AREA
+        ================================================== -->
+
+        <div class="main-area">
+
+
+            <!-- =================================================
+                 TOP HEADER
+            ================================================== -->
+
+            <header class="top-header">
+
+
+                <div class="system-name">
+
+                    <span class="system-dot"></span>
+
+                    <span>
+                        BAGASBAS DIORAMA SYSTEM V2.4
+                    </span>
+
+                </div>
+
+
+                <div class="header-right">
+
+
+                    <div class="connection-pill">
+
+                        <span class="connection-dot"></span>
+
+                        Guest Session Active
+
+                    </div>
+
+
+                    <div class="guest-profile">
+
+
+                        <div class="profile-avatar">
+                            C
+                        </div>
+
+
+                        <div class="profile-name">
+
+                            <strong id="headerGuestName">
+                                Charles
+                            </strong>
+
+                            <span>
+                                Guest
+                            </span>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </header>
+
+
+            <!-- =================================================
+                 CONTENT
+            ================================================== -->
+
+            <main class="dashboard-content">
+
+
+                <!-- =================================================
+                     WELCOME / RESERVATION SUMMARY
+                ================================================== -->
+
+                <section
+                    class="welcome-card"
+                    id="dashboardSection"
+                >
+
+
+                    <div class="welcome-content">
+
+
+                        <div class="welcome-topline">
+
+
+                            <span class="gold-tag">
+                                GUEST DIORAMA LINK
+                            </span>
+
+
+                            <span class="node-status">
+
+                                <span></span>
+
+                                Bagasbas Shore Node 02
+                                • Active Sync
+
+                            </span>
+
+
+                        </div>
+
+
+                        <h1>
+
+                            Welcome,
+
+                            <span id="welcomeGuestName">
+                                Charles
+                            </span>
+
+                        </h1>
+
+
+                        <p>
+
+                            Your private coastal sanctuary session is active.
+                            From this portal, interact directly with your reserved
+                            facilities and the physical resort diorama.
+
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- CURRENT RESERVATION -->
+
+                    <div class="current-reservation">
+
+
+                        <div class="reservation-icon">
+
+                            <i class="fa-solid fa-house"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                CURRENT RESERVATION
+                            </span>
+
+
+                            <strong id="reservationNumber">
+                                CAT-2026-001
+                            </strong>
+
+
+                            <small id="reservationCottage">
+                                Cottage 2 • Oceanfront
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- RESERVATION DATA -->
+
+                    <div class="reservation-summary">
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                SCHEDULED SLOT
+                            </span>
+
+
+                            <strong id="reservationDate">
+                                October 10, 2026
+                            </strong>
+
+
+                            <small id="reservationTime">
+                                10:00 AM – 4:00 PM
+                            </small>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                PARTY SIZE
+                            </span>
+
+
+                            <strong id="guestCount">
+                                4 Persons
+                            </strong>
+
+
+                            <small>
+                                Private Retreat
+                            </small>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                ASSIGNED UNIT
+                            </span>
+
+
+                            <strong id="assignedUnit">
+                                Cottage 2
+                            </strong>
+
+
+                            <small>
+                                Oceanfront
+                            </small>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                INCLUDED SPACES
+                            </span>
+
+
+                            <strong>
+                                Pool &amp; KTV
+                            </strong>
+
+
+                            <small>
+                                Based on reservation
+                            </small>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                BOOKING STATUS
+                            </span>
+
+
+                            <strong class="confirmed-status">
+
+                                <span></span>
+
+                                Confirmed
+
+                            </strong>
+
+
+                            <small>
+                                Reservation Settled
+                            </small>
+
+                        </div>
+
+
+                        <div class="checkin-mini">
+
+                            <span>
+                                CHECK-IN STATUS
+                            </span>
+
+
+                            <strong id="miniCheckinStatus">
+                                NOT CHECKED-IN
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+                     MAIN GRID
+                ================================================== -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- =================================================
+                         LEFT COLUMN
+                    ================================================== -->
+
+                    <div class="left-column">
+
+
+                        <!-- =================================================
+                             NFC / RFID CHECK-IN
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card checkin-card"
+                            id="checkinSection"
+                        >
+
+
+                            <div class="card-header">
+
+
+                                <div>
+
+
+                                    <div class="card-eyebrow">
+
+                                        <i class="fa-solid fa-circle-nodes"></i>
+
+                                        NFC / RFID CHECK-IN GATEWAY
+
+                                    </div>
+
+
+                                    <h2>
+                                        Arrival Verification
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span class="reader-badge">
+                                    ESP32 READER A
+                                </span>
+
+
+                            </div>
+
+
+                            <p class="card-description">
+
+                                Complete your NFC/RFID check-in upon arrival.
+                                Your reserved facility controls will remain
+                                locked until your reservation is verified.
+
+                            </p>
+
+
+                            <!-- RFID AREA -->
+
+                            <div
+                                class="rfid-area"
+                                id="rfidArea"
+                            >
+
+
+                                <div class="rfid-icon">
+
+                                    <i class="fa-solid fa-wifi"></i>
+
+                                </div>
+
+
+                                <h3 id="rfidTitle">
+                                    Waiting for NFC/RFID Badge
+                                </h3>
+
+
+                                <p id="rfidDescription">
+
+                                    Hold your digital keycard against the
+                                    reader to verify your reservation.
+
+                                </p>
+
+
+                                <span
+                                    class="rfid-status"
+                                    id="rfidStatus"
+                                >
+
+                                    <span></span>
+
+                                    Standby • Sensor Ready
+
+                                </span>
+
+
+                            </div>
+
+
+                            <!-- SIMULATE -->
+
+                            <div class="checkin-actions">
+
+
+                                <button
+                                    type="button"
+                                    class="simulate-btn"
+                                    id="simulateNfcBtn"
+                                >
+
+                                    <i class="fa-solid fa-id-card"></i>
+
+                                    Simulate NFC / RFID Tap
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="reset-btn"
+                                    id="resetCheckinBtn"
+                                >
+                                    RESET
+                                </button>
+
+
+                            </div>
+
+
+                            <div class="sync-note">
+
+                                <i class="fa-solid fa-circle-info"></i>
+
+
+                                <span>
+
+                                    Session auto-syncs with the physical
+                                    LED diorama deck located at the
+                                    resort reception lounge.
+
+                                </span>
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             DIORAMA VIEW
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card diorama-card"
+                        >
+
+
+                            <div class="card-header">
+
+
+                                <div>
+
+
+                                    <div class="card-eyebrow">
+
+                                        <i class="fa-solid fa-video"></i>
+
+                                        RECEPTION DIORAMA TOP DECK
+
+                                    </div>
+
+
+                                    <h2>
+                                        Live Diorama View
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span class="live-status">
+
+                                    <span></span>
+
+                                    Live Telemetry
+
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="diorama-preview">
+
+
+                                <div class="diorama-sky"></div>
+
+                                <div class="diorama-water"></div>
+
+                                <div class="diorama-land"></div>
+
+
+                                <div class="diorama-lighthouse">
+
+                                    <span class="light"></span>
+
+                                </div>
+
+
+                                <div class="diorama-cottage cottage-one">
+                                    C2
+                                </div>
+
+
+                                <div class="diorama-cottage cottage-two">
+                                    C3
+                                </div>
+
+
+                                <div class="diorama-pool">
+
+                                    <i class="fa-solid fa-water"></i>
+
+                                </div>
+
+
+                                <div class="diorama-label label-cottage">
+                                    Your Cottage
+                                </div>
+
+
+                                <div class="diorama-label label-pool">
+                                    Main Pool
+                                </div>
+
+
+                                <div class="diorama-label label-ktv">
+                                    KTV &amp; Beacon
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="diorama-footer">
+
+
+                                <span>
+                                    Hardware ping:
+                                    <strong>24ms</strong>
+                                </span>
+
+
+                                <span>
+
+                                    Mesh protocol:
+
+                                    <strong>
+                                        ESP-NOW Channel 6
+                                    </strong>
+
+                                </span>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             CHECKOUT
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card checkout-card"
+                        >
+
+
+                            <div class="checkout-title">
+
+
+                                <div class="checkout-icon">
+
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Stay Handover • Express Check-Out
+                                    </h2>
+
+
+                                    <p>
+
+                                        Conclude your stay and release your
+                                        assigned facility controls.
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <p class="checkout-description">
+
+                                Ready to depart? Initiating Express Check-Out
+                                disables your active guest controls and releases
+                                the assigned facility session.
+
+                            </p>
+
+
+                            <button
+                                type="button"
+                                class="checkout-btn"
+                                id="checkoutBtn"
+                            >
+
+                                <i class="fa-solid fa-door-open"></i>
+
+                                Initiate Express Check-Out
+
+                            </button>
+
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RIGHT COLUMN
+                    ================================================== -->
+
+                    <div class="right-column">
+
+
+                        <!-- =================================================
+                             COTTAGE CONTROL
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card facility-control-card"
+                            id="controlsSection"
+                        >
+
+
+                            <div class="facility-header">
+
+
+                                <div>
+
+
+                                    <div class="card-eyebrow">
+
+                                        <span class="gold-tag small">
+                                            UNIT CONTROL
+                                        </span>
+
+                                        Assigned Cottage 02
+
+                                    </div>
+
+
+                                    <h2>
+                                        Cottage 2 • Oceanfront Sanctuary
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span
+                                    class="facility-live"
+                                    id="facilityLive"
+                                >
+
+                                    <span></span>
+
+                                    OCCUPIED • ACTIVE GUEST
+
+                                </span>
+
+
+                            </div>
+
+
+                            <!-- CONTROL GRID -->
+
+                            <div class="control-grid">
+
+
+                                <!-- LIGHTS -->
+
+                                <div class="control-box">
+
+
+                                    <span class="control-label">
+                                        INTERIOR ILLUMINATION
+                                    </span>
+
+
+                                    <div class="control-main">
+
+
+                                        <div class="control-icon">
+
+                                            <i class="fa-regular fa-lightbulb"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong id="cottageLightText">
+                                                Lights OFF
+                                            </strong>
+
+
+                                            <small>
+                                                Diorama Node #4
+                                            </small>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="control-action"
+                                        data-control="cottage-light"
+                                        disabled
+                                    >
+
+                                        <i class="fa-regular fa-lightbulb"></i>
+
+                                        <span id="cottageLightButton">
+                                            Turn On Lights
+                                        </span>
+
+                                    </button>
+
+
+                                </div>
+
+
+                                <!-- WARMTH -->
+
+                                <div class="control-box warmth-box">
+
+
+                                    <div class="warmth-header">
+
+
+                                        <span class="control-label">
+
+                                            AMBIENT WARMTH &amp;
+                                            BRIGHTNESS
+
+                                        </span>
+
+
+                                        <strong id="brightnessValue">
+                                            65% • Warm Sunset
+                                        </strong>
+
+
+                                    </div>
+
+
+                                    <input
+                                        type="range"
+                                        id="brightnessSlider"
+                                        min="0"
+                                        max="100"
+                                        value="65"
+                                        disabled
+                                    >
+
+
+                                    <div class="slider-labels">
+
+
+                                        <span>
+
+                                            Candle Amber
+
+                                            <small>
+                                                2200K
+                                            </small>
+
+                                        </span>
+
+
+                                        <span>
+
+                                            Golden Coast
+
+                                            <small>
+                                                2700K
+                                            </small>
+
+                                        </span>
+
+
+                                        <span>
+
+                                            Pure White
+
+                                            <small>
+                                                4000K
+                                            </small>
+
+                                        </span>
+
+
+                                    </div>
+
+
+                                    <p class="micro-note">
+
+                                        <i class="fa-solid fa-sun"></i>
+
+                                        Adjusts PWM micro-controller output
+                                        on Miniature Cottage 2 roofline.
+
+                                    </p>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- OTHER COTTAGES -->
+
+                            <div class="other-cottages">
+
+
+                                <span class="control-label">
+
+                                    OTHER RESORT COTTAGES
+
+                                    <small>
+                                        LOCKED TO RESPECTIVE GUESTS
+                                    </small>
+
+                                </span>
+
+
+                                <div class="cottage-list">
+
+
+                                    <div class="other-cottage">
+
+                                        <span>
+                                            Cottage 1
+                                        </span>
+
+                                        <small class="restricted">
+                                            Restricted
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="other-cottage">
+
+                                        <span>
+                                            Cottage 3
+                                        </span>
+
+                                        <small class="occupied">
+                                            Occupied
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="other-cottage">
+
+                                        <span>
+                                            Cottage 4
+                                        </span>
+
+                                        <small class="available">
+                                            Available
+                                        </small>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             POOL
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card pool-card"
+                            id="poolSection"
+                        >
+
+
+                            <div class="facility-header">
+
+
+                                <div>
+
+
+                                    <div class="card-eyebrow">
+
+                                        <span class="blue-tag">
+                                            AQUATIC DECK
+                                        </span>
+
+                                        Shared Facility Inclusion
+
+                                    </div>
+
+
+                                    <h2>
+                                        Infinity Pool LED RGB Matrix
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span class="facility-live blue">
+
+                                    <span></span>
+
+                                    SUBMERSIBLE LINK OK
+
+                                </span>
+
+
+                            </div>
+
+
+                            <!-- POOL VISUAL -->
+
+                            <div class="pool-visual">
+
+
+                                <div>
+
+                                    <span>
+                                        PHYSICAL POOL DIORAMA WATER TONE
+                                    </span>
+
+
+                                    <strong>
+
+                                        Pacific Blue
+
+                                        <small>
+                                            • #0088CC
+                                        </small>
+
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="pool-temperature">
+
+                                    <i class="fa-solid fa-water"></i>
+
+                                    <span>
+                                        POOL TEMP
+                                    </span>
+
+                                    <strong>
+                                        28.4°C
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- COLOR PRESETS -->
+
+                            <div class="pool-presets">
+
+
+                                <span class="control-label">
+                                    UNDERWATER COLOR PRESETS
+                                </span>
+
+
+                                <div class="preset-list">
+
+
+                                    <button
+                                        type="button"
+                                        class="preset active"
+                                        data-color="Pacific Blue"
+                                        disabled
+                                    >
+
+                                        <span class="preset-dot blue"></span>
+
+                                        Pacific Blue
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="preset"
+                                        data-color="Lagoon Aqua"
+                                        disabled
+                                    >
+
+                                        <span class="preset-dot aqua"></span>
+
+                                        Lagoon Aqua
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="preset"
+                                        data-color="Purple Dusk"
+                                        disabled
+                                    >
+
+                                        <span class="preset-dot purple"></span>
+
+                                        Purple Dusk
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="preset"
+                                        data-color="Resort Gold"
+                                        disabled
+                                    >
+
+                                        <span class="preset-dot gold"></span>
+
+                                        Resort Gold
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="preset"
+                                        data-color="Carnival Wave"
+                                        disabled
+                                    >
+
+                                        <span class="preset-dot carnival"></span>
+
+                                        Carnival Wave
+
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- INTENSITY -->
+
+                            <div class="pool-controls">
+
+
+                                <div class="intensity-control">
+
+
+                                    <div>
+
+                                        <span class="control-label">
+                                            UNDERWATER INTENSITY
+                                        </span>
+
+
+                                        <strong id="poolIntensityValue">
+                                            70%
+                                        </strong>
+
+                                    </div>
+
+
+                                    <input
+                                        type="range"
+                                        id="poolIntensity"
+                                        min="0"
+                                        max="100"
+                                        value="70"
+                                        disabled
+                                    >
+
+
+                                </div>
+
+
+                                <div class="bridge-control">
+
+
+                                    <div>
+
+                                        <span class="control-label">
+                                            FOOTBRIDGE ACCENT RAILS
+                                        </span>
+
+
+                                        <strong id="bridgeStatus">
+                                            Bridge Light OFF
+                                        </strong>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        id="bridgeToggle"
+                                        disabled
+                                    >
+                                        TOGGLE
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             KTV
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card ktv-card"
+                            id="ktvSection"
+                        >
+
+
+                            <div class="facility-header">
+
+
+                                <div>
+
+
+                                    <div class="card-eyebrow">
+
+                                        <span class="gold-tag">
+                                            ENTERTAINMENT WING
+                                        </span>
+
+                                        Reserved &amp; Active
+
+                                    </div>
+
+
+                                    <h2>
+                                        Lighthouse KTV &amp;
+                                        Panoramic Beacon
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span class="ktv-ready">
+                                    KTV READY • DECK LIVE
+                                </span>
+
+
+                            </div>
+
+
+                            <!-- KTV SCREEN -->
+
+                            <div class="ktv-screen">
+
+
+                                <div class="ktv-screen-header">
+
+
+                                    <span>
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        KARAOKE TELEPROMPTER SCREEN 01
+
+                                    </span>
+
+
+                                    <span>
+                                        Pitch: Standard • Mic 1 &amp; 2 Online
+                                    </span>
+
+
+                                </div>
+
+
+                                <div class="now-playing">
+
+
+                                    <span>
+                                        NOW PLAYING • TRACK #248
+                                    </span>
+
+
+                                    <h3 id="currentSong">
+
+                                        Christmas in Our Hearts
+                                        • Jose Mari Chan
+
+                                    </h3>
+
+
+                                    <blockquote>
+                                        “Whenever I see girls and boys
+                                        selling lanterns on the street...”
+                                    </blockquote>
+
+
+                                    <em>
+
+                                        Next: “I remember the child in
+                                        the manger as he sleeps...”
+
+                                    </em>
+
+
+                                </div>
+
+
+                                <div class="song-progress">
+
+
+                                    <div class="progress-line">
+
+                                        <span></span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span>
+                                            01:42
+                                        </span>
+
+                                        <span>
+                                            04:15
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- MUSIC CONTROLS -->
+
+                            <div class="music-controls">
+
+
+                                <button
+                                    type="button"
+                                    class="music-btn"
+                                    data-music="previous"
+                                    disabled
+                                >
+
+                                    <i class="fa-solid fa-backward-step"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="music-btn primary"
+                                    data-music="play"
+                                    disabled
+                                >
+
+                                    <i class="fa-solid fa-play"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="music-btn"
+                                    data-music="next"
+                                    disabled
+                                >
+
+                                    <i class="fa-solid fa-forward-step"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="close-ktv-btn"
+                                    data-control="ktv"
+                                    disabled
+                                >
+
+                                    <i class="fa-solid fa-power-off"></i>
+
+                                    CLOSE KTV
+
+                                </button>
+
+
+                                <div class="volume-control">
+
+                                    <i class="fa-solid fa-volume-low"></i>
+
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100"
+                                        value="75"
+                                        disabled
+                                    >
+
+                                    <span>
+                                        75%
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- PLAYLIST + BEACON -->
+
+                            <div class="ktv-bottom-grid">
+
+
+                                <div class="playlist-box">
+
+
+                                    <div class="mini-section-title">
+
+                                        <span>
+                                            RESERVED PLAYLIST
+                                        </span>
+
+                                        <strong>
+                                            3 Selected
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="playlist-item">
+
+                                        <span>
+
+                                            <i class="fa-solid fa-music"></i>
+
+                                            Bakit Ngayon Ka Lang
+
+                                        </span>
+
+
+                                        <small>
+                                            Freestyle
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="playlist-item">
+
+                                        <span>
+
+                                            <i class="fa-solid fa-music"></i>
+
+                                            Can’t Take My Eyes Off You
+
+                                        </span>
+
+
+                                        <small>
+                                            F. Valli
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="playlist-item">
+
+                                        <span>
+
+                                            <i class="fa-solid fa-music"></i>
+
+                                            With a Smile
+
+                                        </span>
+
+
+                                        <small>
+                                            Eraserheads
+                                        </small>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="beacon-box">
+
+
+                                    <div class="mini-section-title">
+
+                                        <span>
+                                            PHYSICAL DIORAMA BEACON MOTOR
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="beacon-item">
+
+
+                                        <div class="beacon-item-icon gold">
+
+                                            <i class="fa-regular fa-compass"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong>
+                                                Lighthouse Sweeper
+                                            </strong>
+
+                                            <small>
+                                                Sweeping • 4.2 RPM
+                                            </small>
+
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            disabled
+                                        >
+                                            TURN OFF
+                                        </button>
+
+
+                                    </div>
+
+
+                                    <div class="beacon-item">
+
+
+                                        <div class="beacon-item-icon blue">
+
+                                            <i class="fa-solid fa-lightbulb"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <strong>
+                                                Lounge Perimeter Illumination
+                                            </strong>
+
+                                            <small>
+                                                Active • Warm Teal
+                                            </small>
+
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            disabled
+                                        >
+                                            TURN OFF
+                                        </button>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             RESTRICTED AREA
+                        ================================================== -->
+
+                        <section
+                            class="dashboard-card restricted-card"
+                        >
+
+
+                            <div class="restricted-header">
+
+
+                                <div>
+
+
+                                    <div>
+
+                                        <span class="restricted-tag">
+                                            RESTRICTED AREA
+                                        </span>
+
+
+                                        <span>
+                                            Grand Pavilion Hall
+                                        </span>
+
+                                    </div>
+
+
+                                    <h2>
+                                        Event Place &amp;
+                                        Conference Atrium
+                                    </h2>
+
+
+                                </div>
+
+
+                                <span class="hardware-locked">
+                                    HARDWARE LOCKED
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="restricted-message">
+
+
+                                <div class="restricted-message-icon">
+
+                                    <i class="fa-solid fa-shield-halved"></i>
+
+                                </div>
+
+
+                                <div>
+
+
+                                    <h3>
+                                        Not Included in Your Reservation
+                                    </h3>
+
+
+                                    <p>
+
+                                        This facility is not included in
+                                        your current reservation. Its physical
+                                        controls remain unavailable to your
+                                        account.
+
+                                    </p>
+
+
+                                    <button
+                                        type="button"
+                                        id="contactFrontDesk"
+                                    >
+
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                        Contact Front Desk
+
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     FOOTER
+                ================================================== -->
+
+                <footer class="dashboard-footer">
+
+
+                    <div class="footer-brand">
+
+
+                        <div class="footer-logo">
+
+                            <img
+                                src="assets/Catherine's Logo.png"
+                                alt="Catherine's"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Catherine’s Bagasbas Lighthouse Resort
+                            </strong>
+
+                            <span>
+                                Handcrafted Smart Diorama
+                                • Daet, Camarines Norte
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="footer-actions">
+
+
+                        <button
+                            type="button"
+                            id="footerVisitorSite"
+                        >
+                            Visitor Website
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="footerOwnerPortal"
+                        >
+                            Owner Portal
+                        </button>
+
+
+                    </div>
+
+
+                </footer>
+
+
+            </main>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         CHECKOUT MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="checkoutModal"
+    >
+
+
+        <div class="modal-overlay"></div>
+
+
+        <div class="modal-box">
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCheckoutModal"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-icon">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </div>
+
+
+            <h2>
+                Confirm Check-Out
+            </h2>
+
+
+            <p>
+
+                Are you sure you want to end your stay?
+                Your facility controls will be disabled
+                after check-out.
+
+            </p>
+
+
+            <div class="modal-actions">
+
+
+                <button
+                    type="button"
+                    id="cancelCheckout"
+                    class="modal-cancel"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    id="confirmCheckout"
+                    class="modal-confirm"
+                >
+
+                    Confirm Check-Out
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+
+         IMPORTANT:
+         sidebar.js / sharedSidebar has been REMOVED.
+         This page already contains the real sidebar.
+    ====================================================== -->
+
+    <script src="js/guest-dashboard.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Sign In | Catherine's Bagasbas Lighthouse Resort
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         LOGIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/login.css"
+    >
+
+
+    <!-- =====================================================
+         FOOTER CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/footer.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP INFORMATION BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <span class="status-dot"></span>
+
+            <span>
+                📍 Daet, Camarines Norte
+            </span>
+
+            <span class="separator">
+                •
+            </span>
+
+            <span>
+                Philippine Coastal Shore
+            </span>
+
+            <span class="separator">
+                •
+            </span>
+
+            <span>
+                Interactive Diorama Connected
+            </span>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <span>
+                Bagasbas Beachfront
+            </span>
+
+            <span>
+                Live Tide: +1.2m Rising
+            </span>
+
+            <span>
+                Water: 28°C Tropical
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN PAGE
+    ====================================================== -->
+
+    <main class="page">
+
+
+        <!-- =================================================
+             LOGIN CARD
+        ================================================== -->
+
+        <section class="login-card">
+
+
+            <!-- =================================================
+                 LEFT VISUAL PANEL
+            ================================================== -->
+
+            <div class="visual-panel">
+
+                <div class="visual-overlay"></div>
+
+
+                <div class="visual-content">
+
+
+                    <!-- =========================
+                         BRAND
+                    ========================== -->
+
+                    <div class="brand-row">
+
+
+                        <div class="brand-logo">
+
+                            <img
+                                src="assets/Catherine's Logo.png"
+                                alt="Catherine's Logo"
+                            >
+
+                        </div>
+
+
+                        <span class="coastline">
+
+                            ☼ &nbsp; Bagasbas Coastline
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- =========================
+                         WELCOME CONTENT
+                    ========================== -->
+
+                    <div class="welcome-copy">
+
+
+                        <p class="eyebrow">
+                            SEASIDE SANCTUARY
+                        </p>
+
+
+                        <h1>
+
+                            Welcome Back to
+
+                            <br>
+
+                            Catherine’s
+
+                        </h1>
+
+
+                        <p class="description">
+
+                            Sign in to manage your resort reservations,
+                            explore exclusive coastal experiences,
+                            and plan your stay beside Bagasbas Lighthouse.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- =========================
+                         MEMBER PRIVILEGES
+                    ========================== -->
+
+                    <div class="member-box">
+
+
+                        <div class="member-title">
+
+                            <span class="star">
+                                ☆
+                            </span>
+
+                            <span>
+                                SANCTUARY MEMBER PRIVILEGES
+                            </span>
+
+                        </div>
+
+
+                        <p>
+
+                            Exclusive member booking rates,
+                            priority seaside dining reservations,
+                            and personalized stay preferences.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- =========================
+                         VISUAL FOOTER
+                    ========================== -->
+
+                    <div class="visual-footer">
+
+                        <span>
+                            📍 Daet, Camarines Norte
+                        </span>
+
+                        <span>
+                            Philippine Coastal Shore
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIGHT FORM PANEL
+            ================================================== -->
+
+            <div class="form-panel">
+
+
+                <div class="form-inner">
+
+
+                    <!-- =========================
+                         PORTAL LABEL
+                    ========================== -->
+
+                    <div class="portal-label">
+                        GUEST &amp; MEMBER PORTAL
+                    </div>
+
+
+
+                    <!-- =========================
+                         TITLE
+                    ========================== -->
+
+                    <h2>
+                        Sign In
+                    </h2>
+
+
+                    <p class="form-intro">
+
+                        Enter your email and password to access your resort account.
+
+                    </p>
+
+
+
+                    <!-- =================================================
+                         SINGLE LOGIN FORM
+                         IMPORTANT:
+                         There is ONLY ONE form.
+                    ================================================== -->
+
+                    <form id="loginForm">
+
+
+                        <!-- =========================
+                             EMAIL
+                        ========================== -->
+
+                        <div class="field-group">
+
+
+                            <label for="email">
+                                EMAIL ADDRESS
+                            </label>
+
+
+                            <div class="input-wrap">
+
+
+                                <span class="input-icon">
+                                    ✉
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="guest@catherineslighthouse.ph"
+                                    autocomplete="email"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                            <small
+                                class="error-message"
+                                id="emailError"
+                            ></small>
+
+
+                        </div>
+
+
+
+                        <!-- =========================
+                             PASSWORD
+                        ========================== -->
+
+                        <div class="field-group">
+
+
+                            <div class="label-row">
+
+
+                                <label for="password">
+                                    PASSWORD
+                                </label>
+
+
+                                <button
+                                    type="button"
+                                    class="forgot-btn"
+                                    id="forgotPassword"
+                                >
+                                    Forgot password?
+                                </button>
+
+
+                            </div>
+
+
+
+                            <div class="input-wrap">
+
+
+                                <span class="input-icon">
+                                    ♙
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="togglePassword"
+                                    aria-label="Show password"
+                                >
+                                    ◉
+                                </button>
+
+
+                            </div>
+
+
+                            <small
+                                class="error-message"
+                                id="passwordError"
+                            ></small>
+
+
+                        </div>
+
+
+
+                        <!-- =========================
+                             REMEMBER ME
+                        ========================== -->
+
+                        <label class="remember-row">
+
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+
+                            <span class="custom-checkbox"></span>
+
+
+                            <span>
+                                Keep me signed in for 30 days
+                            </span>
+
+
+                        </label>
+
+
+
+                        <!-- =========================
+                             SIGN IN BUTTON
+                        ========================== -->
+
+                        <button
+                            type="submit"
+                            class="sign-in-btn"
+                        >
+
+                            <span>
+                                Sign In
+                            </span>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- =========================
+                             DIVIDER
+                        ========================== -->
+
+                        <div class="divider">
+
+                            <span></span>
+
+                            <p>
+                                OR QUICK GUEST ACCESS
+                            </p>
+
+                            <span></span>
+
+                        </div>
+
+
+
+                        <!-- =========================
+                             BOOKING CODE
+                        ========================== -->
+
+                        <button
+                            type="button"
+                            class="booking-code-btn"
+                            id="bookingCodeBtn"
+                        >
+
+                            <span class="ticket-icon">
+                                ♧
+                            </span>
+
+
+                            <span>
+                                Check reservation with booking code
+                            </span>
+
+                        </button>
+
+
+                    </form>
+
+
+
+                    <!-- =================================================
+                         BOTTOM LINKS
+                    ================================================== -->
+
+                    <div class="bottom-links">
+
+
+                        <p>
+
+                            Don't have an account?
+
+
+                            <button
+                                type="button"
+                                class="create-account"
+                                id="createAccount"
+                            >
+                                Create an account
+                            </button>
+
+                        </p>
+
+
+                        <button
+                            type="button"
+                            class="back-btn"
+                            id="backToResort"
+                        >
+
+                            ← Back to resort
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         STATUS MESSAGE
+                    ================================================== -->
+
+                    <div
+                        class="form-status"
+                        id="formStatus"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- =====================================================
+         BOOKING CODE MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="bookingModal"
+        aria-hidden="true"
+    >
+
+
+        <div
+            class="modal-backdrop"
+            data-close-modal
+        ></div>
+
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="bookingModalTitle"
+        >
+
+
+            <!-- =========================
+                 CLOSE
+            ========================== -->
+
+            <button
+                class="modal-close"
+                id="closeBookingModal"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+
+            <!-- =========================
+                 LABEL
+            ========================== -->
+
+            <div class="portal-label">
+                QUICK GUEST ACCESS
+            </div>
+
+
+
+            <!-- =========================
+                 HEADING
+            ========================== -->
+
+            <h3 id="bookingModalTitle">
+                Check Reservation
+            </h3>
+
+
+            <p>
+                Enter the booking code provided with your reservation.
+            </p>
+
+
+
+            <!-- =========================
+                 BOOKING FORM
+            ========================== -->
+
+            <form id="bookingForm">
+
+
+                <label for="bookingCode">
+                    BOOKING CODE
+                </label>
+
+
+                <input
+                    type="text"
+                    id="bookingCode"
+                    placeholder="e.g. CAT-2026-001"
+                    autocomplete="off"
+                    required
+                >
+
+
+                <small
+                    class="error-message"
+                    id="bookingError"
+                ></small>
+
+
+                <button
+                    type="submit"
+                    class="sign-in-btn modal-submit"
+                >
+
+                    <span>
+                        Continue
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/footer.js"></script>
+
+    <script src="js/login.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Master Reservations | Catherine’s
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         PAGE CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/admin-reservations.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="admin-brand"
+        >
+
+            <img
+                src="assets/Catherine's Logo.png"
+                alt="Catherine's Logo"
+                class="admin-logo"
+            >
+
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    Catherine’s
+                </strong>
+
+                <span>
+                    LIGHTHOUSE COMMAND
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- HARDWARE STATUS -->
+
+        <div class="admin-system-status">
+
+            <span class="admin-status-dot"></span>
+
+            <div>
+
+                <strong>
+                    ESP32 Hardware Online
+                </strong>
+
+                <span>
+                    9 Node Mesh
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION LABEL -->
+
+        <div class="admin-nav-label">
+            NAVIGATION DECK
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-nav">
+
+
+            <!-- OPERATIONAL CENTER -->
+
+            <a
+                href="admin-dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Operational Center
+                </span>
+
+            </a>
+
+
+            <!-- MASTER RESERVATIONS -->
+
+            <a
+                href="admin-reservations.html"
+                class="admin-nav-item active"
+            >
+
+                <i class="fa-regular fa-calendar-days"></i>
+
+                <span>
+                    Master Reservations
+                </span>
+
+            </a>
+
+
+            <!-- DIORAMA OVERRIDES -->
+
+            <a
+                href="diorama-control.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Diorama Overrides
+                </span>
+
+            </a>
+
+
+            <!-- SENSORS -->
+
+            <a
+                href="sensors.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-satellite-dish"></i>
+
+                <span>
+                    Sensors Telemetry
+                </span>
+
+            </a>
+
+
+            <!-- DEMO -->
+
+            <a
+                href="demo.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-circle-play"></i>
+
+                <span>
+                    Automated Demo Mode
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- =================================================
+             SIDEBAR FOOTER
+        ================================================== -->
+
+        <div class="admin-sidebar-footer">
+
+
+            <div class="admin-beacon">
+
+                <span>
+                    Lighthouse Beacon
+                </span>
+
+                <strong>
+                    Sweeping 4.2 RPM
+                </strong>
+
+            </div>
+
+
+            <div class="admin-footer-actions">
+
+
+                <a
+                    href="index.html"
+                    class="visitor-site"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    VISITOR SITE
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP HEADER
+        ================================================== -->
+
+        <header class="top-header">
+
+
+            <div class="system-title">
+
+                <span class="system-dot"></span>
+
+                BAGASBAS DIORAMA SYSTEM V2.4
+
+            </div>
+
+
+            <div class="top-right">
+
+
+                <!-- PORTAL SWITCHER -->
+
+                <div class="portal-switcher">
+
+                    <button type="button">
+                        VISITOR
+                    </button>
+
+                    <button type="button">
+                        GUEST
+                    </button>
+
+                    <button
+                        type="button"
+                        class="active"
+                    >
+                        ADMIN
+                    </button>
+
+                </div>
+
+
+                <!-- ADMIN USER -->
+
+                <div class="admin-user">
+
+
+                    <div class="admin-avatar">
+                        C
+                    </div>
+
+
+                    <div class="admin-user-text">
+
+                        <strong>
+                            Catherine
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <div class="reservation-content">
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="reservation-hero">
+
+
+                <div class="hero-left">
+
+
+                    <div class="hero-kicker">
+
+                        <span>
+                            RESORT COMMAND • SUB-DECK 02
+                        </span>
+
+                        <i></i>
+
+                        <small>
+                            LIVE FACILITY MESH SYNCED
+                        </small>
+
+                    </div>
+
+
+                    <h1>
+                        Master Reservations &amp;
+                        Diorama Allocation
+                    </h1>
+
+
+                    <p>
+
+                        Central operational desk for oceanfront
+                        suites, day passes, real-time ESP32 node
+                        pairing, and guest folio management.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="hero-operator">
+
+
+                    <div class="mini-operator-icon">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Engr. Catherine M.
+                        </strong>
+
+                        <span>
+                            OWNER &amp; CHIEF OPERATOR
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="hero-node-status">
+
+                    <strong>
+                        9/9
+                    </strong>
+
+                    <span>
+                        NODES
+                        <br>
+                        ONLINE
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 INTERNAL TABS
+            ================================================== -->
+
+            <nav class="reservation-tabs">
+
+
+                <button
+                    type="button"
+                    class="reservation-tab"
+                    data-target="overviewStats"
+                >
+
+                    <span>
+                        1.
+                    </span>
+
+                    CONTROL
+                    <br>
+                    DECK
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="reservation-tab active"
+                    data-target="reservationsSection"
+                >
+
+                    <span>
+                        2.
+                    </span>
+
+                    MASTER
+                    <br>
+                    RESERVATIONS
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="reservation-tab"
+                    data-target="timelineSection"
+                >
+
+                    <span>
+                        3.
+                    </span>
+
+                    ROOM RACK
+                    <br>
+                    MATRIX
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="reservation-tab"
+                >
+
+                    <span>
+                        4.
+                    </span>
+
+                    IOT KEYCARD
+                    <br>
+                    VAULT
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="reservation-tab"
+                >
+
+                    <span>
+                        5.
+                    </span>
+
+                    MAYA &amp; GCASH
+                    <br>
+                    RECONCILIATION
+
+                </button>
+
+
+            </nav>
+
+
+
+            <!-- =================================================
+                 STATISTICS
+            ================================================== -->
+
+            <section
+                class="stats-grid"
+                id="overviewStats"
+            >
+
+
+                <!-- TOTAL BOOKINGS -->
+
+                <article class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <span>
+                            TOTAL BOOKINGS
+                            <br>
+                            TODAY
+                        </span>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                    </div>
+
+
+                    <div class="stat-main">
+
+                        <strong>
+                            18
+                        </strong>
+
+                        <span>
+                            ACTIVE FOLIOS
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        ₱142,500 Gross revenue
+                        generated
+                    </p>
+
+
+                    <div class="stat-bottom">
+
+                        <span>
+                            +14% vs
+                            <br>
+                            yesterday
+                        </span>
+
+
+                        <div class="mini-chart">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- OCCUPANCY -->
+
+                <article class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <span>
+                            COTTAGE
+                            <br>
+                            OCCUPANCY
+                        </span>
+
+                        <i class="fa-solid fa-building"></i>
+
+                    </div>
+
+
+                    <div class="stat-main">
+
+                        <strong>
+                            75%
+                        </strong>
+
+                        <span>
+                            of 4 Cottages
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Cottage #1, #2, #3 fully
+                        booked
+                    </p>
+
+
+                    <div class="progress-track">
+
+                        <span
+                            style="width:75%;"
+                        ></span>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- CHECKED-IN -->
+
+                <article class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <span>
+                            CHECKED-IN DIORAMA
+                            <br>
+                            NODES
+                        </span>
+
+                        <i class="fa-solid fa-satellite-dish"></i>
+
+                    </div>
+
+
+                    <div class="stat-main">
+
+                        <strong>
+                            12
+                        </strong>
+
+                        <span>
+                            GUESTS ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Paired with smart
+                        physical keycards
+                    </p>
+
+
+                    <div class="stat-status">
+
+                        <span></span>
+
+                        Live BLE &amp; RFID
+                        handshake ready
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- PENDING -->
+
+                <article class="stat-card danger-stat">
+
+
+                    <div class="stat-top">
+
+                        <span>
+                            PENDING
+                            <br>
+                            VERIFICATION
+                        </span>
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                    </div>
+
+
+                    <div class="stat-main">
+
+                        <strong>
+                            2
+                        </strong>
+
+                        <span>
+                            DEPOSIT HOLDS
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Awaiting Maya / GCash
+                        reference receipt
+                    </p>
+
+
+                    <div class="pending-footer">
+
+                        <a href="#">
+                            Review 2
+                            <br>
+                            pending →
+                        </a>
+
+                        <span>
+                            Auto-expire
+                            <br>
+                            in 42m
+                        </span>
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================== -->
+
+            <section class="filter-card">
+
+
+                <div class="filter-row">
+
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search by:"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="date-filter active"
+                    >
+                        TODAY (MAY 18)
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="date-filter"
+                    >
+                        TOMORROW
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="date-filter"
+                    >
+                        THIS WEEKEND
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="calendar-button"
+                    >
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="export-button"
+                        id="exportButton"
+                    >
+
+                        <i class="fa-solid fa-download"></i>
+
+                        EXPORT CSV
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="walkin-button"
+                        id="walkinButton"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        NEW WALK-IN RESERVATION
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- FACILITY -->
+
+                <div class="filter-group-row">
+
+                    <span>
+                        FACILITY:
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="filter-chip active"
+                    >
+                        ALL QUARTERS
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-chip"
+                    >
+                        COTTAGES 1–4
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-chip"
+                    >
+                        POOL &amp; ARCHED BRIDGE
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-chip"
+                    >
+                        LIGHTHOUSE KTV
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="filter-chip"
+                    >
+                        GRAND EVENT PAVILION
+                    </button>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="filter-status-row">
+
+                    <span>
+                        STATUS:
+                    </span>
+
+
+                    <select id="statusFilter">
+
+                        <option>
+                            ALL RESERVATION STATES
+                        </option>
+
+                        <option>
+                            CHECKED IN &amp; ACTIVE
+                        </option>
+
+                        <option>
+                            EXPECTED
+                        </option>
+
+                        <option>
+                            ARRIVING
+                        </option>
+
+                        <option>
+                            CONFIRMED
+                        </option>
+
+                        <option>
+                            IN FACILITY
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESERVATIONS
+            ================================================== -->
+
+            <section
+                class="reservations-card"
+                id="reservationsSection"
+            >
+
+
+                <div class="reservations-heading">
+
+
+                    <div class="heading-icon">
+
+                        <i class="fa-solid fa-table-list"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Active Guest Folios &amp;
+                            Diorama Telemetry
+                        </h2>
+
+
+                        <p>
+                            Real-time status synchronized with
+                            Physical Lighthouse Diorama
+                            miniature array.
+                        </p>
+
+                    </div>
+
+
+                    <span class="showing-badge">
+                        SHOWING 5 OF 18 ACTIVE ENTRIES
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- TABLE HEAD -->
+
+                <div class="table-header">
+
+
+                    <span>
+                        BOOKING
+                        <br>
+                        REF / TIME
+                    </span>
+
+
+                    <span>
+                        GUEST DETAILS
+                    </span>
+
+
+                    <span>
+                        ASSIGNED
+                        <br>
+                        QUARTERS &amp;
+                        <br>
+                        FACILITIES
+                    </span>
+
+
+                    <span>
+                        SMART
+                        <br>
+                        DIORAMA MESH
+                        <br>
+                        HARDWARE
+                    </span>
+
+
+                    <span>
+                        FOLIO &amp;
+                        <br>
+                        SETTLEMENT
+                    </span>
+
+
+                    <span>
+                        CHECK-IN STATE
+                    </span>
+
+
+                    <span>
+                        ACTIONS
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- ROW 1 -->
+
+                <article class="reservation-row">
+
+
+                    <div class="booking-ref">
+
+                        <strong>
+                            #CBLR-7482
+                        </strong>
+
+                        <span>
+                            Today,
+                            <br>
+                            2:00 PM
+                        </span>
+
+                        <small>
+                            Stay: 2
+                            <br>
+                            Nights
+                        </small>
+
+                    </div>
+
+
+                    <div class="guest-details">
+
+                        <div class="guest-avatar">
+                            MS
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Maria Elena
+                                <br>
+                                Santos
+                            </strong>
+
+                            <span>
+                                +63 917 842 1904
+                            </span>
+
+                            <small>
+                                6 Pax • VIP
+                                <br>
+                                Family
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+                        <strong>
+                            <i class="fa-solid fa-house"></i>
+                            Cottage 2 Oceanfront
+                        </strong>
+
+                        <span>
+                            <i class="fa-solid fa-water"></i>
+                            Pool Bridge Unlimited Pass
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-microphone"></i>
+                            Lighthouse KTV
+                            (7:00 PM – 10:00 PM)
+                        </span>
+
+                    </div>
+
+
+                    <div class="mesh-status active">
+
+                        <strong>
+                            NODE #4
+                            <br>
+                            SYNCED
+                        </strong>
+
+                        <span>
+                            Amber
+                        </span>
+
+                        <span>
+                            Miniature Glow ON
+                        </span>
+
+                        <small>
+                            RFID KEYCARD
+                            #7482 LINKED
+                        </small>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        <strong>
+                            ₱8,782.00
+                        </strong>
+
+                        <span class="maya">
+                            PAID VIA MAYA QR
+                        </span>
+
+                        <small>
+                            Receipt #MY-9801
+                        </small>
+
+                    </div>
+
+
+                    <div class="checkin-state active">
+
+                        <span></span>
+
+                        CHECKED IN
+                        <br>
+                        &amp; ACTIVE
+
+                    </div>
+
+
+                    <div class="row-actions">
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- ROW 2 -->
+
+                <article class="reservation-row">
+
+
+                    <div class="booking-ref">
+
+                        <strong>
+                            #CBLR-7483
+                        </strong>
+
+                        <span>
+                            Today,
+                            <br>
+                            3:30 PM
+                        </span>
+
+                        <small>
+                            Stay: 1
+                            <br>
+                            Night
+                        </small>
+
+                    </div>
+
+
+                    <div class="guest-details">
+
+                        <div class="guest-avatar teal">
+                            RT
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Capt.
+                                Rodrigo Tan
+                            </strong>
+
+                            <span>
+                                +63 920 412 8812
+                            </span>
+
+                            <small>
+                                2 Pax •
+                                <br>
+                                Maritime Club
+                                Member
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+                        <strong>
+                            <i class="fa-solid fa-house"></i>
+                            Cottage 1 Beachfront
+                        </strong>
+
+                        <span>
+                            <i class="fa-solid fa-water"></i>
+                            General Pool Access
+                        </span>
+
+                    </div>
+
+
+                    <div class="mesh-status standby">
+
+                        <strong>
+                            NODE #1
+                            <br>
+                            STANDBY
+                        </strong>
+
+                        <span>
+                            RFID Tag #3190
+                        </span>
+
+                        <span>
+                            Encoded
+                        </span>
+
+                        <small>
+                            Awaiting Front Desk Tap
+                        </small>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        <strong>
+                            ₱4,500.00
+                        </strong>
+
+                        <span class="gcash">
+                            PAID VIA GCASH
+                        </span>
+
+                        <small>
+                            Ref #GC-44910
+                        </small>
+
+                    </div>
+
+
+                    <div class="checkin-state expected">
+
+                        <span></span>
+
+                        EXPECTED
+                        <br>
+                        3:30 PM
+
+                    </div>
+
+
+                    <div class="row-actions">
+
+                        <button
+                            type="button"
+                            class="quick-checkin"
+                        >
+                            QUICK
+                            <br>
+                            CHECK-IN
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- ROW 3 -->
+
+                <article class="reservation-row">
+
+
+                    <div class="booking-ref">
+
+                        <strong>
+                            #CBLR-7484
+                        </strong>
+
+                        <span>
+                            Today,
+                            <br>
+                            5:00 PM
+                        </span>
+
+                        <small>
+                            Stay: 1
+                            <br>
+                            Night
+                        </small>
+
+                    </div>
+
+
+                    <div class="guest-details">
+
+                        <div class="guest-avatar blue">
+                            CV
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Atty.
+                                Camille
+                                Verzosa
+                            </strong>
+
+                            <span>
+                                +63 918 903 2145
+                            </span>
+
+                            <small>
+                                4 Pax • Private
+                                <br>
+                                Executive
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+                        <strong>
+                            <i class="fa-solid fa-house"></i>
+                            Cottage 3 Sunset Bay
+                        </strong>
+
+                        <span>
+                            <i class="fa-solid fa-microphone"></i>
+                            Lighthouse KTV
+                            (Private Session)
+                        </span>
+
+                    </div>
+
+
+                    <div class="mesh-status offline">
+
+                        <strong>
+                            NODE #3
+                            <br>
+                            OFFLINE
+                        </strong>
+
+                        <span>
+                            Awaiting Physical Tap
+                        </span>
+
+                        <small>
+                            Pre-assigned RFID #8821
+                        </small>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        <strong>
+                            ₱6,700.00
+                        </strong>
+
+                        <span class="transfer">
+                            BPI DIRECT
+                            <br>
+                            TRANSFER
+                        </span>
+
+                        <small>
+                            Verified by Engr. M
+                        </small>
+
+                    </div>
+
+
+                    <div class="checkin-state arriving">
+
+                        <span></span>
+
+                        ARRIVING
+                        <br>
+                        5:00 PM
+
+                    </div>
+
+
+                    <div class="row-actions">
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-power-off"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- ROW 4 -->
+
+                <article class="reservation-row">
+
+
+                    <div class="booking-ref">
+
+                        <strong>
+                            #CBLR-7485
+                        </strong>
+
+                        <span>
+                            Today,
+                            <br>
+                            6:00 PM
+                        </span>
+
+                        <small>
+                            Stay: 3
+                            <br>
+                            Nights
+                        </small>
+
+                    </div>
+
+
+                    <div class="guest-details">
+
+                        <div class="guest-avatar beige">
+                            NA
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Dr. Noel
+                                Alcantara &amp;
+                                Party
+                            </strong>
+
+                            <span>
+                                +63 917 555 981
+                            </span>
+
+                            <small>
+                                120 Pax •
+                                <br>
+                                Banquet Gala
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+                        <strong>
+                            <i class="fa-solid fa-building-columns"></i>
+                            Grand Event Pavilion
+                        </strong>
+
+                        <span>
+                            <i class="fa-solid fa-house"></i>
+                            Cottage 4
+                            (Bridal Suite)
+                        </span>
+
+                    </div>
+
+
+                    <div class="mesh-status event">
+
+                        <strong>
+                            EVENT NODE #7
+                            <br>
+                            ARMED
+                        </strong>
+
+                        <span>
+                            DMX Mini Show Ready
+                        </span>
+
+                        <small>
+                            Zone Master Override
+                        </small>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        <strong>
+                            ₱28,500.00
+                        </strong>
+
+                        <span class="balance">
+                            50% BALANCE
+                            REMAINING
+                        </span>
+
+                        <small>
+                            Total:
+                            ₱57,000.00
+                        </small>
+
+                    </div>
+
+
+                    <div class="checkin-state confirmed">
+
+                        <span></span>
+
+                        CONFIRMED
+                        <br>
+                        &amp; ARMED
+
+                    </div>
+
+
+                    <div class="row-actions">
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="icon-action"
+                        >
+
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- ROW 5 -->
+
+                <article class="reservation-row">
+
+
+                    <div class="booking-ref">
+
+                        <strong>
+                            #CBLR-7480
+                        </strong>
+
+                        <span>
+                            Today,
+                            <br>
+                            10:30 AM
+                        </span>
+
+                        <small>
+                            Day Pass
+                            <br>
+                            Only
+                        </small>
+
+                    </div>
+
+
+                    <div class="guest-details">
+
+                        <div class="guest-avatar cyan">
+                            SC
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Samantha
+                                <br>
+                                Cruz
+                            </strong>
+
+                            <span>
+                                +63 939 123 7740
+                            </span>
+
+                            <small>
+                                4 Pax • Day
+                                <br>
+                                Leisure Pass
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+                        <strong>
+                            <i class="fa-solid fa-water"></i>
+                            Pool &amp; Arched Bridge
+                        </strong>
+
+                        <span>
+                            <i class="fa-regular fa-sun"></i>
+                            Sunset Lookout Access
+                        </span>
+
+                    </div>
+
+
+                    <div class="mesh-status pool">
+
+                        <strong>
+                            POOL
+                            <br>
+                            NODE #2
+                        </strong>
+
+                        <span>
+                            ACTIVE
+                        </span>
+
+                        <small>
+                            Blue Aquatic Pulse ON
+                            <br>
+                            Band #33, #34, #35
+                        </small>
+
+                    </div>
+
+
+                    <div class="folio">
+
+                        <strong>
+                            ₱1,200.00
+                        </strong>
+
+                        <span class="gcash">
+                            PAID MAYA
+                            <br>
+                            CASHIER
+                        </span>
+
+                        <small>
+                            Ticket #DP-041
+                        </small>
+
+                    </div>
+
+
+                    <div class="checkin-state facility">
+
+                        <span></span>
+
+                        IN FACILITY
+                        <br>
+                        (DAY PASS)
+
+                    </div>
+
+
+                    <div class="row-actions">
+
+                        <button
+                            type="button"
+                            class="checkout-action"
+                        >
+                            CHECKOUT
+                        </button>
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 TIMELINE
+            ================================================== -->
+
+            <section
+                class="timeline-card"
+                id="timelineSection"
+            >
+
+
+                <div class="timeline-header">
+
+
+                    <div class="timeline-heading">
+
+
+                        <div class="timeline-icon">
+
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Live Facility Timeline
+                                &amp; Rack Allocation
+                            </h2>
+
+
+                            <p>
+                                Visual room rack showing
+                                24-hour diorama lighting
+                                assignments across all nodes.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="timeline-legend">
+
+
+                        <span>
+                            <i class="occupied-dot"></i>
+                            Occupied &amp; Paired
+                        </span>
+
+
+                        <span>
+                            <i class="reserved-dot"></i>
+                            Reserved / Arriving
+                        </span>
+
+
+                        <span>
+                            <i class="maintenance-dot"></i>
+                            Maintenance / Clean
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- TIME -->
+
+                <div class="timeline-scale">
+
+                    <span>
+                        FACILITY UNIT
+                    </span>
+
+                    <span>08:00</span>
+                    <span>10:00</span>
+                    <span>12:00</span>
+                    <span>14:00</span>
+                    <span>16:00</span>
+                    <span>18:00</span>
+                    <span>20:00</span>
+                    <span>22:00</span>
+                    <span>00:00</span>
+                    <span>02:00</span>
+
+                </div>
+
+
+
+                <div class="timeline-rows">
+
+
+                    <!-- COTTAGE 1 -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label">
+
+                            <strong>
+                                Cottage 1
+                            </strong>
+
+                            <span>
+                                Node #1 • Beachfront
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block maintenance-block">
+
+                                <span>
+                                    <i class="fa-solid fa-broom"></i>
+                                    Turnover / Fresh Linen
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-block reserved-block">
+
+                                <span>
+                                    Capt. Tan
+                                    • #CBLR-7483
+                                    (Check-in 15:30)
+                                </span>
+
+                                <small>
+                                    1 Night
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COTTAGE 2 -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label active-label">
+
+                            <strong>
+                                Cottage 2
+                            </strong>
+
+                            <span>
+                                Node #4 • Live Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block occupied-block">
+
+                                <span>
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    Occupied:
+                                    Maria Elena Santos
+                                    (#CBLR-7482)
+
+                                </span>
+
+
+                                <small>
+                                    RFID PAIRED • Stay 2/2
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COTTAGE 3 -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label">
+
+                            <strong>
+                                Cottage 3
+                            </strong>
+
+                            <span>
+                                Node #3 • Sunset Bay
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block maintenance-block">
+
+                                Inspected &amp; Vacant
+
+                            </div>
+
+
+                            <div class="timeline-block reserved-block">
+
+                                <span>
+                                    Atty. Verzosa
+                                    (#CBLR-7484)
+                                </span>
+
+                                <small>
+                                    Arr. 17:00
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COTTAGE 4 -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label">
+
+                            <strong>
+                                Cottage 4
+                            </strong>
+
+                            <span>
+                                Node #5 • Pavilion Side
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block maintenance-block">
+
+                                Pre-setup for
+                                Alcantara Gala
+
+                            </div>
+
+
+                            <div class="timeline-block occupied-block pale">
+
+                                <span>
+                                    Dr. Alcantara
+                                    Entourage
+                                    (#CBLR-7485)
+                                </span>
+
+                                <small>
+                                    3 Nights
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- KTV -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label">
+
+                            <strong>
+                                KTV Suite
+                            </strong>
+
+                            <span>
+                                Node #6 • Acoustic Pod
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block ktv-block">
+
+                                <span>
+                                    Santos Family
+                                    (19:00 – 22:00)
+                                </span>
+
+                                <i class="fa-solid fa-microphone"></i>
+
+                            </div>
+
+
+                            <div class="timeline-block maintenance-block small-block">
+                                Night Buffer
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GRAND PAVILION -->
+
+                    <div class="timeline-row">
+
+
+                        <div class="timeline-label">
+
+                            <strong>
+                                Grand Pavilion
+                            </strong>
+
+                            <span>
+                                Node #7 • DMX Show
+                            </span>
+
+                        </div>
+
+
+                        <div class="timeline-track">
+
+
+                            <div class="timeline-block pavilion-block">
+
+                                <span>
+                                    <i class="fa-solid fa-champagne-glasses"></i>
+
+                                    Alcantara 120-Pax
+                                    Wedding Rehearsal
+                                    &amp; Dinner Banquet
+
+                                </span>
+
+
+                                <small>
+                                    DMX ARMED
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script src="js/admin-reservations.js"></script>
+
+</body>
+
+</html>

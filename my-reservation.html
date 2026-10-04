@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        My Reservation | Catherine's Bagasbas Lighthouse Resort
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MY RESERVATION CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/my-reservation.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APP SHELL
+    ====================================================== -->
+
+    <div class="app-shell">
+
+
+        <!-- =================================================
+             SIDEBAR
+             EXACT GUEST DASHBOARD STRUCTURE
+        ================================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="index.html"
+                class="sidebar-brand"
+            >
+
+                <img
+                    src="assets/Catherine's Logo.png"
+                    alt="Catherine's Logo"
+                    class="brand-logo"
+                >
+
+                <div class="brand-text">
+
+                    <strong>
+                        Catherine’s
+                    </strong>
+
+                    <span>
+                        LIGHTHOUSE COMMAND
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- HARDWARE STATUS -->
+
+            <div class="hardware-status">
+
+                <span class="hardware-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Diorama System Online
+                    </strong>
+
+                    <span>
+                        9 Node Mesh
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDEBAR LABEL -->
+
+            <div class="sidebar-label">
+                GUEST PORTAL
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-nav">
+
+
+                <button
+                    type="button"
+                    class="sidebar-item"
+                    id="dashboardButton"
+                >
+
+                    <i class="fa-solid fa-gauge-high"></i>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="sidebar-item active"
+                    id="reservationButton"
+                >
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                    <span>
+                        My Reservation
+                    </span>
+
+                </button>
+
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+
+                <div class="beacon-status">
+
+                    <span>
+                        Lighthouse Beacon
+                    </span>
+
+                    <strong>
+                        Sweeping 4.2 RPM
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="visitor-site-btn"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <span>
+                        Visitor Website
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-sidebar-btn"
+                    id="logoutButton"
+                    aria-label="Log out"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN AREA
+        ================================================== -->
+
+        <main class="main-area">
+
+
+            <!-- =================================================
+                 TOP HEADER
+            ================================================== -->
+
+            <header class="top-header">
+
+
+                <div class="system-name">
+
+                    <span class="system-dot"></span>
+
+                    <span>
+                        BAGASBAS DIORAMA SYSTEM V2.4
+                    </span>
+
+                </div>
+
+
+                <div class="header-right">
+
+
+                    <span class="connection-pill">
+
+                        <span class="connection-dot"></span>
+
+                        Guest Session Active
+
+                    </span>
+
+
+                    <div class="guest-profile">
+
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                        >
+                            C
+                        </div>
+
+
+                        <div class="profile-name">
+
+                            <strong id="headerGuestName">
+                                Charles
+                            </strong>
+
+                            <span>
+                                Guest
+                            </span>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </header>
+
+
+            <!-- =================================================
+                 MAIN CONTENT
+            ================================================== -->
+
+            <section class="reservation-content">
+
+
+                <!-- =================================================
+                     RESERVATION HERO
+                ================================================== -->
+
+                <section class="reservation-hero">
+
+
+                    <div class="hero-content">
+
+
+                        <div class="hero-badge">
+
+                            <i class="fa-solid fa-hourglass-half"></i>
+
+                            CHECK-IN TODAY
+
+                            <span>
+                                •
+                            </span>
+
+                            OCTOBER 4, 2026 AT 2:00 PM
+
+                        </div>
+
+
+                        <h1>
+
+                            Mabuhay,
+
+                            <span id="heroGuestName">
+                                Charles
+                            </span>.
+
+                        </h1>
+
+
+                        <p>
+
+                            Your bespoke seaside sanctuary on the golden
+                            shores of Bagasbas Beach is meticulously prepared
+                            for your arrival.
+
+                        </p>
+
+
+                        <div class="hero-meta">
+
+
+                            <span>
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Pacific Beachfront Suite
+
+                            </span>
+
+
+                            <span class="hero-separator"></span>
+
+
+                            <span>
+
+                                <i class="fa-solid fa-water"></i>
+
+                                Tide Advisory:
+                                Calm Sunset Low Tide
+
+                            </span>
+
+
+                            <span class="hero-separator"></span>
+
+
+                            <span>
+
+                                <i class="fa-solid fa-user-group"></i>
+
+                                <span id="heroGuestCount">
+                                    2 Guests
+                                </span>
+
+                            </span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- HERO ACTIONS -->
+
+                    <div class="hero-actions">
+
+
+                        <button
+                            type="button"
+                            class="download-voucher-btn"
+                            id="downloadVoucher"
+                        >
+
+                            <i class="fa-solid fa-download"></i>
+
+                            Download Digital Voucher
+
+                        </button>
+
+
+                        <div class="secondary-actions">
+
+
+                            <button
+                                type="button"
+                                id="walletButton"
+                            >
+
+                                <i class="fa-solid fa-wallet"></i>
+
+                                Add to Wallet
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="modifyButton"
+                            >
+
+                                <i class="fa-regular fa-pen-to-square"></i>
+
+                                Modify
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="concierge-link">
+
+                            <i class="fa-solid fa-headset"></i>
+
+                            24/7 Resort Concierge Support
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+                     TWO COLUMN AREA
+                ================================================== -->
+
+                <div class="reservation-grid">
+
+
+                    <!-- =================================================
+                         LEFT COLUMN
+                    ================================================== -->
+
+                    <div class="reservation-left">
+
+
+                        <!-- =================================================
+                             ASSIGNED SANCTUARY
+                        ================================================== -->
+
+                        <section class="reservation-card">
+
+
+                            <div class="card-heading">
+
+
+                                <div class="heading-main">
+
+
+                                    <div class="heading-icon">
+
+                                        <i class="fa-solid fa-building"></i>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <h2>
+                                            Assigned Sanctuary Quarters
+                                        </h2>
+
+                                        <p>
+                                            Seaside Cottage 2
+                                            • Direct Pacific Oceanview
+                                        </p>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <span class="status-tag">
+                                    KEY READY: ROOM 202
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="assigned-layout">
+
+
+                                <!-- COTTAGE IMAGE -->
+
+                                <div class="cottage-image">
+
+                                    <img
+                                        src="assets/cottage.jpg"
+                                        alt="Cottage 2 Oceanfront Suite"
+                                        onerror="this.style.display='none';"
+                                    >
+
+                                    <div class="image-fallback">
+
+                                        <i class="fa-solid fa-house"></i>
+
+                                        Cottage 2 Oceanfront Suite
+
+                                    </div>
+
+
+                                    <span class="image-label">
+
+                                        <i class="fa-solid fa-camera"></i>
+
+                                        Cottage 2 Oceanfront Suite
+
+                                    </span>
+
+                                </div>
+
+
+                                <!-- ARRIVAL / DEPARTURE -->
+
+                                <div class="assigned-info">
+
+
+                                    <div class="arrival-grid">
+
+
+                                        <div class="arrival-box">
+
+                                            <span>
+                                                ARRIVAL CHECK-IN
+                                            </span>
+
+                                            <strong>
+                                                October 4, 2026
+                                            </strong>
+
+                                            <small>
+                                                2:00 PM • Daylight Tide
+                                            </small>
+
+                                        </div>
+
+
+                                        <div class="arrival-box">
+
+                                            <span>
+                                                DEPARTURE CHECK-OUT
+                                            </span>
+
+                                            <strong>
+                                                October 5, 2026
+                                            </strong>
+
+                                            <small>
+                                                12:00 PM • High Sun
+                                            </small>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="amenities-box">
+
+                                        <span class="amenities-title">
+                                            SUITE INCLUSIONS &amp; AMENITIES
+                                        </span>
+
+
+                                        <div class="amenities-grid">
+
+
+                                            <span>
+                                                • King Teak Canopy Bed
+                                            </span>
+
+
+                                            <span>
+                                                • En-Suite Granite Rainfall Bath
+                                            </span>
+
+
+                                            <span>
+                                                • Private Oceanfront Balcony
+                                            </span>
+
+
+                                            <span>
+                                                • High-Speed Coastal Mesh Wi-Fi
+                                            </span>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- CONTACT -->
+
+                            <div class="contact-strip">
+
+
+                                <div class="contact-icon">
+
+                                    <i class="fa-regular fa-address-card"></i>
+
+                                </div>
+
+
+                                <div class="contact-info">
+
+                                    <strong id="contactName">
+                                        Charles
+                                    </strong>
+
+                                    <span>
+
+                                        <span id="contactEmail">
+                                            c@gmail.com
+                                        </span>
+
+                                        •
+
+                                        <span id="contactMobile">
+                                            91234567890
+                                        </span>
+
+                                    </span>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    id="editContact"
+                                >
+                                    Edit Contact Details
+                                </button>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             BOOKED FACILITIES
+                        ================================================== -->
+
+                        <section class="reservation-card itinerary-card">
+
+
+                            <div class="section-heading">
+
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        BOOKED FACILITIES &amp; ITINERARY
+                                    </span>
+
+                                    <h2>
+                                        Enhance Your Bagasbas Stay
+                                    </h2>
+
+                                    <p>
+                                        All selected amenities are verified
+                                        for your sanctuary party.
+                                    </p>
+
+                                </div>
+
+
+                                <span
+                                    class="experience-badge"
+                                    id="experienceCount"
+                                >
+                                    4 CONFIRMED EXPERIENCES
+                                </span>
+
+
+                            </div>
+
+
+                            <div
+                                class="booked-list"
+                                id="bookedFacilities"
+                            >
+
+
+                                <!-- COTTAGE -->
+
+                                <article class="booked-item">
+
+
+                                    <div class="facility-icon cottage">
+                                        <i class="fa-solid fa-house"></i>
+                                    </div>
+
+
+                                    <div class="booked-info">
+
+                                        <div class="booked-title">
+
+                                            <h3>
+                                                Private Seaside Cottage
+                                            </h3>
+
+                                            <span class="confirmed-pill">
+                                                Confirmed
+                                            </span>
+
+                                        </div>
+
+
+                                        <p>
+                                            Full stay reservation
+                                            • Max 8 guests
+                                            • Private dining deck
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="booked-price">
+
+                                        <strong>
+                                            ₱4,500.00
+                                        </strong>
+
+                                        <span>
+                                            Confirmed
+                                        </span>
+
+                                    </div>
+
+
+                                </article>
+
+
+                                <!-- POOL -->
+
+                                <article class="booked-item">
+
+
+                                    <div class="facility-icon pool">
+                                        <i class="fa-solid fa-water"></i>
+                                    </div>
+
+
+                                    <div class="booked-info">
+
+                                        <div class="booked-title">
+
+                                            <h3>
+                                                Swimming Pool &amp;
+                                                Arched Bridge
+                                            </h3>
+
+                                            <span class="blue-pill">
+                                                Party Pass Active
+                                            </span>
+
+                                        </div>
+
+
+                                        <p>
+                                            All-day access for your party
+                                            • Evening lighting mode:
+                                            Pacific Blue Lagoon
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="booked-price">
+
+                                        <strong>
+                                            ₱1,200.00
+                                        </strong>
+
+                                        <span>
+                                            Confirmed
+                                        </span>
+
+                                    </div>
+
+
+                                </article>
+
+
+                                <!-- KTV -->
+
+                                <article class="booked-item">
+
+
+                                    <div class="facility-icon ktv">
+                                        <i class="fa-solid fa-microphone"></i>
+                                    </div>
+
+
+                                    <div class="booked-info">
+
+                                        <div class="booked-title">
+
+                                            <h3>
+                                                Lighthouse KTV Lounge
+                                            </h3>
+
+                                            <span class="time-pill">
+                                                7:00 PM — 10:00 PM
+                                            </span>
+
+                                        </div>
+
+
+                                        <p>
+                                            High-fidelity sound system
+                                            &amp; complimentary local
+                                            tapas platter
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="booked-price">
+
+                                        <strong>
+                                            ₱2,200.00
+                                        </strong>
+
+                                        <span>
+                                            Confirmed
+                                        </span>
+
+                                    </div>
+
+
+                                </article>
+
+
+                                <!-- EVENT -->
+
+                                <article class="booked-item">
+
+
+                                    <div class="facility-icon event">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                    </div>
+
+
+                                    <div class="booked-info">
+
+                                        <div class="booked-title">
+
+                                            <h3>
+                                                Celebration Grand Event Place
+                                            </h3>
+
+                                            <span class="confirmed-pill">
+                                                Confirmed
+                                            </span>
+
+                                        </div>
+
+
+                                        <p>
+                                            Full-day coastal event booking
+                                            with stage and banquet facilities
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="booked-price">
+
+                                        <strong>
+                                            ₱15,000.00
+                                        </strong>
+
+                                        <span>
+                                            Confirmed
+                                        </span>
+
+                                    </div>
+
+
+                                </article>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             CURATED EXPERIENCES
+                        ================================================== -->
+
+                        <section class="reservation-card curated-card">
+
+
+                            <div class="section-heading curated-heading">
+
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        CURATED EXPERIENCES
+                                    </span>
+
+                                    <h2>
+                                        Enhance Your Bagasbas Escape
+                                    </h2>
+
+                                </div>
+
+
+                                <a href="#">
+
+                                    Browse All Add-ons
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+
+                            </div>
+
+
+                            <div class="addon-grid">
+
+
+                                <!-- ADDON 1 -->
+
+                                <article class="addon-card">
+
+                                    <div class="addon-image">
+
+                                        <img
+                                            src="assets/addon-bonfire.jpg"
+                                            alt="Seaside Bonfire"
+                                            onerror="this.style.display='none';"
+                                        >
+
+                                        <span>
+                                            Popular
+                                        </span>
+
+                                    </div>
+
+
+                                    <h3>
+                                        Seaside Bonfire &amp;
+                                        S'mores Kit
+                                    </h3>
+
+
+                                    <p>
+                                        Private beachfront fire pit
+                                        setup with driftwood logs,
+                                        cushions...
+                                    </p>
+
+
+                                    <div class="addon-footer">
+
+                                        <strong>
+                                            ₱1,500
+                                        </strong>
+
+                                        <button
+                                            type="button"
+                                            class="addon-button"
+                                            data-name="Seaside Bonfire & S'mores Kit"
+                                            data-price="1500"
+                                        >
+                                            + Add to Stay
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- ADDON 2 -->
+
+                                <article class="addon-card">
+
+                                    <div class="addon-image">
+
+                                        <img
+                                            src="assets/addon-surf.jpg"
+                                            alt="Pacific Surf Lesson"
+                                            onerror="this.style.display='none';"
+                                        >
+
+                                        <span>
+                                            Certified Coach
+                                        </span>
+
+                                    </div>
+
+
+                                    <h3>
+                                        Private Pacific Surf Lesson
+                                    </h3>
+
+
+                                    <p>
+                                        1-on-1 instruction with Bagasbas
+                                        local certified surf...
+                                    </p>
+
+
+                                    <div class="addon-footer">
+
+                                        <strong>
+                                            ₱800
+                                        </strong>
+
+                                        <small>
+                                            / pax
+                                        </small>
+
+                                        <button
+                                            type="button"
+                                            class="addon-button"
+                                            data-name="Private Pacific Surf Lesson"
+                                            data-price="800"
+                                        >
+                                            + Add to Stay
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- ADDON 3 -->
+
+                                <article class="addon-card">
+
+                                    <div class="addon-image">
+
+                                        <img
+                                            src="assets/addon-dinner.jpg"
+                                            alt="Candlelit Seaside Dinner"
+                                            onerror="this.style.display='none';"
+                                        >
+
+                                        <span>
+                                            Anniversary
+                                        </span>
+
+                                    </div>
+
+
+                                    <h3>
+                                        Candlelit Seaside Dinner
+                                    </h3>
+
+
+                                    <p>
+                                        4-course seafood degustation
+                                        set directly on the beachfront...
+                                    </p>
+
+
+                                    <div class="addon-footer">
+
+                                        <strong>
+                                            ₱3,800
+                                        </strong>
+
+                                        <button
+                                            type="button"
+                                            class="addon-button"
+                                            data-name="Candlelit Seaside Dinner"
+                                            data-price="3800"
+                                        >
+                                            + Add to Stay
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             NOTES
+                        ================================================== -->
+
+                        <section class="reservation-card notes-card">
+
+
+                            <div class="notes-heading">
+
+
+                                <div class="notes-icon">
+
+                                    <i class="fa-regular fa-heart"></i>
+
+                                </div>
+
+
+                                <h2>
+                                    Special Occasion &amp;
+                                    Concierge Notes
+                                </h2>
+
+
+                                <span class="acknowledged">
+
+                                    <i class="fa-regular fa-circle-check"></i>
+
+                                    ACKNOWLEDGED BY RESORT HOST
+
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="note-content">
+
+
+                                <p id="specialRequest">
+                                    “Celebrating 10th wedding anniversary;
+                                    request fresh tropical bloom setup in
+                                    the seaside cottage balcony before
+                                    4:00 PM sunset.”
+                                </p>
+
+
+                                <div class="concierge-response">
+
+                                    <span>
+                                        Concierge Response:
+                                    </span>
+
+                                    <strong>
+                                        Tropical floral arrangement scheduled
+                                        for 3:15 PM placement.
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             ARRIVAL ROUTE
+                        ================================================== -->
+
+                        <section class="reservation-card arrival-card">
+
+
+                            <div class="route-header">
+
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        RESORT SANCTUARY MAP
+                                    </span>
+
+                                    <h2>
+                                        Arrival Route &amp;
+                                        Shoreline Access
+                                    </h2>
+
+                                    <p>
+                                        Bagasbas Beach Road, Daet,
+                                        Camarines Norte, 4600 Philippines
+                                    </p>
+
+                                </div>
+
+
+                                <div class="route-buttons">
+
+
+                                    <button
+                                        type="button"
+                                        id="callConcierge"
+                                    >
+
+                                        <i class="fa-solid fa-phone"></i>
+
+                                        Call Gate Concierge
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="map-button"
+                                        id="mapButton"
+                                    >
+
+                                        <i class="fa-solid fa-location-arrow"></i>
+
+                                        Open in Maps
+
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="route-grid">
+
+
+                                <div class="map-preview">
+
+
+                                    <div class="map-water"></div>
+
+                                    <div class="map-road road-1"></div>
+
+                                    <div class="map-road road-2"></div>
+
+                                    <div class="map-road road-3"></div>
+
+
+                                    <span class="map-town">
+                                        BAGASBAS
+                                    </span>
+
+
+                                    <span class="map-ocean">
+                                        PACIFIC OCEAN
+                                    </span>
+
+
+                                    <div class="map-pin">
+
+                                        <i class="fa-solid fa-location-dot"></i>
+
+                                        Catherine’s
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="arrival-features">
+
+
+                                    <div class="arrival-feature">
+
+                                        <div class="feature-icon">
+                                            P
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Complimentary Valet Parking
+                                            </strong>
+
+                                            <p>
+                                                Designated secured parking
+                                                space allocated for Cottage 2
+                                                guests at North Gate.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="arrival-feature">
+
+                                        <div class="feature-icon">
+                                            ↗
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Airport Shuttle Transfer
+                                            </strong>
+
+                                            <p>
+                                                Available upon request from
+                                                Naga Airport or Daet
+                                                Commercial Airstrip.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="arrival-feature">
+
+                                        <div class="feature-icon">
+                                            ☼
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Early Arrival Lounge
+                                            </strong>
+
+                                            <p>
+                                                Arriving before 2:00 PM?
+                                                Relax at the Lighthouse
+                                                Seaside Veranda.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RIGHT COLUMN
+                    ================================================== -->
+
+                    <aside class="reservation-right">
+
+
+                        <!-- =================================================
+                             RFID KEYCARD
+                        ================================================== -->
+
+                        <section class="rfid-card">
+
+
+                            <div class="rfid-header">
+
+
+                                <span>
+
+                                    <i class="fa-solid fa-wifi"></i>
+
+                                    EXPRESS RFID KEYCARD
+
+                                </span>
+
+
+                                <strong>
+                                    Ready to Pair
+                                </strong>
+
+
+                            </div>
+
+
+                            <div class="rfid-line"></div>
+
+
+                            <div class="rfid-display">
+
+
+                                <span class="rfid-label">
+                                    COTTAGE NUMBER
+                                </span>
+
+
+                                <strong class="room-number">
+                                    02
+                                </strong>
+
+
+                                <div class="rfid-meta">
+
+                                    <span>
+                                        Guest:
+                                        <b id="rfidGuest">
+                                            Charles
+                                        </b>
+                                    </span>
+
+                                    <span>
+                                        Tier: Golden Haven
+                                    </span>
+
+                                </div>
+
+
+                                <div class="rfid-code">
+
+
+                                    <div>
+
+                                        <span>
+                                            TAP OR SCAN AT DESK
+                                        </span>
+
+                                        <strong>
+                                            #CBLR-343860
+                                        </strong>
+
+                                        <small>
+                                            Zero-Wait Express Lane
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="qr-code">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <p class="rfid-description">
+
+                                Upon arriving at the Lighthouse Reception
+                                lobby, hold your smartphone near the Smart
+                                Concierge Diorama to initialize physical
+                                door credentials.
+
+                            </p>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             DIORAMA TELEMETRY
+                        ================================================== -->
+
+                        <section class="reservation-card telemetry-card">
+
+
+                            <div class="telemetry-header">
+
+
+                                <div>
+
+                                    <span class="gold-dot"></span>
+
+                                    <h2>
+                                        Interactive Diorama Telemetry
+                                    </h2>
+
+                                </div>
+
+
+                                <span class="live-sync">
+                                    LIVE DECK<br>
+                                    SYNC
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="telemetry-image">
+
+
+                                <img
+                                    src="assets/hero-lighthouse.jpg"
+                                    alt="Catherine's Diorama"
+                                    onerror="this.style.display='none';"
+                                >
+
+
+                                <div class="telemetry-fallback">
+
+                                    <i class="fa-solid fa-tower-observation"></i>
+
+                                    Catherine's Diorama
+
+                                </div>
+
+
+                                <div class="telemetry-overlay">
+
+                                    <span>
+                                        PHYSICAL MODEL DECK
+                                    </span>
+
+                                    <strong>
+                                        Cottage 2 Indicator:
+                                        Illuminated Amber
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="telemetry-details">
+
+
+                                <div>
+
+                                    <span>
+                                        Lighthouse Beacon Mode:
+                                    </span>
+
+                                    <strong>
+                                        Night Sweep (3.5 RPM)
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Pool Bridge LED Color:
+                                    </span>
+
+                                    <strong>
+                                        Pacific Blue (#173E46)
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Room Climate Pre-Cool:
+                                    </span>
+
+                                    <strong>
+                                        Set for 1:30 PM (22°C)
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <a
+                                href="guest-dashboard.html"
+                                class="diorama-button"
+                            >
+
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                Open Guest Smart Diorama Portal
+
+                            </a>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             PAYMENT SUMMARY
+                        ================================================== -->
+
+                        <section class="reservation-card payment-card">
+
+
+                            <div class="payment-heading">
+
+
+                                <h2>
+                                    Folio &amp; Payment Summary
+                                </h2>
+
+
+                                <span>
+                                    PAID IN FULL
+                                </span>
+
+
+                            </div>
+
+
+                            <div id="paymentList">
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Private Seaside Cottage
+                                    </span>
+
+                                    <strong>
+                                        ₱4,500.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Swimming Pool &amp; Arched Bridge
+                                    </span>
+
+                                    <strong>
+                                        ₱1,200.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Lighthouse KTV Lounge
+                                    </span>
+
+                                    <strong>
+                                        ₱2,200.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Celebration Grand Event Place
+                                    </span>
+
+                                    <strong>
+                                        ₱15,000.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-divider"></div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Facilities Subtotal
+                                    </span>
+
+                                    <strong id="subtotalAmount">
+                                        ₱22,900.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Daet Tourism &amp; Ecological Fee
+                                    </span>
+
+                                    <strong>
+                                        ₱250.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="payment-row">
+
+                                    <span>
+                                        Resort Service Charge (8%)
+                                    </span>
+
+                                    <strong id="serviceCharge">
+                                        ₱1,832.00
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="total-payment">
+
+
+                                <div>
+
+                                    <span>
+                                        TOTAL AMOUNT PAID
+                                    </span>
+
+                                    <strong id="totalPaid">
+                                        ₱24,982.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        SETTLEMENT
+                                    </span>
+
+                                    <strong>
+                                        Settled via Maya QR
+                                    </strong>
+
+                                    <small>
+                                        TXN-99412
+                                    </small>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="invoice-button"
+                                id="invoiceButton"
+                            >
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                                Download Official Tax Invoice
+
+                            </button>
+
+
+                        </section>
+
+
+                        <!-- =================================================
+                             WEATHER
+                        ================================================== -->
+
+                        <section class="weather-card">
+
+
+                            <h2>
+
+                                <i class="fa-solid fa-sun"></i>
+
+                                Bagasbas Beachfront Forecast
+
+                            </h2>
+
+
+                            <div class="weather-main">
+
+
+                                <strong>
+                                    28°
+                                </strong>
+
+
+                                <div>
+
+                                    <b>
+                                        Sunny Coastal
+                                    </b>
+
+                                    <span>
+                                        Pacific Ocean Breeze
+                                    </span>
+
+                                </div>
+
+
+                                <div class="weather-values">
+
+                                    <span>
+                                        Wind:
+                                        <b>
+                                            14 km/h NE
+                                        </b>
+                                    </span>
+
+                                    <span>
+                                        Waves:
+                                        <b>
+                                            2.1ft
+                                        </b>
+                                    </span>
+
+                                    <strong>
+                                        Gentle
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <p>
+
+                                <i class="fa-solid fa-water"></i>
+
+                                Ideal for beginner-to-intermediate surfing
+                                &amp; evening shoreline walking.
+
+                            </p>
+
+
+                        </section>
+
+
+                    </aside>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/my-reservation.js"></script>
+
+</body>
+
+</html>

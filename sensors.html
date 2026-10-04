@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Sensors & IoT Hardware Telemetry | Catherine’s
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- PAGE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/sensors.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="admin-brand"
+        >
+
+            <img
+                src="assets/Catherine's Logo.png"
+                alt="Catherine's Logo"
+                class="admin-logo"
+            >
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    Catherine’s
+                </strong>
+
+                <span>
+                    LIGHTHOUSE COMMAND
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- HARDWARE STATUS -->
+
+        <div class="admin-system-status">
+
+            <span class="admin-status-dot"></span>
+
+            <div>
+
+                <strong>
+                    ESP32 Hardware Online
+                </strong>
+
+                <span>
+                    9 Node Mesh
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="admin-nav-label">
+            NAVIGATION DECK
+        </div>
+
+
+        <nav class="admin-nav">
+
+
+            <a
+                href="admin-dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Operational Center
+                </span>
+
+            </a>
+
+
+            <a
+                href="admin-reservations.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-calendar-days"></i>
+
+                <span>
+                    Master Reservations
+                </span>
+
+            </a>
+
+
+            <a
+                href="diorama-control.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Diorama Overrides
+                </span>
+
+            </a>
+
+
+            <a
+                href="sensors.html"
+                class="admin-nav-item active"
+            >
+
+                <i class="fa-solid fa-satellite-dish"></i>
+
+                <span>
+                    Sensors Telemetry
+                </span>
+
+            </a>
+
+
+            <a
+                href="demo.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-circle-play"></i>
+
+                <span>
+                    Automated Demo Mode
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="admin-sidebar-footer">
+
+
+            <div class="admin-beacon">
+
+                <span>
+                    Lighthouse Beacon
+                </span>
+
+                <strong id="sidebarBeacon">
+                    Sweeping 4.2 RPM
+                </strong>
+
+            </div>
+
+
+            <div class="admin-footer-actions">
+
+
+                <a
+                    href="index.html"
+                    class="visitor-site"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    VISITOR SITE
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="top-header">
+
+
+            <div class="system-title">
+
+                <span class="system-dot"></span>
+
+                BAGASBAS DIORAMA SYSTEM V2.4
+
+            </div>
+
+
+            <div class="top-right">
+
+
+                <div class="portal-switcher">
+
+                    <button type="button">
+                        VISITOR
+                    </button>
+
+                    <button type="button">
+                        GUEST
+                    </button>
+
+                    <button
+                        type="button"
+                        class="active"
+                    >
+                        ADMIN
+                    </button>
+
+                </div>
+
+
+                <div class="admin-user">
+
+
+                    <div class="admin-avatar">
+                        C
+                    </div>
+
+
+                    <div class="admin-user-text">
+
+                        <strong>
+                            Catherine
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             PAGE CONTENT
+        ====================================================== -->
+
+        <div class="sensor-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+
+                <div>
+
+                    <div class="page-eyebrow">
+
+                        TELEMETRY &amp; MESH DIAGNOSTICS
+
+                        <span></span>
+
+                        SUB-DECK 4.0
+
+                    </div>
+
+
+                    <h1>
+                        Sensors &amp; IoT Hardware
+                        <br>
+                        Telemetry
+                    </h1>
+
+                </div>
+
+
+
+                <!-- TELEMETRY TABS -->
+
+                <div class="telemetry-tabs">
+
+
+                    <button
+                        type="button"
+                        class="telemetry-tab"
+                    >
+
+                        <i class="fa-solid fa-network-wired"></i>
+
+                        <span>
+                            1.
+                            <br>
+                            TOPOLOGY
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="telemetry-tab"
+                    >
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                        <span>
+                            2.
+                            <br>
+                            POWER
+                            <br>
+                            RAILS
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="telemetry-tab"
+                    >
+
+                        <i class="fa-solid fa-temperature-half"></i>
+
+                        <span>
+                            3.
+                            <br>
+                            CLIMATE
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="telemetry-tab active"
+                    >
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                        <span>
+                            4.
+                            <br>
+                            SENSORS
+                            <br>
+                            &amp; LATENCY
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="telemetry-tab"
+                    >
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>
+                            5.
+                            <br>
+                            LIVE
+                            <br>
+                            STREAM
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 ROOT GATEWAY
+            ====================================================== -->
+
+            <section class="gateway-card">
+
+
+                <div class="gateway-main">
+
+
+                    <div class="gateway-icon">
+
+                        <i class="fa-solid fa-router"></i>
+
+                    </div>
+
+
+                    <div class="gateway-info">
+
+
+                        <div class="gateway-title-row">
+
+                            <h2>
+                                ESP32 Root Gateway
+                            </h2>
+
+
+                            <span class="mac-badge">
+                                MAC:
+                                24:6F:28:AE:11:02
+                            </span>
+
+                        </div>
+
+
+                        <div class="gateway-status">
+
+                            <span class="active-dot"></span>
+
+                            ACTIVE
+
+                        </div>
+
+
+                        <p>
+
+                            Uptime:
+                            <strong>
+                                48h 12m
+                            </strong>
+
+                            <b>•</b>
+
+                            <span class="gateway-address">
+                                ws://192.168.1.120:81
+                            </span>
+
+                            <b>•</b>
+
+                            Live Telemetry:
+                            <strong class="updates">
+                                60
+                            </strong>
+                            updates/sec
+
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- METRICS -->
+
+                    <div class="gateway-metrics">
+
+
+                        <div class="gateway-metric">
+
+                            <span>
+                                SIGNAL
+                                <br>
+                                STRENGTH
+                            </span>
+
+                            <strong>
+                                100%
+                            </strong>
+
+                            <small>
+                                -38 dBm
+                            </small>
+
+                        </div>
+
+
+                        <div class="gateway-metric">
+
+                            <span>
+                                ROUND-
+                                <br>
+                                TRIP PING
+                            </span>
+
+                            <strong id="pingValue">
+                                12
+                            </strong>
+
+                            <small>
+                                ms
+                            </small>
+
+                        </div>
+
+
+                        <div class="gateway-metric">
+
+                            <span>
+                                PACKET
+                                <br>
+                                LOSS
+                            </span>
+
+                            <strong>
+                                0.00%
+                            </strong>
+
+                            <small>
+                                0 drops
+                            </small>
+
+                        </div>
+
+
+                        <div class="gateway-metric">
+
+                            <span>
+                                MESH
+                                <br>
+                                STATUS
+                            </span>
+
+                            <strong>
+                                9 / 9
+                            </strong>
+
+                            <small>
+                                Synced
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- NODE LIST -->
+
+                <div class="node-list-header">
+
+                    <span>
+                        9 CONNECTED PHYSICAL
+                        DIORAMA SENSOR NODES
+                    </span>
+
+
+                    <strong>
+                        ESP-NOW Protocol
+                        (Channel 6)
+                    </strong>
+
+                </div>
+
+
+                <div class="node-list">
+
+
+                    <button
+                        type="button"
+                        class="node-item active"
+                        data-node="Node 1"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 1
+                        </strong>
+
+                        <span>
+                            Main Gate
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 2"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 2
+                        </strong>
+
+                        <span>
+                            Cottage 1-2
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 3"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 3
+                        </strong>
+
+                        <span>
+                            Cottage 3-4
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 4"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 4
+                        </strong>
+
+                        <span>
+                            Pool Basin
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 5"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 5
+                        </strong>
+
+                        <span>
+                            Lighthouse
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 6"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 6
+                        </strong>
+
+                        <span>
+                            KTV Lounge
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 7"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 7
+                        </strong>
+
+                        <span>
+                            Grand Pav.
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 8"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 8
+                        </strong>
+
+                        <span>
+                            Shuttle Stn 1
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="node-item"
+                        data-node="Node 9"
+                    >
+
+                        <i></i>
+
+                        <strong>
+                            Node 9
+                        </strong>
+
+                        <span>
+                            Shuttle Stn 2
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 FIRST SENSOR ROW
+            ====================================================== -->
+
+            <section class="sensor-two-column">
+
+
+
+                <!-- MICROCLIMATE -->
+
+                <article class="sensor-card microclimate-card">
+
+
+                    <div class="sensor-card-heading">
+
+
+                        <div class="sensor-heading-icon teal">
+
+                            <i class="fa-solid fa-wind"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Bagasbas Microclimate
+                                Station
+                            </h2>
+
+                            <p>
+                                Sensors:
+                                DHT22 + BMP280 + LDR
+                                <br>
+                                Photocell
+                            </p>
+
+                        </div>
+
+
+                        <span class="live-badge">
+                            <i></i>
+                            LIVE
+                            <br>
+                            1.2s
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- ENVIRONMENT METRICS -->
+
+                    <div class="climate-metrics">
+
+
+                        <div class="climate-metric">
+
+                            <span>
+                                AMBIENT
+                                <br>
+                                TEMP
+                            </span>
+
+                            <strong>
+                                28.4
+                                <small>
+                                    °C
+                                </small>
+                            </strong>
+
+                            <p>
+                                Normal
+                                <br>
+                                Seaside
+                            </p>
+
+                        </div>
+
+
+                        <div class="climate-metric">
+
+                            <span>
+                                REL.
+                                <br>
+                                HUMIDITY
+                            </span>
+
+                            <strong>
+                                76
+                                <small>
+                                    %
+                                </small>
+                            </strong>
+
+                            <p>
+                                Coastal
+                                <br>
+                                Marine
+                            </p>
+
+                        </div>
+
+
+                        <div class="climate-metric">
+
+                            <span>
+                                BAROMETRIC
+                            </span>
+
+                            <strong>
+                                1012.8
+                            </strong>
+
+                            <small>
+                                hPa
+                            </small>
+
+                            <p>
+                                Stable
+                                <br>
+                                Tide
+                            </p>
+
+                        </div>
+
+
+                        <div class="climate-metric">
+
+                            <span>
+                                AMBIENT
+                                <br>
+                                LDR
+                            </span>
+
+                            <strong>
+                                412
+                            </strong>
+
+                            <small>
+                                Lux
+                            </small>
+
+                            <p>
+                                Afternoon
+                                <br>
+                                Sun
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- CHART -->
+
+                    <div class="telemetry-chart-card">
+
+
+                        <div class="chart-heading">
+
+
+                            <strong>
+                                12-HOUR TELEMETRY
+                                TREND
+                                (TEMP VS.
+                                HUMIDITY)
+                            </strong>
+
+
+                            <div class="chart-legend">
+
+                                <span>
+                                    <i class="gold-line"></i>
+                                    Temp (°C)
+                                </span>
+
+                                <span>
+                                    <i class="teal-line"></i>
+                                    Humidity (%)
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="chart-area">
+
+
+                            <svg
+                                viewBox="0 0 700 180"
+                                preserveAspectRatio="none"
+                                aria-label="Telemetry line chart"
+                            >
+
+
+                                <defs>
+
+                                    <linearGradient
+                                        id="chartFill"
+                                        x1="0"
+                                        x2="0"
+                                        y1="0"
+                                        y2="1"
+                                    >
+
+                                        <stop
+                                            offset="0%"
+                                            stop-color="#c99a45"
+                                            stop-opacity=".24"
+                                        />
+
+                                        <stop
+                                            offset="100%"
+                                            stop-color="#c99a45"
+                                            stop-opacity="0"
+                                        />
+
+                                    </linearGradient>
+
+                                </defs>
+
+
+                                <path
+                                    d="
+                                    M0 125
+                                    C70 120 90 110 145 115
+                                    C205 122 245 145 300 128
+                                    C365 108 400 82 455 88
+                                    C515 92 550 118 600 112
+                                    C640 107 665 98 700 81
+                                    "
+                                    fill="none"
+                                    stroke="#c99a45"
+                                    stroke-width="4"
+                                />
+
+
+                                <path
+                                    d="
+                                    M0 92
+                                    C55 83 95 78 150 88
+                                    C215 99 240 116 295 100
+                                    C360 82 392 52 450 50
+                                    C514 47 550 79 600 72
+                                    C648 66 670 60 700 49
+                                    "
+                                    fill="none"
+                                    stroke="#477780"
+                                    stroke-width="4"
+                                />
+
+
+                                <circle
+                                    cx="700"
+                                    cy="81"
+                                    r="6"
+                                    fill="#c99a45"
+                                />
+
+
+                                <circle
+                                    cx="700"
+                                    cy="49"
+                                    r="6"
+                                    fill="#477780"
+                                />
+
+
+                            </svg>
+
+
+                        </div>
+
+
+                        <div class="chart-time">
+
+                            <span>
+                                04:00 (Dawn)
+                            </span>
+
+                            <span>
+                                08:00
+                            </span>
+
+                            <span>
+                                12:00 (Noon)
+                            </span>
+
+                            <span>
+                                16:42 (Current)
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- POWER BUS -->
+
+                <article class="sensor-card power-card">
+
+
+                    <div class="sensor-card-heading">
+
+
+                        <div class="sensor-heading-icon gold">
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Power Distribution Bus
+                            </h2>
+
+                            <p>
+                                Sensors:
+                                INA219 High-Side I2C
+                                <br>
+                                Shunts
+                            </p>
+
+                        </div>
+
+
+                        <span class="safe-badge">
+                            Envelope
+                            <br>
+                            Safe
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="power-metrics">
+
+
+                        <div class="power-metric">
+
+                            <div class="power-top">
+
+                                <span>
+                                    12V BUS
+                                    <br>
+                                    (MOTORS)
+                                </span>
+
+                                <strong>
+                                    12.18V
+                                </strong>
+
+                            </div>
+
+
+                            <div class="power-bar">
+
+                                <span
+                                    style="width:65%"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                3.42 A Max 5.0A
+                            </p>
+
+                            <small>
+                                41.65 Watts
+                                <br>
+                                Total
+                            </small>
+
+                        </div>
+
+
+
+                        <div class="power-metric">
+
+                            <div class="power-top">
+
+                                <span>
+                                    5V LOGIC
+                                    <br>
+                                    RAIL
+                                </span>
+
+                                <strong>
+                                    5.04V
+                                </strong>
+
+                            </div>
+
+
+                            <div class="power-bar teal-bar">
+
+                                <span
+                                    style="width:46%"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                1.15 A Max 3.0A
+                            </p>
+
+                            <small>
+                                5.79 Watts
+                                <br>
+                                Logic
+                            </small>
+
+                        </div>
+
+
+
+                        <div class="power-metric">
+
+                            <div class="power-top">
+
+                                <span>
+                                    3.3V RF
+                                    <br>
+                                    RAIL
+                                </span>
+
+                                <strong>
+                                    3.31V
+                                </strong>
+
+                            </div>
+
+
+                            <div class="power-bar">
+
+                                <span
+                                    style="width:26%"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                0.38 A Max 1.5A
+                            </p>
+
+                            <small>
+                                1.25 Watts
+                                <br>
+                                Radio
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="protection-card">
+
+                        <div class="protection-icon">
+
+                            <i class="fa-solid fa-sun"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Stepper Motor &amp;
+                                Servo Spike Protection:
+                                <span>
+                                    0 Fault Triggers
+                                </span>
+                            </strong>
+
+                            <p>
+                                today
+                            </p>
+
+                            <small>
+                                Shunt Temp:
+                                <strong>
+                                    36.1°C
+                                </strong>
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 SECOND SENSOR ROW
+            ====================================================== -->
+
+            <section class="sensor-two-column">
+
+
+
+                <!-- POSITION & ACTUATORS -->
+
+                <article class="sensor-card actuator-card">
+
+
+                    <div class="sensor-card-heading">
+
+
+                        <div class="sensor-heading-icon teal">
+
+                            <i class="fa-solid fa-bullseye"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Diorama Position
+                                &amp; Actuators
+                            </h2>
+
+                            <p>
+                                Infrared Beams,
+                                Hall Effect &amp;
+                                Float Switches
+                            </p>
+
+                        </div>
+
+
+                        <span class="array-badge">
+                            GPIO
+                            <br>
+                            Array
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- ENTRANCE BEAM -->
+
+                    <div class="actuator-module">
+
+
+                        <div class="actuator-title-row">
+
+
+                            <div>
+
+                                <i class="fa-solid fa-satellite-dish"></i>
+
+                                <strong>
+                                    Entrance Gate
+                                    Optical Beam
+                                </strong>
+
+                                <small>
+                                    Pin 23 • Logic HIGH
+                                    (Unobstructed)
+                                </small>
+
+                            </div>
+
+
+                            <span class="beam-status">
+
+                                UNBROKEN
+
+                                <i></i>
+
+                            </span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- SHUTTLE -->
+
+                    <div class="actuator-module">
+
+
+                        <div class="actuator-title-row">
+
+
+                            <div>
+
+                                <i class="fa-solid fa-bus"></i>
+
+                                <strong>
+                                    Miniature Resort
+                                    Shuttle Track
+                                </strong>
+
+                            </div>
+
+
+                            <small class="hall-label">
+                                A3144 Hall Sensors
+                            </small>
+
+
+                        </div>
+
+
+                        <div class="station-grid">
+
+
+                            <div class="station">
+
+                                <span>
+                                    Station 1
+                                    <br>
+                                    (Pavilion)
+                                </span>
+
+
+                                <strong>
+                                    MAGNET
+                                    <br>
+                                    DETECTED
+                                </strong>
+
+
+                                <small class="dock-badge">
+                                    DOCKED
+                                </small>
+
+                            </div>
+
+
+                            <div class="station">
+
+                                <span>
+                                    Station 2
+                                    <br>
+                                    (Lighthouse)
+                                </span>
+
+
+                                <strong>
+                                    Open Track
+                                </strong>
+
+
+                                <small class="idle-badge">
+                                    IDLE
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- POOL FLOAT -->
+
+                    <div class="pool-float">
+
+
+                        <div>
+
+                            <i class="fa-solid fa-water"></i>
+
+
+                            <div>
+
+                                <strong>
+                                    Infinity Pool
+                                    Basin Water
+                                    Float
+                                </strong>
+
+                                <small>
+                                    Submersible Magnetic
+                                    Reed Switch
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="float-value">
+
+                            <strong>
+                                94%
+                            </strong>
+
+                            <span>
+                                Safe
+                                <br>
+                                Margin
+                            </span>
+
+                        </div>
+
+
+                        <div class="shield-icon">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- RFID GATEWAY -->
+
+                <article class="sensor-card rfid-card">
+
+
+                    <div class="sensor-card-heading">
+
+
+                        <div class="sensor-heading-icon gold">
+
+                            <i class="fa-regular fa-id-card"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Guest NFC/RFID
+                                Keycard Gateway
+                            </h2>
+
+                            <p>
+                                MFRC522 SPI Module
+                                • 13.56 MHz
+                                <br>
+                                ISO14443A
+                            </p>
+
+                        </div>
+
+
+                        <span class="listening-badge">
+
+                            <i></i>
+
+                            LISTENING
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- LAST HANDSHAKE -->
+
+                    <div class="handshake-card">
+
+
+                        <div class="handshake-heading">
+
+                            <span>
+                                LAST HANDSHAKE
+                                TRANSACTION
+                            </span>
+
+                            <strong>
+                                16:41:58.824
+                            </strong>
+
+                        </div>
+
+
+                        <div class="rfid-guest">
+
+
+                            <div class="rfid-icon">
+
+                                <i class="fa-regular fa-address-card"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <div class="uid-row">
+
+                                    <strong>
+                                        UID:
+                                        E4:A1:08:7B
+                                    </strong>
+
+                                    <span>
+                                        Res #CBLR-7482
+                                    </span>
+
+                                </div>
+
+
+                                <p>
+                                    Guest:
+                                    Maria Santos
+                                    • Villa 3
+                                    (Ocean Breeze Suite)
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="rfid-stat-grid">
+
+
+                            <div>
+
+                                <span>
+                                    SPI Read Latency
+                                </span>
+
+                                <strong>
+                                    18 ms
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Card Success Rate
+                                </span>
+
+                                <strong>
+                                    99.4%
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="rfid-footer">
+
+                        <span>
+                            Antenna Gain:
+                            <strong>
+                                48 dB
+                            </strong>
+                            (Max Buffer:
+                            64 Byte FIFO
+                            Empty)
+                        </span>
+
+
+                        <strong class="ready-text">
+                            Ready for
+                            <br>
+                            next tap
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 SERIAL CONSOLE
+            ====================================================== -->
+
+            <section class="serial-console">
+
+
+                <div class="console-topbar">
+
+
+                    <div class="console-left">
+
+
+                        <span class="console-dot red"></span>
+
+                        <span class="console-dot gold"></span>
+
+                        <span class="console-dot blue"></span>
+
+
+                        <strong>
+                            root@esp32-bagasbas-diorama:
+                            /dev/ttyUSB0
+                            (115200 baud)
+                        </strong>
+
+                    </div>
+
+
+                    <div class="console-actions">
+
+
+                        <button
+                            type="button"
+                            id="pauseStream"
+                        >
+
+                            <i class="fa-solid fa-pause"></i>
+
+                            PAUSE STREAM
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="clearLog"
+                        >
+
+                            <i class="fa-regular fa-trash-can"></i>
+
+                            CLEAR LOG
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="dumpJson"
+                            class="dump-button"
+                        >
+
+                            <i class="fa-solid fa-download"></i>
+
+                            DUMP JSON
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    class="console-body"
+                    id="consoleBody"
+                >
+
+
+                    <div class="console-line highlight">
+
+                        <span>
+                            [SYSTEM_INIT]
+                        </span>
+
+                        Mesh initialized.
+                        9 ESP-NOW nodes registered.
+                        Master beacon active.
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:33.857]
+                        <span class="yellow">
+                            [STEPPER_A4988]
+                        </span>
+
+                        Beacon Sweep Microstep
+                        sync verified (4.20 RPM)
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:34.559]
+                        <span class="cyan">
+                            [ESP-NOW]
+                        </span>
+
+                        Packet ACK received from
+                        Node_Pool: 0x06
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:39.450]
+                        <span class="yellow">
+                            [STEPPER_A4988]
+                        </span>
+
+                        Beacon Sweep Microstep
+                        sync verified (4.20 RPM)
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:43.434]
+                        <span class="cyan">
+                            [ESP-NOW]
+                        </span>
+
+                        Packet ACK received from
+                        Node_Pool: 0x06
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:47.520]
+                        <span class="yellow">
+                            [INA219]
+                        </span>
+
+                        Bus voltage=12.18V,
+                        Shunt=34.1mV,
+                        Current=3412mA
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:51.454]
+                        <span class="cyan">
+                            [NFC_RC522]
+                        </span>
+
+                        Polling 13.56MHz
+                        RF field...
+                        Carrier Stable
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:31:56.451]
+                        <span class="cyan">
+                            [NFC_RC522]
+                        </span>
+
+                        Polling 13.56MHz
+                        RF field...
+                        Carrier Stable
+
+                    </div>
+
+
+                    <div class="console-line">
+
+                        [15:32:00.491]
+                        <span class="cyan">
+                            [ESP-NOW]
+                        </span>
+
+                        Packet ACK received from
+                        Node_Pool: 0x06
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="console-footer">
+
+
+                    <div>
+
+                        <span>
+                            Filter:
+                        </span>
+
+                        <button class="console-filter active">
+                            ALL (842 events)
+                        </button>
+
+                        <button class="console-filter">
+                            ESP-NOW
+                        </button>
+
+                        <button class="console-filter">
+                            INA219
+                        </button>
+
+                        <button class="console-filter">
+                            ERRORS (0)
+                        </button>
+
+                    </div>
+
+
+                    <div class="console-listening">
+
+                        <i></i>
+
+                        Listening on serial port
+                        /dev/ttyUSB0
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 NODE TOPOLOGY
+            ====================================================== -->
+
+            <section class="topology-card">
+
+
+                <div class="topology-header">
+
+
+                    <div>
+
+                        <h2>
+                            Node Mesh Topology
+                            &amp; Physical Interconnects
+                        </h2>
+
+                        <p>
+                            Hierarchical star–mesh relay topology
+                            linking the Bagasbas physical scale
+                            diorama elements to ESP32 root gateway.
+                        </p>
+
+                    </div>
+
+
+                    <div class="topology-legend">
+
+                        <span>
+
+                            <i class="root"></i>
+
+                            Root
+                            <br>
+                            Controller
+
+                        </span>
+
+
+                        <span>
+
+                            <i class="endpoint"></i>
+
+                            Active End
+                            <br>
+                            Nodes
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="topology-visual">
+
+
+                    <svg
+                        viewBox="0 0 1000 460"
+                        class="topology-svg"
+                        preserveAspectRatio="xMidYMid meet"
+                    >
+
+
+                        <!-- RELAY LINES -->
+
+                        <line
+                            x1="500"
+                            y1="125"
+                            x2="180"
+                            y2="285"
+                            class="relay-line"
+                        />
+
+                        <line
+                            x1="500"
+                            y1="125"
+                            x2="340"
+                            y2="285"
+                            class="primary-line"
+                        />
+
+                        <line
+                            x1="500"
+                            y1="125"
+                            x2="500"
+                            y2="285"
+                            class="primary-line"
+                        />
+
+                        <line
+                            x1="500"
+                            y1="125"
+                            x2="660"
+                            y2="285"
+                            class="primary-line"
+                        />
+
+                        <line
+                            x1="500"
+                            y1="125"
+                            x2="820"
+                            y2="285"
+                            class="relay-line"
+                        />
+
+
+                        <!-- INTER-NODE -->
+
+                        <line
+                            x1="180"
+                            y1="285"
+                            x2="340"
+                            y2="285"
+                            class="mesh-line"
+                        />
+
+                        <line
+                            x1="340"
+                            y1="285"
+                            x2="500"
+                            y2="285"
+                            class="mesh-line"
+                        />
+
+                        <line
+                            x1="500"
+                            y1="285"
+                            x2="660"
+                            y2="285"
+                            class="mesh-line"
+                        />
+
+                        <line
+                            x1="660"
+                            y1="285"
+                            x2="820"
+                            y2="285"
+                            class="mesh-line"
+                        />
+
+
+                        <!-- ROOT -->
+
+                        <circle
+                            cx="500"
+                            cy="125"
+                            r="43"
+                            class="root-ring"
+                        />
+
+                        <circle
+                            cx="500"
+                            cy="125"
+                            r="29"
+                            class="root-node"
+                        />
+
+
+                        <text
+                            x="500"
+                            y="56"
+                            text-anchor="middle"
+                            class="root-title"
+                        >
+                            ROOT GATEWAY (ESP32)
+                        </text>
+
+
+                        <text
+                            x="500"
+                            y="80"
+                            text-anchor="middle"
+                            class="root-subtitle"
+                        >
+                            192.168.1.120 • Master
+                        </text>
+
+
+                        <text
+                            x="500"
+                            y="130"
+                            text-anchor="middle"
+                            class="root-symbol"
+                        >
+                            ▪
+                        </text>
+
+
+
+                        <!-- NODES -->
+
+                        <!-- N1 -->
+
+                        <g class="topology-node">
+
+                            <circle
+                                cx="180"
+                                cy="285"
+                                r="29"
+                                class="node-ring"
+                            />
+
+                            <circle
+                                cx="180"
+                                cy="285"
+                                r="20"
+                                class="node-inner"
+                            />
+
+                            <text
+                                x="180"
+                                y="291"
+                                text-anchor="middle"
+                                class="node-number"
+                            >
+                                N1
+                            </text>
+
+                            <text
+                                x="180"
+                                y="335"
+                                text-anchor="middle"
+                                class="node-name"
+                            >
+                                Main Entrance
+                            </text>
+
+                            <text
+                                x="180"
+                                y="354"
+                                text-anchor="middle"
+                                class="node-sub"
+                            >
+                                IR Beam • Logic HIGH
+                            </text>
+
+                        </g>
+
+
+                        <!-- N2 -->
+
+                        <g class="topology-node">
+
+                            <circle
+                                cx="340"
+                                cy="285"
+                                r="29"
+                                class="node-ring"
+                            />
+
+                            <circle
+                                cx="340"
+                                cy="285"
+                                r="20"
+                                class="node-inner"
+                            />
+
+                            <text
+                                x="340"
+                                y="291"
+                                text-anchor="middle"
+                                class="node-number"
+                            >
+                                N2
+                            </text>
+
+                            <text
+                                x="340"
+                                y="335"
+                                text-anchor="middle"
+                                class="node-name"
+                            >
+                                Cottages Cluster
+                            </text>
+
+                            <text
+                                x="340"
+                                y="354"
+                                text-anchor="middle"
+                                class="node-sub"
+                            >
+                                PWM Lighting • 217
+                            </text>
+
+                        </g>
+
+
+                        <!-- N3 -->
+
+                        <g class="topology-node">
+
+                            <circle
+                                cx="500"
+                                cy="285"
+                                r="29"
+                                class="node-ring"
+                            />
+
+                            <circle
+                                cx="500"
+                                cy="285"
+                                r="20"
+                                class="node-inner"
+                            />
+
+                            <text
+                                x="500"
+                                y="291"
+                                text-anchor="middle"
+                                class="node-number"
+                            >
+                                N3
+                            </text>
+
+                            <text
+                                x="500"
+                                y="335"
+                                text-anchor="middle"
+                                class="node-name"
+                            >
+                                Pool Basin &amp; Pump
+                            </text>
+
+                            <text
+                                x="500"
+                                y="354"
+                                text-anchor="middle"
+                                class="node-sub"
+                            >
+                                Water Float 94%
+                            </text>
+
+                        </g>
+
+
+                        <!-- N4 -->
+
+                        <g class="topology-node highlighted">
+
+                            <circle
+                                cx="660"
+                                cy="285"
+                                r="29"
+                                class="node-ring highlighted-ring"
+                            />
+
+                            <circle
+                                cx="660"
+                                cy="285"
+                                r="20"
+                                class="node-inner highlighted-inner"
+                            />
+
+                            <text
+                                x="660"
+                                y="291"
+                                text-anchor="middle"
+                                class="node-number"
+                            >
+                                N4
+                            </text>
+
+                            <text
+                                x="660"
+                                y="335"
+                                text-anchor="middle"
+                                class="node-name"
+                            >
+                                Lighthouse Tower
+                            </text>
+
+                            <text
+                                x="660"
+                                y="354"
+                                text-anchor="middle"
+                                class="node-sub gold"
+                            >
+                                Stepper 4.2 RPM
+                            </text>
+
+                        </g>
+
+
+                        <!-- N5 -->
+
+                        <g class="topology-node">
+
+                            <circle
+                                cx="820"
+                                cy="285"
+                                r="29"
+                                class="node-ring"
+                            />
+
+                            <circle
+                                cx="820"
+                                cy="285"
+                                r="20"
+                                class="node-inner"
+                            />
+
+                            <text
+                                x="820"
+                                y="291"
+                                text-anchor="middle"
+                                class="node-number"
+                            >
+                                N5
+                            </text>
+
+                            <text
+                                x="820"
+                                y="335"
+                                text-anchor="middle"
+                                class="node-name"
+                            >
+                                Grand Pavilion
+                            </text>
+
+                            <text
+                                x="820"
+                                y="354"
+                                text-anchor="middle"
+                                class="node-sub"
+                            >
+                                Station 1 Car Docked
+                            </text>
+
+                        </g>
+
+
+                    </svg>
+
+
+
+                    <!-- TOPOLOGY FOOTER -->
+
+                    <div class="topology-footer">
+
+
+                        <div class="line-legend">
+
+
+                            <span>
+
+                                <i class="primary"></i>
+
+                                Primary ESP-NOW Carrier
+
+                            </span>
+
+
+                            <span>
+
+                                <i class="secondary"></i>
+
+                                Secondary Relay Failover
+
+                            </span>
+
+
+                            <span>
+
+                                <i class="mesh"></i>
+
+                                Inter-Node Mesh Sync
+
+                            </span>
+
+
+                        </div>
+
+
+                        <strong>
+                            Telemetry Loop Sync:
+                            16.6ms
+                            (60Hz Target)
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script
+    src="js/sensors.js"
+></script>
+
+
+</body>
+
+</html>

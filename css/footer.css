@@ -1,0 +1,370 @@
+/* =========================================================
+   CATHERINE'S GLOBAL FOOTER
+========================================================= */
+
+.site-footer {
+
+  width: 100%;
+
+  padding: 62px 5% 32px;
+
+  background: #f3e8d8;
+
+  color: #51473d;
+
+  font-family:
+    "DM Sans",
+    Arial,
+    sans-serif;
+
+}
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.footer-main {
+
+  display: grid;
+
+  grid-template-columns:
+    1.45fr
+    1fr
+    1fr
+    1.15fr;
+
+  gap: 65px;
+
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-column {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.footer-column h3 {
+
+  margin: 0 0 22px;
+
+  color: #28231e;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+
+}
+
+
+.footer-column a {
+
+  width: fit-content;
+
+  margin-bottom: 17px;
+
+  color: #5e554b;
+
+  font-size: 15px;
+
+  line-height: 1.45;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.footer-column a:hover {
+
+  color: #916a23;
+
+  transform: translateX(2px);
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+
+}
+
+
+.footer-logo {
+
+  width: 44px;
+
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+}
+
+
+.footer-brand-row h2 {
+
+  margin: 0;
+
+  color: #91691f;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 30px;
+
+  font-weight: 600;
+
+}
+
+
+.footer-description {
+
+  max-width: 360px;
+
+  margin: 0;
+
+  color: #5b5147;
+
+  font-size: 16px;
+
+  line-height: 1.72;
+
+}
+
+
+.footer-location-label {
+
+  margin-top: 25px;
+
+  color: #936815;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+}
+
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.footer-contact p {
+
+  margin-bottom: 13px;
+
+  max-width: 300px;
+
+  color: #5e554b;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+}
+
+
+.footer-contact p a {
+
+  display: inline;
+
+  margin: 0;
+
+}
+
+
+.footer-address {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-top: 10px;
+
+}
+
+
+.footer-address span {
+
+  color: #9c701c;
+
+  font-size: 17px;
+
+}
+
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom {
+
+  max-width: 1600px;
+
+  margin: 82px auto 0;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(102, 87, 68, 0.2);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+}
+
+
+.footer-bottom p {
+
+  margin: 0;
+
+  color: #5c5249;
+
+  font-size: 14px;
+
+}
+
+
+.footer-bottom-links {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 37px;
+
+}
+
+
+.footer-bottom-links a {
+
+  margin: 0;
+
+  color: #51483f;
+
+  font-size: 13px;
+
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+
+}
+
+
+.footer-bottom-links a:hover {
+
+  color: #916a23;
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .footer-main {
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap: 45px;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .site-footer {
+
+    padding:
+      45px 25px 25px;
+
+  }
+
+
+  .footer-main {
+
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+
+  }
+
+
+  .footer-bottom {
+
+    margin-top: 50px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+  }
+
+
+  .footer-bottom-links {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+  }
+
+}

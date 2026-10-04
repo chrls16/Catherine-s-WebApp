@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Automated Demo Mode | Catherine's
+    </title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/demo.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <a
+            href="index.html"
+            class="admin-brand"
+        >
+
+            <img
+                src="assets/Catherine's Logo.png"
+                alt="Catherine's Logo"
+                class="admin-logo"
+            >
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    Catherine’s
+                </strong>
+
+                <span>
+                    LIGHTHOUSE COMMAND
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="admin-system-status">
+
+            <span class="admin-status-dot"></span>
+
+            <div>
+
+                <strong>
+                    ESP32 Hardware Online
+                </strong>
+
+                <span>
+                    9 Node Mesh
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-nav-label">
+            NAVIGATION DECK
+        </div>
+
+
+        <nav class="admin-nav">
+
+
+            <a
+                href="admin-dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Operational Center
+                </span>
+
+            </a>
+
+
+            <a
+                href="admin-reservations.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-calendar-days"></i>
+
+                <span>
+                    Master Reservations
+                </span>
+
+            </a>
+
+
+            <a
+                href="diorama-control.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Diorama Overrides
+                </span>
+
+            </a>
+
+
+            <a
+                href="sensors.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-satellite-dish"></i>
+
+                <span>
+                    Sensors Telemetry
+                </span>
+
+            </a>
+
+
+            <a
+                href="demo.html"
+                class="admin-nav-item active"
+            >
+
+                <i class="fa-regular fa-circle-play"></i>
+
+                <span>
+                    Automated Demo Mode
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="admin-sidebar-footer">
+
+
+            <div class="admin-beacon">
+
+                <span>
+                    Lighthouse Beacon
+                </span>
+
+                <strong id="sidebarBeacon">
+                    Sweeping 4.2 RPM
+                </strong>
+
+            </div>
+
+
+            <div class="admin-footer-actions">
+
+
+                <a
+                    href="index.html"
+                    class="visitor-site"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    VISITOR SITE
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <header class="top-header">
+
+
+            <div class="system-title">
+
+                <span class="system-dot"></span>
+
+                BAGASBAS DIORAMA SYSTEM V2.4
+
+            </div>
+
+
+            <div class="top-right">
+
+
+                <div class="portal-switcher">
+
+                    <button>
+                        VISITOR
+                    </button>
+
+                    <button>
+                        GUEST
+                    </button>
+
+                    <button class="active">
+                        ADMIN
+                    </button>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        C
+                    </div>
+
+                    <div class="admin-user-text">
+
+                        <strong>
+                            Catherine
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <div class="demo-content">
+
+
+            <!-- =================================================
+                 TOP PROCESS NAV
+            ================================================== -->
+
+            <div class="process-tabs">
+
+
+                <button class="process-tab">
+                    <strong>1.</strong>
+                    HARDWARE
+                    <br>
+                    TOPOLOGY
+                </button>
+
+
+                <button class="process-tab">
+                    <strong>2.</strong>
+                    DYNAMIC
+                    <br>
+                    DMX MATRIX
+                </button>
+
+
+                <button class="process-tab">
+                    <strong>3.</strong>
+                    MOTORIZED RAIL
+                    <br>
+                    SHUTTLES
+                </button>
+
+
+                <button class="process-tab">
+                    <strong>4.</strong>
+                    BEACON
+                    <br>
+                    GONIOMETER
+                </button>
+
+
+                <button class="process-tab active">
+                    <strong>5.</strong>
+                    AUTOMATED 15-STEP
+                    <br>
+                    DEMO
+                </button>
+
+
+                <div class="serial-status">
+
+                    <span></span>
+
+                    LIVE SERIAL SYNC
+                    • COM7
+                    @115200 BPS
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="demo-hero">
+
+
+                <div class="hero-eyebrow">
+
+                    AUTONOMOUS SPATIAL SEQUENCE ENGINE
+
+                    <span></span>
+
+                    SCRIPT ID:
+                    LGT-15-PACIFIC-DAWN
+
+                </div>
+
+
+                <div class="hero-header">
+
+
+                    <div>
+
+                        <h1>
+                            Automated 15-Step Resort
+                            <br>
+                            Diorama Showcase Engine
+                        </h1>
+
+
+                        <p>
+
+                            Autonomous physical choreography
+                            showcasing the resort's architectural
+                            lighting, miniature shuttle mechanics,
+                            infinity pool effects, and lighthouse
+                            beacon.
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="emergency-button"
+                        id="emergencyButton"
+                    >
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        <span>
+                            EMERGENCY
+                            <br>
+                            STOP SYSTEM
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- STATUS PANEL -->
+
+                <div class="sequence-control">
+
+
+                    <div class="sequence-buttons">
+
+
+                        <button
+                            type="button"
+                            class="primary-button"
+                            id="startDemo"
+                        >
+
+                            <i class="fa-solid fa-play"></i>
+
+                            START 15-STEP DEMO RUN
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="pauseDemo"
+                        >
+
+                            <i class="fa-solid fa-pause"></i>
+
+                            PAUSE
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="resetDemo"
+                        >
+
+                            <i class="fa-regular fa-square"></i>
+
+                            RESET TO IDLE
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="loop-button active"
+                            id="loopToggle"
+                        >
+
+                            <i class="fa-solid fa-repeat"></i>
+
+                            LOOP PLAYBACK:
+                            ON
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="sequence-status">
+
+
+                        <span class="status-label">
+                            SEQUENCE STATUS
+                        </span>
+
+
+                        <strong>
+                            Step
+                            <span id="currentStepNumber">
+                                7
+                            </span>
+                            <small>
+                                / 15 Steps
+                            </small>
+                        </strong>
+
+
+                        <span
+                            id="currentStepName"
+                            class="current-step-name"
+                        >
+                            Lagoon Chromatic Wave
+                        </span>
+
+
+                        <div class="timer-heading">
+
+                            <span>
+                                CHOREOGRAPHY TIMER
+                            </span>
+
+                            <strong>
+                                <span id="elapsedTime">
+                                    02:45
+                                </span>
+                                /
+                                06:30
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <span
+                                id="sequenceProgress"
+                                style="width:42%"
+                            ></span>
+
+                        </div>
+
+
+                        <div class="progress-meta">
+
+                            <span>
+                                42% Completed
+                            </span>
+
+                            <strong>
+                                3m 45s Remaining
+                            </strong>
+
+                        </div>
+
+
+                        <div class="actuator-status">
+
+                            <i class="fa-solid fa-share-nodes"></i>
+
+                            <div>
+
+                                <span>
+                                    ACTUATOR MESH
+                                </span>
+
+                                <strong>
+                                    9/9 Synced
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 EXECUTION AREA
+            ================================================== -->
+
+            <section class="execution-layout">
+
+
+                <!-- LEFT -->
+
+                <div class="timeline-column">
+
+
+                    <div class="timeline-heading">
+
+
+                        <div class="timeline-title">
+
+                            <span>
+                                15
+                            </span>
+
+                            <h2>
+                                Timeline &amp;
+                                <br>
+                                Actuator
+                                <br class="mobile-break">
+                                Execution Pipeline
+                            </h2>
+
+                        </div>
+
+
+                        <div class="timeline-legend">
+
+                            <span>
+                                <i class="completed"></i>
+                                Completed (6)
+                            </span>
+
+                            <span>
+                                <i class="active"></i>
+                                Active (1)
+                            </span>
+
+                            <span>
+                                <i class="queued"></i>
+                                Queued (8)
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div
+                        class="steps-list"
+                        id="stepsList"
+                    >
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- RIGHT -->
+
+                <aside class="demo-side-panel">
+
+
+                    <!-- LIVE ZONE -->
+
+                    <section class="side-panel-card">
+
+
+                        <div class="side-card-heading">
+
+
+                            <div>
+
+                                <i class="fa-regular fa-eye"></i>
+
+                                <h3>
+                                    Live Physical
+                                    Zone Matrix
+                                </h3>
+
+                            </div>
+
+
+                            <span class="zone-badge">
+                                ZONE 3
+                                <br>
+                                ACTIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="zone-preview">
+
+
+                            <div class="pool-shape"></div>
+
+                            <div class="zone-grid"></div>
+
+                            <div class="zone-marker"></div>
+
+
+                            <div class="zone-caption">
+
+                                <i></i>
+
+                                Lagoon Pool Zone:
+                                WS2812B
+                                Wave Engaged
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="side-description">
+
+                            The diorama physical coordinates
+                            show telemetry Node 3 receiving
+                            continuous PWM pulses. Wave frequency
+                            is synchronized to the ambient coastal
+                            dawn audio track.
+
+                        </p>
+
+
+                    </section>
+
+
+
+                    <!-- AUDIO -->
+
+                    <section class="side-panel-card">
+
+
+                        <div class="side-card-heading">
+
+                            <div>
+
+                                <i class="fa-solid fa-sliders"></i>
+
+                                <h3>
+                                    Acoustic
+                                    Choreography
+                                </h3>
+
+                            </div>
+
+
+                            <span class="small-label">
+                                DFPLAYER
+                                <br>
+                                UART
+                            </span>
+
+                        </div>
+
+
+                        <div class="audio-track">
+
+
+                            <div class="audio-icon">
+
+                                <i class="fa-solid fa-volume-high"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    CURRENT AUDIO TRACK
+                                </span>
+
+                                <strong>
+                                    Bagasbas
+                                    Ambient Dawn
+                                    (Track 04)
+                                </strong>
+
+                                <small>
+                                    BPM: 64
+                                    • 432Hz Sanctuary Tuning
+                                </small>
+
+                            </div>
+
+
+                            <div class="sound-bars">
+
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="amp-output">
+
+                            <span>
+                                HARDWARE AMP OUTPUT
+                            </span>
+
+                            <strong>
+                                68% (-6 dB)
+                            </strong>
+
+                            <div>
+
+                                <span
+                                    style="width:68%"
+                                ></span>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- SPEED -->
+
+                    <section class="side-panel-card">
+
+
+                        <h3>
+                            Sequence Velocity
+                            &amp; Calibrator
+                        </h3>
+
+
+                        <p class="side-description">
+
+                            Scale presentation timing for brief
+                            client walk-throughs or comprehensive
+                            VIP tours.
+
+                        </p>
+
+
+                        <span class="side-mini-label">
+                            STEP DELAY SPEED MULTIPLIER
+                        </span>
+
+
+                        <div class="speed-options">
+
+
+                            <button
+                                class="speed-button active"
+                                data-speed="1x"
+                            >
+                                1.0X
+                                <small>
+                                    (NORM)
+                                </small>
+                            </button>
+
+
+                            <button
+                                class="speed-button"
+                                data-speed="1.5x"
+                            >
+                                1.5X
+                                <small>
+                                    (FAST)
+                                </small>
+                            </button>
+
+
+                            <button
+                                class="speed-button"
+                                data-speed="2x"
+                            >
+                                2.0X
+                                <small>
+                                    (BLITZ)
+                                </small>
+                            </button>
+
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="test-step-button"
+                            id="testStep"
+                        >
+
+                            <i class="fa-solid fa-flask"></i>
+
+                            Test Single Step
+                            <span>
+                                (Isolated Node)
+                            </span>
+
+                        </button>
+
+
+                        <div class="safety-note">
+
+                            Safety Note:
+                            Staging overrides currently
+                            engaged sequences without resetting
+                            physical positions.
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- FAIL SAFE -->
+
+                    <section class="fail-safe-card">
+
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+
+                        <div>
+
+                            <strong>
+                                FAIL-SAFE ACTIVE
+                            </strong>
+
+
+                            <p>
+
+                                Current limiters and thermal
+                                sensors on Stepper Motor NEMA17
+                                and WS2812B channels are operational.
+                                Automated shutdown occurs if actuator
+                                thermal dissipation exceeds 62°C.
+
+                            </p>
+
+                        </div>
+
+
+                    </section>
+
+
+                </aside>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script
+    src="js/demo.js"
+></script>
+
+
+</body>
+
+</html>

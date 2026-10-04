@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Diorama Overrides | Catherine's
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/diorama-control.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="admin-brand"
+        >
+
+            <img
+                src="assets/Catherine's Logo.png"
+                alt="Catherine's Logo"
+                class="admin-logo"
+            >
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    Catherine’s
+                </strong>
+
+                <span>
+                    LIGHTHOUSE COMMAND
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- HARDWARE STATUS -->
+
+        <div class="admin-system-status">
+
+            <span class="admin-status-dot"></span>
+
+            <div>
+
+                <strong>
+                    ESP32 Hardware Online
+                </strong>
+
+                <span>
+                    9 Node Mesh
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="admin-nav-label">
+            NAVIGATION DECK
+        </div>
+
+
+        <nav class="admin-nav">
+
+
+            <a
+                href="admin-dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Operational Center
+                </span>
+
+            </a>
+
+
+            <a
+                href="admin-reservations.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-calendar-days"></i>
+
+                <span>
+                    Master Reservations
+                </span>
+
+            </a>
+
+
+            <a
+                href="diorama-control.html"
+                class="admin-nav-item active"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Diorama Overrides
+                </span>
+
+            </a>
+
+
+            <a
+                href="sensors.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-solid fa-satellite-dish"></i>
+
+                <span>
+                    Sensors Telemetry
+                </span>
+
+            </a>
+
+
+            <a
+                href="demo.html"
+                class="admin-nav-item"
+            >
+
+                <i class="fa-regular fa-circle-play"></i>
+
+                <span>
+                    Automated Demo Mode
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="admin-sidebar-footer">
+
+
+            <div class="admin-beacon">
+
+                <span>
+                    Lighthouse Beacon
+                </span>
+
+                <strong>
+                    Sweeping 4.2 RPM
+                </strong>
+
+            </div>
+
+
+            <div class="admin-footer-actions">
+
+
+                <a
+                    href="index.html"
+                    class="visitor-site"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    VISITOR SITE
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP HEADER
+        ================================================== -->
+
+        <header class="top-header">
+
+
+            <div class="system-title">
+
+                <span class="system-dot"></span>
+
+                BAGASBAS DIORAMA SYSTEM V2.4
+
+            </div>
+
+
+            <div class="top-right">
+
+
+                <div class="portal-switcher">
+
+                    <button>
+                        VISITOR
+                    </button>
+
+                    <button>
+                        GUEST
+                    </button>
+
+                    <button class="active">
+                        ADMIN
+                    </button>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        C
+                    </div>
+
+
+                    <div class="admin-user-text">
+
+                        <strong>
+                            Catherine
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <div class="diorama-content">
+
+
+            <!-- =================================================
+                 REAL-TIME MESH BAR
+            ================================================== -->
+
+            <section class="mesh-banner">
+
+
+                <div class="mesh-left">
+
+
+                    <span class="mesh-pill">
+
+                        <i class="fa-solid fa-circle-nodes"></i>
+
+                        ESP-NOW MESH SYNC
+
+                    </span>
+
+
+                    <span class="separator-dot"></span>
+
+
+                    <span>
+                        BAGASBAS OCEAN WING NODE #02
+                    </span>
+
+
+                    <span class="separator-dot"></span>
+
+
+                    <span>
+
+                        <i class="fa-solid fa-wifi"></i>
+
+                        RSSI:
+                        <strong>
+                            -42 dBm
+                        </strong>
+
+                    </span>
+
+
+                    <span class="separator-dot"></span>
+
+
+                    <span>
+                        Latency:
+                        <strong class="latency">
+                            14ms
+                        </strong>
+                    </span>
+
+
+                </div>
+
+
+                <div class="mesh-right">
+
+
+                    <span>
+                        REAL-TIME SYNC
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="toggle-switch active"
+                        id="syncToggle"
+                        aria-label="Toggle real-time synchronization"
+                    >
+
+                        <span></span>
+
+                    </button>
+
+
+                    <span class="tray-status">
+                        1:45 Tray Sync:
+                        <strong>
+                            ARMED
+                        </strong>
+                    </span>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="diorama-hero">
+
+
+                <div class="hero-copy">
+
+
+                    <span class="eyebrow">
+                        GUEST DIORAMA CONTROL PORTAL
+                    </span>
+
+
+                    <h1>
+                        Client &amp; Guest
+                        <br>
+                        Tactile Diorama
+                    </h1>
+
+
+                    <p>
+
+                        Interactive micro-actuator and photonic
+                        telemetry interface connected to the
+                        physical 1:45 scale teak and acrylic
+                        architectural miniature at the Main
+                        Lighthouse Lobby Deck. Changes made below
+                        instantly mirror to the physical diorama
+                        lighting grid.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- GUEST SUMMARY -->
+
+                <div class="guest-summary">
+
+
+                    <div class="guest-summary-top">
+
+
+                        <div class="guest-summary-icon">
+
+                            <i class="fa-solid fa-bed"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                MABUHAY &amp; WELCOME
+                            </span>
+
+                            <strong>
+                                Maria Elena
+                                <br>
+                                Santos
+                            </strong>
+
+                        </div>
+
+
+                        <small>
+                            #CBLR-7482
+                        </small>
+
+
+                    </div>
+
+
+                    <div class="guest-summary-grid">
+
+
+                        <div>
+
+                            <span>
+                                Assigned Unit
+                            </span>
+
+                            <strong>
+                                Cottage 2
+                            </strong>
+
+                            <small>
+                                Oceanfront
+                                <br>
+                                Suite
+                            </small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Stay Duration
+                            </span>
+
+                            <strong>
+                                May 18–19
+                            </strong>
+
+                            <small>
+                                2025 • 2D1N
+                            </small>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Party Size
+                            </span>
+
+                            <strong>
+                                6 Guests
+                            </strong>
+
+                            <small>
+                                VIP Ocean
+                                <br>
+                                Pass
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DIORAMA OVERVIEW HEADER
+            ================================================== -->
+
+            <section class="overview-heading">
+
+
+                <div class="overview-title">
+
+
+                    <div class="overview-icon">
+
+                        <i class="fa-solid fa-cube"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Physical 1:45 Scale
+                            Miniature Diorama Overview
+                        </h2>
+
+
+                        <p>
+                            Interactive spatial visualization of the
+                            physical reception lobby architectural
+                            display
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="overview-status">
+
+
+                    <span class="status-pill gold">
+
+                        <i></i>
+
+                        Cottage 2 Active Glow
+
+                    </span>
+
+
+                    <span class="status-pill teal">
+
+                        <i></i>
+
+                        Lighthouse 4.2 RPM
+
+                    </span>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MINIATURE DIORAMA
+            ================================================== -->
+
+            <section class="diorama-display">
+
+
+                <div class="diorama-stage">
+
+
+                    <!-- TOP FACILITIES -->
+
+                    <div class="stage-facility-row">
+
+
+                        <div class="stage-facility">
+
+                            <div class="facility-title">
+
+                                <i class="fa-solid fa-building-columns"></i>
+
+                                <strong>
+                                    Celebration Pavilion
+                                </strong>
+
+                                <i class="fa-solid fa-lock facility-lock"></i>
+
+                            </div>
+
+
+                            <div class="facility-meta">
+
+                                <span>
+                                    DMX Architectural Array
+                                </span>
+
+
+                                <small>
+                                    Standby Mode
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="stage-facility active-water">
+
+                            <div class="facility-title">
+
+                                <i class="fa-solid fa-water"></i>
+
+                                <strong>
+                                    Luminescence Pool
+                                </strong>
+
+                                <i class="fa-solid fa-circle live-dot"></i>
+
+                            </div>
+
+
+                            <div class="facility-meta">
+
+                                <span>
+                                    Arched Wooden Bridge
+                                </span>
+
+
+                                <strong>
+                                    RGBW Active
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="stage-facility">
+
+                            <div class="facility-title">
+
+                                <i class="fa-solid fa-sun"></i>
+
+                                <strong>
+                                    Beacon Tower
+                                </strong>
+
+
+                                <small class="rpm-badge">
+                                    4.2 RPM
+                                </small>
+
+                            </div>
+
+
+                            <div class="facility-meta">
+
+                                <span>
+                                    Cree 10W Beam Arc
+                                </span>
+
+
+                                <strong>
+                                    <i class="fa-solid fa-rotate"></i>
+                                    Sweeping
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- SHUTTLE -->
+
+                    <div class="shuttle-bar">
+
+
+                        <div>
+
+                            <i class="fa-solid fa-bus"></i>
+
+                            <strong>
+                                MINIATURE ELECTRIC
+                                RESORT SHUTTLE
+                            </strong>
+
+                        </div>
+
+
+                        <span>
+                            Station 1 Docked
+                            (Reception Plaza)
+                        </span>
+
+
+                        <span class="shuttle-status">
+
+                            <i></i>
+
+                            Automatic Loop Scheduled
+                            (15m Intervals)
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- COTTAGES -->
+
+                    <div class="cottage-grid">
+
+
+                        <div class="mini-cottage">
+
+                            <div>
+
+                                <strong>
+                                    Cottage 1
+                                </strong>
+
+                                <span>
+                                    Garden
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Micro-LEDs
+                                </span>
+
+                                <small>
+                                    Standby
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="mini-cottage current">
+
+
+                            <div>
+
+                                <strong>
+                                    <i class="fa-solid fa-bed"></i>
+                                    Cottage 2
+                                </strong>
+
+                                <span class="your-suite">
+                                    YOUR SUITE
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Physical
+                                    Illumination
+                                </span>
+
+                                <strong>
+                                    85%
+                                    <br>
+                                    Amber
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="mini-cottage">
+
+                            <div>
+
+                                <strong>
+                                    Cottage 3
+                                </strong>
+
+                                <span>
+                                    Lagoon
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Micro-LEDs
+                                </span>
+
+                                <small>
+                                    Vacant Night
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="mini-cottage">
+
+                            <div>
+
+                                <strong>
+                                    Cottage 4
+                                </strong>
+
+                                <span>
+                                    Breeze
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Micro-LEDs
+                                </span>
+
+                                <small>
+                                    Reserved
+                                    (20:00)
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="stage-shoreline"></div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MAIN CONTROL GRID
+            ================================================== -->
+
+            <section class="control-grid">
+
+
+                <!-- =================================================
+                     LEFT COLUMN
+                ================================================== -->
+
+                <div class="control-left">
+
+
+                    <!-- COTTAGE CONTROL -->
+
+                    <section class="control-section">
+
+
+                        <div class="section-card-heading">
+
+
+                            <div class="heading-with-icon">
+
+                                <div class="section-icon gold-icon">
+
+                                    <i class="fa-solid fa-house"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Cottage 2 Oceanfront Controls
+                                    </h2>
+
+                                    <p>
+                                        Direct photonic modulation
+                                        for your miniature villa model
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="node-address">
+
+                                <span>
+                                    Node Address:
+                                </span>
+
+                                <strong>
+                                    0x4B:2E
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="control-card">
+
+
+                            <!-- LUMINESCENCE -->
+
+                            <div class="control-heading-row">
+
+                                <div>
+
+                                    <i class="fa-regular fa-lightbulb"></i>
+
+                                    Villa Interior Luminescence
+
+                                </div>
+
+
+                                <strong id="brightnessValue">
+                                    85%
+                                </strong>
+
+                            </div>
+
+
+                            <input
+                                type="range"
+                                id="villaBrightness"
+                                min="0"
+                                max="100"
+                                value="85"
+                                class="gold-range"
+                            >
+
+
+                            <div class="range-labels">
+
+                                <span>
+                                    0% (Soft Sleep)
+                                </span>
+
+                                <span>
+                                    50% (Ambient Mood)
+                                </span>
+
+                                <span>
+                                    100% (Full Warmth)
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- COLOR TEMP -->
+
+                            <div class="subheading">
+                                PHOTONIC COLOR TEMPERATURE
+                            </div>
+
+
+                            <div class="temperature-grid">
+
+
+                                <button
+                                    type="button"
+                                    class="temperature-button"
+                                    data-temp="2200K"
+                                    data-color="candle"
+                                >
+
+                                    <span class="temperature-dot candle"></span>
+
+                                    <strong>
+                                        2200K
+                                    </strong>
+
+                                    <small>
+                                        Candle Amber
+                                    </small>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="temperature-button active"
+                                    data-temp="2700K"
+                                    data-color="gold"
+                                >
+
+                                    <span class="temperature-dot gold"></span>
+
+                                    <strong>
+                                        2700K
+                                    </strong>
+
+                                    <small>
+                                        Coastal Gold
+                                    </small>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="temperature-button"
+                                    data-temp="4000K"
+                                    data-color="white"
+                                >
+
+                                    <span class="temperature-dot white"></span>
+
+                                    <strong>
+                                        4000K
+                                    </strong>
+
+                                    <small>
+                                        Tropical Dawn
+                                    </small>
+
+                                </button>
+
+
+                            </div>
+
+
+
+                            <!-- ROOFLINE / BALCONY -->
+
+                            <div class="mini-control-grid">
+
+
+                                <div class="mini-control">
+
+                                    <div>
+
+                                        <strong>
+                                            Roofline Accent
+                                            Glow
+                                        </strong>
+
+                                        <small>
+                                            Gable edge
+                                            micro-strip
+                                        </small>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="small-toggle active"
+                                        data-toggle="roofline"
+                                    >
+
+                                        <span></span>
+
+                                    </button>
+
+                                </div>
+
+
+
+                                <div class="mini-control">
+
+                                    <div>
+
+                                        <strong>
+                                            Balcony String
+                                            Lights
+                                        </strong>
+
+                                        <small id="balconyValue">
+                                            60%
+                                        </small>
+
+                                    </div>
+
+
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100"
+                                        value="60"
+                                        id="balconyBrightness"
+                                        class="small-range"
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- CHIME -->
+
+                            <div class="chime-card">
+
+
+                                <div class="chime-icon">
+
+                                    <i class="fa-regular fa-bell"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Welcome Chime
+                                        &amp;
+                                        Pathway Sweep
+                                    </strong>
+
+
+                                    <p>
+
+                                        Pulse cottage garden
+                                        stone lights &amp;
+                                        trigger arrival tone
+                                        at lobby tray
+
+                                    </p>
+
+
+                                    <button
+                                        type="button"
+                                        id="testChime"
+                                        class="gold-button"
+                                    >
+
+                                        <i class="fa-solid fa-play"></i>
+
+                                        Test Chime
+
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- POOL CONTROL -->
+
+                    <section class="control-card standalone-card">
+
+
+                        <div class="section-card-heading">
+
+                            <div class="heading-with-icon">
+
+                                <div class="section-icon teal-icon">
+
+                                    <i class="fa-solid fa-water"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Resort Luminescence
+                                        Pool &amp; Arched Bridge
+                                    </h2>
+
+                                    <p>
+                                        Included guest authority for
+                                        central miniature lagoon basin
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <span class="zone-pill">
+                                Zone: Water
+                                <br>
+                                Basin 01
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="subheading">
+                            WATER CHROMATIC LUMINESCENCE
+                        </div>
+
+
+                        <div class="pool-colors">
+
+
+                            <button
+                                type="button"
+                                class="pool-color active"
+                                data-color="Pacific Blue"
+                            >
+
+                                <i></i>
+
+                                Pacific
+                                <br>
+                                Blue
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="pool-color"
+                                data-color="Lagoon Aqua"
+                            >
+
+                                <i></i>
+
+                                Lagoon
+                                <br>
+                                Aqua
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="pool-color"
+                                data-color="Sunset Amber"
+                            >
+
+                                <i></i>
+
+                                Sunset
+                                <br>
+                                Amber
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="pool-color"
+                                data-color="Emerald Cove"
+                            >
+
+                                <i></i>
+
+                                Emerald
+                                <br>
+                                Cove
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="pool-color"
+                                data-color="Fiesta Violet"
+                            >
+
+                                <i></i>
+
+                                Fiesta
+                                <br>
+                                Violet
+
+                            </button>
+
+
+                        </div>
+
+
+
+                        <div class="pool-control-columns">
+
+
+                            <div>
+
+                                <div class="subheading">
+                                    WAVE PHOTONIC CADENCE
+                                </div>
+
+
+                                <label class="radio-option active">
+
+                                    <input
+                                        type="radio"
+                                        name="waveCadence"
+                                        checked
+                                    >
+
+                                    <span></span>
+
+                                    Calm Pacific Wave Pulse
+
+                                </label>
+
+
+                                <label class="radio-option">
+
+                                    <input
+                                        type="radio"
+                                        name="waveCadence"
+                                    >
+
+                                    <span></span>
+
+                                    Shimmering Cascade Ripple
+
+                                </label>
+
+                            </div>
+
+
+
+                            <div>
+
+                                <div class="subheading">
+                                    PHYSICAL HYDRAULIC HARDWARE
+                                </div>
+
+
+                                <div class="hardware-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Underwater
+                                            Micro-Pump
+                                        </strong>
+
+                                        <small>
+                                            Active (1.2 L/min)
+                                        </small>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="small-toggle teal-toggle active"
+                                        data-toggle="pump"
+                                    >
+
+                                        <span></span>
+
+                                    </button>
+
+                                </div>
+
+
+                                <div class="hardware-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Arched Bridge
+                                            LEDs
+                                        </strong>
+
+                                        <small>
+                                            Recessed handrail wash
+                                        </small>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="small-toggle active"
+                                        data-toggle="bridge"
+                                    >
+
+                                        <span></span>
+
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RIGHT COLUMN
+                ================================================== -->
+
+                <aside class="control-right">
+
+
+                    <!-- KTV -->
+
+                    <section class="side-control-card">
+
+
+                        <div class="side-card-title">
+
+
+                            <div class="side-title-icon">
+
+                                <i class="fa-solid fa-headphones"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>
+                                    Lighthouse KTV &amp;
+                                    Beacon Deck
+                                </h2>
+
+                                <p>
+                                    Miniature acoustic and beacon
+                                    telemetry
+                                </p>
+
+                            </div>
+
+
+                            <span class="live-pill">
+                                Live Stream
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="ktv-player">
+
+
+                            <span class="player-label">
+                                KTV LOUNGE TELEPROMPTER
+                                MIC 01 &amp; 02 Armed
+                            </span>
+
+
+                            <div class="track-title">
+
+                                <div class="music-icon">
+
+                                    <i class="fa-solid fa-music"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Christmas in Our Hearts
+                                    </strong>
+
+                                    <span>
+                                        Jose Mari Chan •
+                                        Classic Seaside Vibe
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="track-progress">
+
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="track-time">
+
+                                <span>
+                                    01:42
+                                </span>
+
+                                <span>
+                                    04:15
+                                </span>
+
+                            </div>
+
+
+                            <div class="audio-row">
+
+                                <span>
+                                    Acoustic Miniature
+                                    Monitor
+                                </span>
+
+
+                                <i class="fa-solid fa-volume-low"></i>
+
+
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="75"
+                                >
+
+
+                                <strong>
+                                    75%
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="subheading beacon-heading">
+                            PHYSICAL BEACON SWEEPER OVERRIDE
+                        </div>
+
+
+                        <div class="beacon-options">
+
+
+                            <button
+                                type="button"
+                                data-rpm="2.5"
+                            >
+                                2.5 RPM
+                                <small>
+                                    (Gentle)
+                                </small>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="active"
+                                data-rpm="4.2"
+                            >
+                                4.2 RPM
+                                <small>
+                                    (Active)
+                                </small>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                data-rpm="6.0"
+                            >
+                                6.0 RPM
+                                <small>
+                                    (Sunset)
+                                </small>
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="strobe-row">
+
+                            <div>
+
+                                <strong>
+                                    Skydeck Twilight Strobes
+                                </strong>
+
+                                <small>
+                                    Miniature warm xenon
+                                    strobe bursts
+                                </small>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="small-toggle"
+                                data-toggle="strobe"
+                            >
+
+                                <span></span>
+
+                            </button>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- RFID -->
+
+                    <section class="side-control-card">
+
+
+                        <div class="side-card-title">
+
+
+                            <div class="side-title-icon synced">
+
+                                <i class="fa-solid fa-wifi"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>
+                                    RFID Keycard
+                                    Handshake
+                                </h2>
+
+                                <p>
+                                    MFRC522 High-Frequency
+                                    13.56MHz Token
+                                </p>
+
+                            </div>
+
+
+                            <span class="synced-pill">
+                                • SYNCED
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div class="rfid-info">
+
+
+                            <div>
+
+                                <span>
+                                    Hardware Token ID:
+                                </span>
+
+                                <strong>
+                                    #7482-Bagasbas-C2
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Last Lobby Scanner Tap:
+                                </span>
+
+                                <strong>
+                                    Today, 02:14 PM
+                                    (Reception)
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Authorized Zone Authority:
+                                </span>
+
+                                <strong class="gold-text">
+                                    Cottage 2,
+                                    Pool &amp; KTV Terrace
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button
+                            type="button"
+                            class="wide-control"
+                            id="simulateKeycard"
+                        >
+
+                            <i class="fa-solid fa-address-card"></i>
+
+                            Simulate Physical Keycard
+                            Tap at Lobby Tray
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="danger-control"
+                            id="releaseControl"
+                        >
+
+                            <i class="fa-solid fa-power-off"></i>
+
+                            Release Diorama Control
+                            &amp; Reset Standby
+
+                        </button>
+
+
+                    </section>
+
+
+
+                    <!-- PREMIUM -->
+
+                    <section class="premium-card">
+
+
+                        <div class="premium-icon">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                        </div>
+
+
+                        <span>
+                            PREMIUM BALLROOM PRIVILEGE
+                        </span>
+
+
+                        <h2>
+                            Grand Celebration
+                            Pavilion DMX Controls
+                        </h2>
+
+
+                        <p>
+
+                            The 120-channel motorized
+                            architectural spotlighting
+                            and fiber-optic starry ceiling
+                            array in the Grand Pavilion are
+                            reserved for registered banquet
+                            and event reservations.
+
+                        </p>
+
+
+                        <a href="#">
+                            INQUIRE AT CONCIERGE DESK
+                            TO UNLOCK
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+
+                    </section>
+
+
+                </aside>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script
+    src="js/diorama-control.js"
+></script>
+
+
+</body>
+</html>
