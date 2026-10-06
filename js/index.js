@@ -21,6 +21,34 @@ const isLoggedIn = () => {
     }
   }
 
+  // Verify that logged-in guest email is registered
+  if (logged) {
+    const role = localStorage.getItem('userRole');
+    if (role === 'guest') {
+      const email = localStorage.getItem('guestEmail');
+      if (email) {
+        try {
+          const rawUsers = localStorage.getItem('resortUsers');
+          if (rawUsers) {
+            const users = JSON.parse(rawUsers);
+            const exists = Array.isArray(users) && users.some(
+              u => u && u.email && u.email.toLowerCase() === email.toLowerCase()
+            );
+            if (!exists) {
+              localStorage.removeItem('isLoggedIn');
+              localStorage.removeItem('userRole');
+              localStorage.removeItem('guestEmail');
+              localStorage.removeItem('guestName');
+              localStorage.removeItem('sessionExpiry');
+              localStorage.removeItem('rememberMe');
+              return false;
+            }
+          }
+        } catch (e) {}
+      }
+    }
+  }
+
   return logged;
 };
 

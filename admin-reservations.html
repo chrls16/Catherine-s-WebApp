@@ -575,7 +575,7 @@
 
                     <div class="stat-main">
 
-                        <strong>
+                        <strong id="statTotalBookings">
                             18
                         </strong>
 
@@ -586,7 +586,7 @@
                     </div>
 
 
-                    <p>
+                    <p id="statGrossRevenue">
                         ₱142,500 Gross revenue
                         generated
                     </p>
@@ -639,7 +639,7 @@
 
                     <div class="stat-main">
 
-                        <strong>
+                        <strong id="statOccupancy">
                             75%
                         </strong>
 
@@ -650,7 +650,7 @@
                     </div>
 
 
-                    <p>
+                    <p id="statOccupancySub">
                         Cottage #1, #2, #3 fully
                         booked
                     </p>
@@ -659,6 +659,7 @@
                     <div class="progress-track">
 
                         <span
+                            id="statOccupancyBar"
                             style="width:75%;"
                         ></span>
 
@@ -689,7 +690,7 @@
 
                     <div class="stat-main">
 
-                        <strong>
+                        <strong id="statActiveGuests">
                             12
                         </strong>
 
@@ -740,7 +741,7 @@
 
                     <div class="stat-main">
 
-                        <strong>
+                        <strong id="statPendingCount">
                             2
                         </strong>
 
@@ -759,7 +760,7 @@
 
                     <div class="pending-footer">
 
-                        <a href="#">
+                        <a href="#" id="reviewPendingLink">
                             Review 2
                             <br>
                             pending →
@@ -879,6 +880,7 @@
                     <button
                         type="button"
                         class="filter-chip active"
+                        data-facility="all"
                     >
                         ALL QUARTERS
                     </button>
@@ -887,6 +889,7 @@
                     <button
                         type="button"
                         class="filter-chip"
+                        data-facility="cottage"
                     >
                         COTTAGES 1–4
                     </button>
@@ -895,6 +898,7 @@
                     <button
                         type="button"
                         class="filter-chip"
+                        data-facility="pool"
                     >
                         POOL &amp; ARCHED BRIDGE
                     </button>
@@ -903,6 +907,7 @@
                     <button
                         type="button"
                         class="filter-chip"
+                        data-facility="ktv"
                     >
                         LIGHTHOUSE KTV
                     </button>
@@ -911,6 +916,7 @@
                     <button
                         type="button"
                         class="filter-chip"
+                        data-facility="pavilion"
                     >
                         GRAND EVENT PAVILION
                     </button>
@@ -929,28 +935,36 @@
 
                     <select id="statusFilter">
 
-                        <option>
+                        <option value="all">
                             ALL RESERVATION STATES
                         </option>
 
-                        <option>
+                        <option value="pending">
+                            PENDING VERIFICATION
+                        </option>
+
+                        <option value="active">
                             CHECKED IN &amp; ACTIVE
                         </option>
 
-                        <option>
+                        <option value="expected">
                             EXPECTED
                         </option>
 
-                        <option>
+                        <option value="arriving">
                             ARRIVING
                         </option>
 
-                        <option>
+                        <option value="confirmed">
                             CONFIRMED
                         </option>
 
-                        <option>
+                        <option value="facility">
                             IN FACILITY
+                        </option>
+
+                        <option value="cancelled">
+                            CANCELLED
                         </option>
 
                     </select>
@@ -999,7 +1013,7 @@
                     </div>
 
 
-                    <span class="showing-badge">
+                    <span class="showing-badge" id="showingEntriesBadge">
                         SHOWING 5 OF 18 ACTIVE ENTRIES
                     </span>
 
@@ -2199,6 +2213,11 @@
 </div>
 
 
+<!-- Live Sync Toast Notification Container -->
+<div class="resort-toast-container" id="resortToastContainer"></div>
+
+<!-- Built-in Resort Database Engine -->
+<script src="js/database.js"></script>
 <!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/admin-reservations.js"></script>

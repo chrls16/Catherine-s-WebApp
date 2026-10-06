@@ -2141,7 +2141,7 @@ function buildReservationObject(
         prices,
 
         status:
-            "Pending",
+            "Pending Verification",
 
         createdAt:
             new Date().toISOString()
@@ -2407,65 +2407,62 @@ function sendReservationConfirmationEmail(reservation) {
 
 
 /* =========================================================
-   RESERVATION HISTORY
+/* =========================================================
+   RESERVATION HISTORY & MASTER SYNC
 ========================================================= */
 
 function saveReservationHistory(
     reservation
 ) {
 
-    let history = [];
-
-
-    const saved =
-        localStorage.getItem(
-            "reservationHistory"
-        );
-
-
-    if (saved) {
-
-        try {
-
-            history =
-                JSON.parse(
-                    saved
-                );
-
-
-            if (
-                !Array.isArray(
-                    history
-                )
-            ) {
-
-                history =
-                    [];
-
-            }
-
-        }
-        catch {
-
-            history =
-                [];
-
-        }
-
+    // 1. If ResortDB engine is available, use its synchronized registration
+    if (
+        typeof window !== "undefined" &&
+        window.ResortDB &&
+        typeof window.ResortDB.addReservation === "function"
+    ) {
+        window.ResortDB.addReservation(reservation);
+        return;
     }
 
+    // 2. Direct fallback
+    let history = [];
+    const saved = localStorage.getItem("reservationHistory");
 
-    history.push(
-        reservation
-    );
+    if (saved) {
+        try {
+            history = JSON.parse(saved);
+            if (!Array.isArray(history)) {
+                history = [];
+            }
+        } catch {
+            history = [];
+        }
+    }
 
+    // Prepend new reservation to appear at top of list
+    history.unshift(reservation);
 
     localStorage.setItem(
         "reservationHistory",
-        JSON.stringify(
-            history
-        )
+        JSON.stringify(history)
     );
+
+    // Broadcast sync trigger to update open admin tabs
+    localStorage.setItem(
+        "resort_reservation_sync",
+        Date.now().toString()
+    );
+
+    try {
+        if (typeof window !== "undefined") {
+            window.dispatchEvent(
+                new CustomEvent("resort:reservation-added", {
+                    detail: reservation
+                })
+            );
+        }
+    } catch (e) {}
 
 }
 

@@ -177,10 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       USER DATABASE SIMULATION (LocalStorage)
+       USER DATABASE INTEGRATION (ResortDB / LocalStorage)
     ===================================================== */
 
     function getRegisteredUsers() {
+        if (window.ResortDB) {
+            return window.ResortDB.getAllUsers();
+        }
         try {
             const usersJson = localStorage.getItem("resortUsers");
             return usersJson ? JSON.parse(usersJson) : [];
@@ -191,14 +194,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function saveUser(newUser) {
+        if (window.ResortDB) {
+            return window.ResortDB.registerUser(newUser);
+        }
         const users = getRegisteredUsers();
         users.push(newUser);
         localStorage.setItem("resortUsers", JSON.stringify(users));
+        return { success: true, user: newUser };
     }
 
     function isEmailRegistered(email) {
+        if (window.ResortDB) {
+            return window.ResortDB.isEmailRegistered(email);
+        }
         const users = getRegisteredUsers();
-        return users.some(u => u.email.toLowerCase() === email.toLowerCase());
+        return users.some(u => u && u.email && u.email.toLowerCase() === email.toLowerCase());
     }
 
 
@@ -278,29 +288,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!isValid) return;
 
-            // Save new user account
+            // Save new user account in built-in database
             const newUser = {
                 fullName: fullName,
                 email: email,
                 phone: phone,
                 password: password,
-                createdAt: new Date().toISOString(),
                 membershipTier: "Sanctuary Member",
                 subscribeOffers: subscribeOffers
             };
 
-            saveUser(newUser);
-
-            // Log user in automatically
-            localStorage.setItem("isLoggedIn", "true");
-            localStorage.setItem("userRole", "guest");
-            localStorage.setItem("guestEmail", email);
-            localStorage.setItem("guestName", fullName);
-            localStorage.setItem("guestPhone", phone);
-
-            // Clear admin session data if any
-            localStorage.removeItem("adminEmail");
-            localStorage.removeItem("adminName");
+            if (window.ResortDB) {
+                const regRes = window.ResortDB.registerUser(newUser);
+                if (!regRes.success) {
+                    showStatus(regRes.message || "Registration failed.", "error");
+                    return;
+                }
+                window.ResortDB.saveSession(regRes.user, false);
+            } else {
+                saveUser(newUser);
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("userRole", "guest");
+                localStorage.setItem("guestEmail", email);
+                localStorage.setItem("guestName", fullName);
+                localStorage.setItem("guestPhone", phone);
+                localStorage.removeItem("adminEmail");
+                localStorage.removeItem("adminName");
+            }
 
             showStatus("✓ Sanctuary Account Created Successfully! Logging you in...", "success");
 

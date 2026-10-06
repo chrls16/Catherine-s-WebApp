@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (formStatus) {
             formStatus.textContent = "";
+            formStatus.className = "form-status";
         }
 
     }
@@ -108,12 +109,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function showStatus(message) {
+    function showStatus(message, type = "normal") {
 
         if (formStatus) {
 
-            formStatus.textContent =
+            formStatus.innerHTML =
                 message;
+
+            if (type === "success") {
+                formStatus.className = "form-status success-status";
+            } else if (type === "error") {
+                formStatus.className = "form-status error-status";
+            } else {
+                formStatus.className = "form-status";
+            }
 
         }
 
@@ -262,244 +271,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /* =============================================
-                   ADMIN LOGIN
-                ============================================= */
-
-                if (
-                    email.toLowerCase() ===
-                    ADMIN_EMAIL.toLowerCase() &&
-                    password ===
-                    ADMIN_PASSWORD
-                ) {
-
-                    showStatus(
-                        "Signing you in as administrator..."
-                    );
-
-
-                    /*
-                     * Save authentication state
-                     */
-
-                    localStorage.setItem(
-                        "isLoggedIn",
-                        "true"
-                    );
-
-
-                    /*
-                     * Save role
-                     */
-
-                    localStorage.setItem(
-                        "userRole",
-                        "admin"
-                    );
-
-
-                    /*
-                     * Save admin information
-                     */
-
-                    localStorage.setItem(
-                        "adminEmail",
-                        ADMIN_EMAIL
-                    );
-
-                    localStorage.setItem(
-                        "adminName",
-                        "Catherine"
-                    );
-
-
-                    /*
-                     * Remove guest session data
-                     */
-
-                    localStorage.removeItem(
-                        "guestEmail"
-                    );
-
-                    localStorage.removeItem(
-                        "guestName"
-                    );
-
-
-                    /*
-                     * Redirect to Admin Dashboard
-                     */
-
-                    setTimeout(
-                        () => {
-
-                            window.location.href =
-                                "admin-dashboard.html";
-
-                        },
-                        500
-                    );
-
-
-                    return;
-
-                }
-
-
-                /* =============================================
-                   REMEMBER ME & SESSION EXPIRY CALCULATION
+                   AUTHENTICATION VIA BUILT-IN RESORT DATABASE
                 ============================================= */
 
                 const rememberMeInput = document.getElementById("rememberMe");
                 const isRemembered = rememberMeInput ? rememberMeInput.checked : false;
 
-                // 30 days vs 1 day session duration
-                const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
-                const ONE_DAY_MS = 24 * 60 * 60 * 1000;
-                const expiryDuration = isRemembered ? THIRTY_DAYS_MS : ONE_DAY_MS;
-                const sessionExpiry = Date.now() + expiryDuration;
-
-                localStorage.setItem("rememberMe", isRemembered ? "true" : "false");
-                localStorage.setItem("sessionExpiry", sessionExpiry.toString());
-                localStorage.setItem("loginTime", Date.now().toString());
-
-
-                /* =============================================
-                   CHECK REGISTERED ACCOUNTS IN LOCALSTORAGE
-                ============================================= */
-
-                let registeredUsers = [];
-                try {
-                    const storedUsers = localStorage.getItem("resortUsers");
-                    if (storedUsers) {
-                        registeredUsers = JSON.parse(storedUsers);
+                // Fallback authentication helper if ResortDB script was blocked
+                function authenticateFallback(em, pw) {
+                    if (em.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+                        return pw === ADMIN_PASSWORD
+                            ? { success: true, role: "admin", user: { fullName: "Catherine", email: ADMIN_EMAIL, role: "admin" } }
+                            : { success: false, error: "INVALID_PASSWORD", message: "Incorrect password for administrator account." };
                     }
-                } catch (e) {
-                    console.error("Error loading registered users", e);
+                    let users = [];
+                    try {
+                        const stored = localStorage.getItem("resortUsers");
+                        if (stored) users = JSON.parse(stored);
+                    } catch (e) {}
+                    const found = users.find(u => u && u.email && u.email.toLowerCase() === em.toLowerCase());
+                    if (!found) {
+                        return {
+                            success: false,
+                            error: "USER_NOT_FOUND",
+                            message: "No registered account found with this email address. Please create an account first."
+                        };
+                    }
+                    if (found.password !== pw) {
+                        return {
+                            success: false,
+                            error: "INVALID_PASSWORD",
+                            message: "Incorrect password for this registered account."
+                        };
+                    }
+                    return { success: true, role: "guest", user: found };
                 }
 
-                const existingAccount = registeredUsers.find(
-                    u => u.email.toLowerCase() === email.toLowerCase()
-                );
+                const authResult = window.ResortDB
+                    ? window.ResortDB.authenticate(email, password)
+                    : authenticateFallback(email, password);
 
-                if (existingAccount) {
-                    if (existingAccount.password !== password) {
-                        if (passwordError) {
-                            passwordError.textContent = "Incorrect password for this registered account.";
+                /* =============================================
+                   HANDLE FAILED AUTHENTICATION
+                   DO NOT LOG IN, DO NOT REDIRECT
+                ============================================= */
+                if (!authResult.success) {
+                    if (authResult.error === "USER_NOT_FOUND") {
+                        if (emailError) {
+                            emailError.textContent = "No account found with this email address.";
                         }
-                        showStatus("Incorrect password for this registered account.");
-                        return;
+                        showStatus(
+                            "No registered account found with this email. <a href='register.html' class='status-register-link'>Create an account</a> to sign in.",
+                            "error"
+                        );
+                    } else if (authResult.error === "INVALID_PASSWORD") {
+                        if (passwordError) {
+                            passwordError.textContent = "Incorrect password. Please try again.";
+                        }
+                        showStatus(
+                            "Incorrect password for this account. Please try again or use 'Forgot password?'.",
+                            "error"
+                        );
+                    } else {
+                        showStatus(authResult.message || "Invalid email or password.", "error");
                     }
+                    return;
+                }
 
-                    showStatus("Signing you in as " + existingAccount.fullName + "...");
+                /* =============================================
+                   AUTHENTICATION SUCCEEDED
+                ============================================= */
+                const user = authResult.user;
 
-                    localStorage.setItem("isLoggedIn", "true");
-                    localStorage.setItem("userRole", "guest");
-                    localStorage.setItem("guestEmail", existingAccount.email);
-                    localStorage.setItem("guestName", existingAccount.fullName);
-                    if (existingAccount.phone) {
-                        localStorage.setItem("guestPhone", existingAccount.phone);
+                if (authResult.role === "admin") {
+                    showStatus("Signing you in as administrator...", "success");
+
+                    if (window.ResortDB) {
+                        window.ResortDB.saveSession(user, isRemembered);
+                    } else {
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.setItem("userRole", "admin");
+                        localStorage.setItem("adminEmail", ADMIN_EMAIL);
+                        localStorage.setItem("adminName", "Catherine");
+                        localStorage.removeItem("guestEmail");
+                        localStorage.removeItem("guestName");
                     }
-
-                    localStorage.removeItem("adminEmail");
-                    localStorage.removeItem("adminName");
 
                     setTimeout(() => {
-                        window.location.href = "index.html";
+                        window.location.href = "admin-dashboard.html";
                     }, 500);
 
                     return;
                 }
 
+                // Registered guest login
+                showStatus("Signing you in as " + (user.fullName || "Guest") + "...", "success");
 
-                /* =============================================
-                   GUEST LOGIN (PROTOTYPE FALLBACK)
-                ============================================= */
-
-                if (
-                    email !== "" &&
-                    password !== ""
-                ) {
-
-                    showStatus(
-                        "Signing you in..."
-                    );
-
-                    localStorage.setItem(
-                        "isLoggedIn",
-                        "true"
-                    );
-
-                    localStorage.setItem(
-                        "userRole",
-                        "guest"
-                    );
-
-                    localStorage.setItem(
-                        "guestEmail",
-                        email
-                    );
-
-                    const guestNameInput =
-                        document.getElementById(
-                            "guestName"
-                        );
-
-                    if (
-                        guestNameInput &&
-                        guestNameInput.value.trim() !== ""
-                    ) {
-                        localStorage.setItem(
-                            "guestName",
-                            guestNameInput.value.trim()
-                        );
-                    } else {
-                        const temporaryName =
-                            email
-                                .split("@")[0]
-                                .replace(
-                                    /[._-]/g,
-                                    " "
-                                )
-                                .replace(
-                                    /\b\w/g,
-                                    character =>
-                                        character.toUpperCase()
-                                );
-
-                        localStorage.setItem(
-                            "guestName",
-                            temporaryName
-                        );
-                    }
-
-                    localStorage.removeItem(
-                        "adminEmail"
-                    );
-
-                    localStorage.removeItem(
-                        "adminName"
-                    );
-
-                    setTimeout(
-                        () => {
-                            window.location.href =
-                                "index.html";
-                        },
-                        500
-                    );
-
-                    return;
-
+                if (window.ResortDB) {
+                    window.ResortDB.saveSession(user, isRemembered);
+                } else {
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userRole", "guest");
+                    localStorage.setItem("guestEmail", user.email);
+                    localStorage.setItem("guestName", user.fullName || "Guest");
+                    if (user.phone) localStorage.setItem("guestPhone", user.phone);
+                    localStorage.removeItem("adminEmail");
+                    localStorage.removeItem("adminName");
                 }
 
-
-                /* =============================================
-                   INVALID LOGIN
-                ============================================= */
-
-                showStatus(
-                    "Invalid email or password."
-                );
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 500);
 
             }
         );
@@ -523,14 +405,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentSessionExpiry = localStorage.getItem("sessionExpiry");
     if (currentLoggedIn === "true" && currentSessionExpiry) {
         if (Date.now() > parseInt(currentSessionExpiry, 10)) {
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("userRole");
-            localStorage.removeItem("guestEmail");
-            localStorage.removeItem("guestName");
-            localStorage.removeItem("sessionExpiry");
-            localStorage.removeItem("rememberMe");
+            if (window.ResortDB) {
+                window.ResortDB.clearSession();
+            } else {
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("userRole");
+                localStorage.removeItem("guestEmail");
+                localStorage.removeItem("guestName");
+                localStorage.removeItem("sessionExpiry");
+                localStorage.removeItem("rememberMe");
+            }
             showStatus("Your 30-day sanctuary session has expired. Please sign in again.");
         }
+    }
+
+    // Clean up any stale or unregistered session from previous fallback bug
+    const currentGuestEmail = localStorage.getItem("guestEmail");
+    if (currentGuestEmail && window.ResortDB && !window.ResortDB.isEmailRegistered(currentGuestEmail)) {
+        window.ResortDB.clearSession();
     }
 
 
@@ -634,6 +526,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // Verify if email is actually registered in database
+            const isRegistered = window.ResortDB
+                ? window.ResortDB.isEmailRegistered(emailVal)
+                : Boolean(localStorage.getItem("resortUsers") && JSON.parse(localStorage.getItem("resortUsers")).some(u => u && u.email && u.email.toLowerCase() === emailVal.toLowerCase()));
+
+            if (!isRegistered) {
+                if (resetEmailError) {
+                    resetEmailError.textContent = "No registered account found with this email address. Please create an account first.";
+                }
+                return;
+            }
+
             targetResetEmail = emailVal;
             activeResetCode = "CAT-" + Math.floor(1000 + Math.random() * 9000);
 
@@ -732,27 +636,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Update user password in resortUsers in localStorage
-            try {
-                const storedUsers = localStorage.getItem("resortUsers");
-                let users = storedUsers ? JSON.parse(storedUsers) : [];
-
-                const userIndex = users.findIndex(u => u.email.toLowerCase() === targetResetEmail.toLowerCase());
-                if (userIndex !== -1) {
-                    users[userIndex].password = newPass;
-                    localStorage.setItem("resortUsers", JSON.stringify(users));
-                } else {
-                    // Create account if not present yet
-                    users.push({
-                        fullName: targetResetEmail.split("@")[0].replace(/[._-]/g, " "),
-                        email: targetResetEmail,
-                        password: newPass,
-                        createdAt: new Date().toISOString()
-                    });
-                    localStorage.setItem("resortUsers", JSON.stringify(users));
+            // Update user password in ResortDB
+            if (window.ResortDB) {
+                const updateRes = window.ResortDB.updatePassword(targetResetEmail, newPass);
+                if (!updateRes.success) {
+                    if (resetPasswordError) resetPasswordError.textContent = updateRes.message || "Failed to update password.";
+                    return;
                 }
-            } catch (err) {
-                console.error("Error updating reset password in localStorage", err);
+            } else {
+                try {
+                    const storedUsers = localStorage.getItem("resortUsers");
+                    let users = storedUsers ? JSON.parse(storedUsers) : [];
+                    const userIndex = users.findIndex(u => u && u.email && u.email.toLowerCase() === targetResetEmail.toLowerCase());
+                    if (userIndex !== -1) {
+                        users[userIndex].password = newPass;
+                        localStorage.setItem("resortUsers", JSON.stringify(users));
+                    }
+                } catch (err) {
+                    console.error("Error updating reset password in localStorage", err);
+                }
             }
 
             closeForgotModalHandler();
@@ -760,7 +662,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (emailInput) emailInput.value = targetResetEmail;
             if (passwordInput) passwordInput.value = newPass;
 
-            showStatus("✓ Password reset successfully! You can now sign in with your new password.");
+            showStatus("✓ Password reset successfully! You can now sign in with your new password.", "success");
         });
     }
 

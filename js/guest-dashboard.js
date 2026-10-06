@@ -32,6 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    // Verify that guest account is actually registered in database
+    const role = localStorage.getItem("userRole");
+    const storedEmail = localStorage.getItem("guestEmail");
+    if (role === "guest" && storedEmail) {
+        try {
+            const rawUsers = localStorage.getItem("resortUsers");
+            if (rawUsers) {
+                const users = JSON.parse(rawUsers);
+                const exists = Array.isArray(users) && users.some(
+                    u => u && u.email && u.email.toLowerCase() === storedEmail.toLowerCase()
+                );
+                if (!exists) {
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("userRole");
+                    localStorage.removeItem("guestEmail");
+                    localStorage.removeItem("guestName");
+                    window.location.href = "login.html";
+                    return;
+                }
+            }
+        } catch (e) {}
+    }
+
 
     /* =====================================================
        GUEST INFORMATION
