@@ -13,7 +13,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const isLoggedIn =
         localStorage.getItem("isLoggedIn");
 
+    const sessionExpiry =
+        localStorage.getItem("sessionExpiry");
+
     if (isLoggedIn !== "true") {
+        window.location.href = "login.html";
+        return;
+    }
+
+    if (sessionExpiry && Date.now() > parseInt(sessionExpiry, 10)) {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("guestName");
+        localStorage.removeItem("guestEmail");
+        localStorage.removeItem("sessionExpiry");
+        localStorage.removeItem("rememberMe");
+        alert("Your 30-day sanctuary session has expired. Please sign in again.");
         window.location.href = "login.html";
         return;
     }
@@ -24,20 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const guestName =
-        localStorage.getItem("guestName") || "Charles";
+        localStorage.getItem("guestName") || "Guest";
 
     const guestEmail =
-        localStorage.getItem("guestEmail") || "c@gmail.com";
+        localStorage.getItem("guestEmail") || "";
 
 
     const guestNameElements =
         document.querySelectorAll(
-            "#guestName, #topGuestName, #welcomeGuestName"
+            "#guestName, #topGuestName, #welcomeGuestName, #headerGuestName"
         );
 
 
     guestNameElements.forEach(element => {
-        element.textContent = guestName;
+        if (element) {
+            element.textContent = guestName;
+        }
     });
 
 
@@ -48,7 +64,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     emailElements.forEach(element => {
-        element.textContent = guestEmail;
+        if (element) {
+            element.textContent = guestEmail;
+        }
+    });
+
+
+    /* Update Profile Avatar Initial */
+    const avatarElements =
+        document.querySelectorAll(
+            ".profile-avatar, #profileAvatar, #headerProfileAvatar"
+        );
+
+    avatarElements.forEach(avatar => {
+        if (avatar && guestName) {
+            avatar.textContent =
+                guestName.trim().charAt(0).toUpperCase();
+        }
     });
 
 
@@ -100,58 +132,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       LOGOUT
+       LOGOUT FUNCTIONALITY
     ===================================================== */
 
-    const logoutButton =
-        document.getElementById("logoutButton");
+    function performLogout() {
+
+        const confirmed =
+            window.confirm(
+                "Are you sure you want to log out of your sanctuary session?"
+            );
 
 
-    if (logoutButton) {
-
-        logoutButton.addEventListener(
-            "click",
-            () => {
-
-                const confirmed =
-                    window.confirm(
-                        "Are you sure you want to log out?"
-                    );
+        if (!confirmed) {
+            return;
+        }
 
 
-                if (!confirmed) {
-                    return;
-                }
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("guestName");
+        localStorage.removeItem("guestEmail");
+        localStorage.removeItem("guestPhone");
+        localStorage.removeItem("guestMobile");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("currentReservation");
 
 
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "guestName"
-                );
-
-                localStorage.removeItem(
-                    "guestEmail"
-                );
-
-                localStorage.removeItem(
-                    "guestMobile"
-                );
-
-                localStorage.removeItem(
-                    "currentReservation"
-                );
-
-
-                window.location.href =
-                    "index.html";
-
-            }
-        );
+        window.location.href = "index.html";
 
     }
+
+    /* Attach logout listener to all logout buttons and header guest profile */
+    const logoutTriggers =
+        document.querySelectorAll(
+            "#logoutBtn, #logoutButton, #sharedLogoutButton, .guest-profile"
+        );
+
+
+    logoutTriggers.forEach(trigger => {
+        if (trigger) {
+            trigger.style.cursor = "pointer";
+            trigger.title = "Click to log out";
+            trigger.addEventListener("click", (e) => {
+                // If trigger is a child button inside profile, prevent double prompt
+                e.stopPropagation();
+                performLogout();
+            });
+        }
+    });
 
 
     /* =====================================================

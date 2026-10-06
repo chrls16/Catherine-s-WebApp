@@ -2309,6 +2309,13 @@ if (confirmButton) {
 
 
             /*
+                Send Confirmation Email via EmailJS
+            */
+
+            sendReservationConfirmationEmail(reservation);
+
+
+            /*
                 Show confirmation modal.
             */
 
@@ -2328,6 +2335,74 @@ if (confirmButton) {
         }
     );
 
+}
+
+
+/* =========================================================
+   EMAILJS RESERVATION CONFIRMATION EMAIL
+========================================================= */
+
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: "qiKerR2jT2TV2n4eO",
+    SERVICE_ID: "service_cse4f86",
+    TEMPLATE_ID: "template_97nryvr"
+};
+
+// Initialize EmailJS
+if (typeof emailjs !== "undefined" && EMAILJS_CONFIG.PUBLIC_KEY) {
+    try {
+        emailjs.init({
+            publicKey: EMAILJS_CONFIG.PUBLIC_KEY
+        });
+    } catch (err) {
+        console.error("EmailJS init error in reservation.js:", err);
+    }
+}
+
+function sendReservationConfirmationEmail(reservation) {
+    if (!reservation || !reservation.email) return;
+
+    if (typeof emailjs === "undefined" || !EMAILJS_CONFIG.SERVICE_ID || EMAILJS_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID") {
+        console.log("EmailJS not configured for reservation emails.");
+        return;
+    }
+
+    const facilityNames = (reservation.facilities || []).map(f => f.name).join(", ") || "Seaside Resort Package";
+    const totalPriceFormatted = reservation.prices ? `₱${(reservation.prices.total || 0).toLocaleString()}` : "₱0";
+
+    const templateParams = {
+        to_email: reservation.email,
+        email: reservation.email,
+        user_email: reservation.email,
+        guest_name: reservation.guestName || "Valued Guest",
+        email_subject: `Reservation Confirmation #${reservation.reference} - Catherine's Sanctuary`,
+        email_title: `Reservation Confirmation #${reservation.reference}`,
+        message_body: `Thank you for booking with Catherine's Bagasbas Lighthouse Resort! Your reservation #${reservation.reference} for ${reservation.checkinDate || "your stay"} has been recorded successfully.`,
+        reservation_ref: reservation.reference,
+        booking_ref: reservation.reference,
+        checkin_date: reservation.checkinDate || "TBD",
+        stay_duration: reservation.duration || "Standard Stay",
+        total_guests: reservation.totalGuests || 1,
+        facilities_summary: facilityNames,
+        total_price: totalPriceFormatted,
+        code: `Reservation Ref: ${reservation.reference}`,
+        verification_code: `Reservation Ref: ${reservation.reference}`
+    };
+
+    emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        { publicKey: EMAILJS_CONFIG.PUBLIC_KEY }
+    ).then((res) => {
+        console.log("Reservation confirmation email sent successfully:", res);
+        const modalP = document.querySelector("#successModal p");
+        if (modalP) {
+            modalP.innerHTML = `Thank you, <strong>${escapeHtml(reservation.guestName)}</strong>! Your reservation (<strong>${reservation.reference}</strong>) has been recorded, and a confirmation email has been dispatched to <strong>${escapeHtml(reservation.email)}</strong>.`;
+        }
+    }).catch((err) => {
+        console.error("Failed to send reservation confirmation email:", err);
+    });
 }
 
 

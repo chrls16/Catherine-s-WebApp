@@ -6,9 +6,22 @@
 ========================================================= */
 
 const isLoggedIn = () => {
+  const logged = localStorage.getItem('isLoggedIn') === 'true';
+  const sessionExpiry = localStorage.getItem('sessionExpiry');
 
-  return localStorage.getItem('isLoggedIn') === 'true';
+  if (logged && sessionExpiry) {
+    if (Date.now() > parseInt(sessionExpiry, 10)) {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('guestEmail');
+      localStorage.removeItem('guestName');
+      localStorage.removeItem('sessionExpiry');
+      localStorage.removeItem('rememberMe');
+      return false;
+    }
+  }
 
+  return logged;
 };
 
 

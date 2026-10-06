@@ -10,43 +10,37 @@
    DEMO RESERVATION DATA
 ========================================================= */
 
-const reservationData = {
-
-    guestName: "Charles",
-
-    email: "c@gmail.com",
-
-    mobile: "91234567890",
-
+let reservationData = {
+    guestName: "Guest",
+    email: "",
+    mobile: "",
     guests: "2 Guests",
-
     bookingCode: "#CBLR-343860",
-
+    status: "Pending",
     facilities: [
-
-        {
-            name: "Private Seaside Cottage",
-            price: 4500
-        },
-
-        {
-            name: "Swimming Pool & Arched Bridge",
-            price: 1200
-        },
-
-        {
-            name: "Lighthouse KTV Lounge",
-            price: 2200
-        },
-
-        {
-            name: "Celebration Grand Event Place",
-            price: 15000
-        }
-
+        { name: "Private Seaside Cottage", price: 4500 },
+        { name: "Swimming Pool & Arched Bridge", price: 1200 }
     ]
-
 };
+
+try {
+    const savedReservation = localStorage.getItem("currentReservation");
+    if (savedReservation) {
+        const parsed = JSON.parse(savedReservation);
+        reservationData = {
+            guestName: parsed.guestName || "Guest",
+            email: parsed.email || "",
+            mobile: parsed.mobile || "",
+            guests: `${parsed.totalGuests || 2} Guests`,
+            bookingCode: parsed.reference ? `#${parsed.reference}` : "#CBLR-343860",
+            status: parsed.status || "Pending",
+            facilities: (parsed.facilities && parsed.facilities.length) ? parsed.facilities : reservationData.facilities,
+            checkinDate: parsed.checkinDate
+        };
+    }
+} catch (e) {
+    console.error("Error loading currentReservation in my-reservation.js", e);
+}
 
 
 /* =========================================================
@@ -75,21 +69,21 @@ function updateGuestInformation() {
     const guestName =
         getStoredValue(
             "guestName",
-            reservationData.guestName
+            "Guest"
         );
 
 
     const guestEmail =
         getStoredValue(
             "guestEmail",
-            reservationData.email
+            ""
         );
 
 
     const guestMobile =
         getStoredValue(
             "guestMobile",
-            reservationData.mobile
+            getStoredValue("guestPhone", "")
         );
 
 
@@ -128,21 +122,22 @@ function updateGuestInformation() {
     );
 
 
-    const profileAvatar =
-        document.getElementById(
-            "profileAvatar"
-        );
+    const profileAvatars = document.querySelectorAll("#profileAvatar, .profile-avatar");
 
 
-    if (profileAvatar) {
+    profileAvatars.forEach(profileAvatar => {
 
-        profileAvatar.textContent =
-            guestName
-                .trim()
-                .charAt(0)
-                .toUpperCase();
+        if (profileAvatar && guestName) {
 
-    }
+            profileAvatar.textContent =
+                guestName
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+        }
+
+    });
 
 
     const emailElement =
@@ -154,7 +149,7 @@ function updateGuestInformation() {
     if (emailElement) {
 
         emailElement.textContent =
-            guestEmail;
+            guestEmail || "No email stored";
 
     }
 
@@ -168,7 +163,7 @@ function updateGuestInformation() {
     if (mobileElement) {
 
         mobileElement.textContent =
-            guestMobile;
+            guestMobile || "No mobile stored";
 
     }
 
@@ -176,7 +171,7 @@ function updateGuestInformation() {
 
 
 /* =========================================================
-   NAVIGATION
+   NAVIGATION & LOGOUT
 ========================================================= */
 
 function setupNavigation() {
@@ -191,12 +186,6 @@ function setupNavigation() {
     const reservationButton =
         document.getElementById(
             "reservationButton"
-        );
-
-
-    const logoutButton =
-        document.getElementById(
-            "logoutButton"
         );
 
 
@@ -230,57 +219,35 @@ function setupNavigation() {
     }
 
 
-    if (logoutButton) {
+    function performLogout() {
+        const confirmed = window.confirm("Are you sure you want to log out of your sanctuary session?");
+        if (!confirmed) return;
 
-        logoutButton.addEventListener(
-            "click",
-            () => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("guestEmail");
+        localStorage.removeItem("guestName");
+        localStorage.removeItem("guestMobile");
+        localStorage.removeItem("guestPhone");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("currentReservation");
 
-                const confirmed =
-                    window.confirm(
-                        "Are you sure you want to log out?"
-                    );
-
-
-                if (!confirmed) {
-
-                    return;
-
-                }
-
-
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-
-                localStorage.removeItem(
-                    "guestEmail"
-                );
-
-
-                localStorage.removeItem(
-                    "guestName"
-                );
-
-
-                localStorage.removeItem(
-                    "guestMobile"
-                );
-
-
-                localStorage.removeItem(
-                    "currentReservation"
-                );
-
-
-                window.location.href =
-                    "index.html";
-
-            }
-        );
-
+        window.location.href = "index.html";
     }
+
+    const logoutTriggers = document.querySelectorAll(
+        "#logoutButton, #logoutBtn, #sharedLogoutButton, .guest-profile"
+    );
+
+    logoutTriggers.forEach(trigger => {
+        if (trigger) {
+            trigger.style.cursor = "pointer";
+            trigger.title = "Click to log out";
+            trigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                performLogout();
+            });
+        }
+    });
 
 }
 

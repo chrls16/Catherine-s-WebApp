@@ -11,7 +11,7 @@
     >
 
     <title>
-        Sign In | Catherine's Bagasbas Lighthouse Resort
+        Create Account | Catherine's Bagasbas Lighthouse Resort
     </title>
 
 
@@ -37,12 +37,12 @@
 
 
     <!-- =====================================================
-         LOGIN CSS
+         REGISTER CSS
     ====================================================== -->
 
     <link
         rel="stylesheet"
-        href="css/login.css"
+        href="css/register.css"
     >
 
 
@@ -122,7 +122,7 @@
 
 
         <!-- =================================================
-             LOGIN CARD
+             REGISTER CARD
         ================================================== -->
 
         <section class="login-card">
@@ -176,26 +176,26 @@
 
 
                         <p class="eyebrow">
-                            SEASIDE SANCTUARY
+                            JOIN THE SANCTUARY
                         </p>
 
 
                         <h1>
 
-                            Welcome Back to
+                            Begin Your
 
                             <br>
 
-                            Catherine’s
+                            Coastal Journey
 
                         </h1>
 
 
                         <p class="description">
 
-                            Sign in to manage your resort reservations,
-                            explore exclusive coastal experiences,
-                            and plan your stay beside Bagasbas Lighthouse.
+                            Register your guest account to manage reservations,
+                            unlock exclusive member rates, and enjoy seamless
+                            access to Bagasbas Lighthouse experiences.
 
                         </p>
 
@@ -226,9 +226,8 @@
 
                         <p>
 
-                            Exclusive member booking rates,
-                            priority seaside dining reservations,
-                            and personalized stay preferences.
+                            Direct booking privileges, express check-in processing,
+                            special event invitations, and saved stay preferences across all resort quarters.
 
                         </p>
 
@@ -275,7 +274,7 @@
                     ========================== -->
 
                     <div class="portal-label">
-                        GUEST &amp; MEMBER PORTAL
+                        SANCTUARY MEMBER REGISTRATION
                     </div>
 
 
@@ -285,65 +284,126 @@
                     ========================== -->
 
                     <h2>
-                        Sign In
+                        Create Account
                     </h2>
 
 
                     <p class="form-intro">
-
-                        Enter your email and password to access your resort account.
-
+                        Enter your details below to set up your resort account and join our sanctuary membership.
                     </p>
 
 
 
                     <!-- =================================================
-                         SINGLE LOGIN FORM
-                         IMPORTANT:
-                         There is ONLY ONE form.
+                         REGISTER FORM
                     ================================================== -->
 
-                    <form id="loginForm">
+                    <form id="registerForm">
 
 
                         <!-- =========================
-                             EMAIL
+                             FULL NAME & PHONE ROW
+                        ========================== -->
+
+                        <div class="name-phone-row">
+
+                            <!-- FULL NAME -->
+                            <div class="field-group">
+
+                                <label for="fullName">
+                                    FULL NAME
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <span class="input-icon">
+                                        👤
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        name="fullName"
+                                        placeholder="e.g. Maria Santos"
+                                        autocomplete="name"
+                                        required
+                                    >
+
+                                </div>
+
+                                <small
+                                    class="error-message"
+                                    id="fullNameError"
+                                ></small>
+
+                            </div>
+
+                            <!-- PHONE NUMBER -->
+                            <div class="field-group">
+
+                                <label for="phoneNumber">
+                                    MOBILE NUMBER
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <span class="input-icon">
+                                        📱
+                                    </span>
+
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        placeholder="+63 917 123 4567"
+                                        autocomplete="tel"
+                                        required
+                                    >
+
+                                </div>
+
+                                <small
+                                    class="error-message"
+                                    id="phoneError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =========================
+                             EMAIL ADDRESS
                         ========================== -->
 
                         <div class="field-group">
 
-
-                            <label for="email">
+                            <label for="registerEmail">
                                 EMAIL ADDRESS
                             </label>
 
-
                             <div class="input-wrap">
-
 
                                 <span class="input-icon">
                                     ✉
                                 </span>
 
-
                                 <input
                                     type="email"
-                                    id="email"
+                                    id="registerEmail"
                                     name="email"
                                     placeholder="guest@catherineslighthouse.ph"
                                     autocomplete="email"
                                     required
                                 >
 
-
                             </div>
-
 
                             <small
                                 class="error-message"
                                 id="emailError"
                             ></small>
-
 
                         </div>
 
@@ -355,105 +415,176 @@
 
                         <div class="field-group">
 
-
-                            <div class="label-row">
-
-
-                                <label for="password">
-                                    PASSWORD
-                                </label>
-
-
-                                <button
-                                    type="button"
-                                    class="forgot-btn"
-                                    id="forgotPassword"
-                                >
-                                    Forgot password?
-                                </button>
-
-
-                            </div>
-
-
+                            <label for="registerPassword">
+                                CREATE PASSWORD
+                            </label>
 
                             <div class="input-wrap">
-
 
                                 <span class="input-icon">
                                     ♙
                                 </span>
 
-
                                 <input
                                     type="password"
-                                    id="password"
+                                    id="registerPassword"
                                     name="password"
-                                    placeholder="Enter your password"
-                                    autocomplete="current-password"
+                                    placeholder="Minimum 8 characters"
+                                    autocomplete="new-password"
                                     required
                                 >
-
 
                                 <button
                                     type="button"
                                     class="password-toggle"
-                                    id="togglePassword"
+                                    id="toggleRegisterPassword"
                                     aria-label="Show password"
                                 >
                                     ◉
                                 </button>
 
-
                             </div>
 
+                            <!-- PASSWORD STRENGTH METER -->
+                            <div class="password-strength-container" id="strengthContainer" style="display: none;">
+                                <div class="strength-bar-bg">
+                                    <div class="strength-bar-fill" id="strengthFill"></div>
+                                </div>
+                                <div class="strength-text">
+                                    <span>Password Security</span>
+                                    <span id="strengthLabel">Weak</span>
+                                </div>
+                            </div>
+
+                            <!-- PASSWORD REQUIREMENTS LIST -->
+                            <div class="password-requirements" id="requirementsBox">
+                                <div class="req-item" id="reqMinLen">
+                                    <span class="dot"></span>
+                                    <span>8+ characters</span>
+                                </div>
+                                <div class="req-item" id="reqUpper">
+                                    <span class="dot"></span>
+                                    <span>Uppercase letter</span>
+                                </div>
+                                <div class="req-item" id="reqNumber">
+                                    <span class="dot"></span>
+                                    <span>Number / symbol</span>
+                                </div>
+                                <div class="req-item" id="reqMatch">
+                                    <span class="dot"></span>
+                                    <span>Passwords match</span>
+                                </div>
+                            </div>
 
                             <small
                                 class="error-message"
                                 id="passwordError"
                             ></small>
 
+                        </div>
+
+
+
+                        <!-- =========================
+                             CONFIRM PASSWORD
+                        ========================== -->
+
+                        <div class="field-group">
+
+                            <label for="confirmPassword">
+                                CONFIRM PASSWORD
+                            </label>
+
+                            <div class="input-wrap">
+
+                                <span class="input-icon">
+                                    🔒
+                                </span>
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    name="confirmPassword"
+                                    placeholder="Re-enter your password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="toggleConfirmPassword"
+                                    aria-label="Show password"
+                                >
+                                    ◉
+                                </button>
+
+                            </div>
+
+                            <small
+                                class="error-message"
+                                id="confirmPasswordError"
+                            ></small>
 
                         </div>
 
 
 
                         <!-- =========================
-                             REMEMBER ME
+                             CHECKBOXES
                         ========================== -->
 
-                        <label class="remember-row">
+                        <div class="checkbox-group">
+
+                            <label class="checkbox-row">
+
+                                <input
+                                    type="checkbox"
+                                    id="agreeTerms"
+                                    required
+                                >
+
+                                <span class="custom-checkbox"></span>
+
+                                <span>
+                                    I agree to Catherine's Resort <a href="#" id="termsLink">Terms of Service</a> and <a href="#" id="privacyLink">Privacy Policy</a>.
+                                </span>
+
+                            </label>
 
 
-                            <input
-                                type="checkbox"
-                                id="rememberMe"
-                            >
+                            <label class="checkbox-row">
 
+                                <input
+                                    type="checkbox"
+                                    id="subscribeNewsletter"
+                                    checked
+                                >
 
-                            <span class="custom-checkbox"></span>
+                                <span class="custom-checkbox"></span>
 
+                                <span>
+                                    Receive exclusive sanctuary offers, live coastal updates, and event invitations.
+                                </span>
 
-                            <span>
-                                Keep me signed in for 30 days
-                            </span>
+                            </label>
 
-
-                        </label>
+                        </div>
 
 
 
                         <!-- =========================
-                             SIGN IN BUTTON
+                             REGISTER BUTTON
                         ========================== -->
 
                         <button
                             type="submit"
                             class="sign-in-btn"
+                            id="submitRegisterBtn"
                         >
 
                             <span>
-                                Sign In
+                                Create Account
                             </span>
 
                             <span class="arrow">
@@ -473,7 +604,7 @@
                             <span></span>
 
                             <p>
-                                OR QUICK GUEST ACCESS
+                                QUICK GUEST ACCESS
                             </p>
 
                             <span></span>
@@ -483,7 +614,7 @@
 
 
                         <!-- =========================
-                             BOOKING CODE
+                             BOOKING CODE LINK
                         ========================== -->
 
                         <button
@@ -495,7 +626,6 @@
                             <span class="ticket-icon">
                                 ♧
                             </span>
-
 
                             <span>
                                 Check reservation with booking code
@@ -517,15 +647,15 @@
 
                         <p>
 
-                            Don't have an account?
+                            Already have an account?
 
 
                             <a
-                                href="register.html"
+                                href="login.html"
                                 class="create-account"
-                                id="createAccount"
+                                id="signInLink"
                             >
-                                Create an account
+                                Sign in
                             </a>
 
                         </p>
@@ -696,154 +826,12 @@
 
 
     <!-- =====================================================
-         FORGOT PASSWORD MODAL
-    ====================================================== -->
-
-    <div
-        class="modal"
-        id="forgotPasswordModal"
-        aria-hidden="true"
-    >
-
-        <div
-            class="modal-backdrop"
-            data-close-forgot-modal
-        ></div>
-
-        <div
-            class="modal-card"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="forgotModalTitle"
-        >
-
-            <button
-                class="modal-close"
-                id="closeForgotModal"
-                type="button"
-                aria-label="Close"
-            >
-                ×
-            </button>
-
-            <div class="portal-label">
-                ACCOUNT RECOVERY
-            </div>
-
-            <h3 id="forgotModalTitle">
-                Reset Password
-            </h3>
-
-            <p id="forgotModalIntro">
-                Enter your registered email address to receive password recovery instructions.
-            </p>
-
-            <!-- STEP 1: EMAIL REQUEST FORM -->
-            <form id="forgotStep1Form">
-
-                <label for="resetEmailInput">
-                    REGISTERED EMAIL ADDRESS
-                </label>
-
-                <input
-                    type="email"
-                    id="resetEmailInput"
-                    placeholder="guest@catherineslighthouse.ph"
-                    autocomplete="email"
-                    required
-                >
-
-                <small
-                    class="error-message"
-                    id="resetEmailError"
-                ></small>
-
-                <button
-                    type="submit"
-                    class="sign-in-btn modal-submit"
-                    id="sendResetCodeBtn"
-                >
-                    <span>Send Verification Code</span>
-                    <span class="arrow">→</span>
-                </button>
-
-            </form>
-
-            <!-- STEP 2: VERIFY CODE & NEW PASSWORD FORM -->
-            <form id="forgotStep2Form" style="display: none;">
-
-                <div style="background: #fff6e8; border: 1px solid #f6d18e; padding: 10px 14px; border-radius: 9px; font-size: 12px; color: #8d621a; margin-bottom: 15px;" id="simulatedCodeBanner">
-                    🔑 Verification Code Sent! Enter <strong>CAT-8942</strong> below.
-                </div>
-
-                <label for="resetCodeInput">
-                    VERIFICATION CODE
-                </label>
-
-                <input
-                    type="text"
-                    id="resetCodeInput"
-                    placeholder="e.g. CAT-8942"
-                    autocomplete="off"
-                    required
-                >
-
-                <label for="newPasswordInput">
-                    NEW PASSWORD
-                </label>
-
-                <input
-                    type="password"
-                    id="newPasswordInput"
-                    placeholder="Minimum 8 characters"
-                    autocomplete="new-password"
-                    required
-                >
-
-                <label for="confirmNewPasswordInput">
-                    CONFIRM NEW PASSWORD
-                </label>
-
-                <input
-                    type="password"
-                    id="confirmNewPasswordInput"
-                    placeholder="Re-enter new password"
-                    autocomplete="new-password"
-                    required
-                >
-
-                <small
-                    class="error-message"
-                    id="resetPasswordError"
-                ></small>
-
-                <button
-                    type="submit"
-                    class="sign-in-btn modal-submit"
-                    id="confirmResetPasswordBtn"
-                >
-                    <span>Update Password</span>
-                    <span class="arrow">→</span>
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
          JAVASCRIPT
     ====================================================== -->
 
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <script src="js/footer.js"></script>
 
-    <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
 
 
 </body>

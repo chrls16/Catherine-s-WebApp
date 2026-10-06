@@ -1226,11 +1226,11 @@ button {
 }
 
 
-#bookingCode {
+.modal-card input {
 
   width: 100%;
 
-  height: 54px;
+  height: 52px;
 
   padding: 0 15px;
 
@@ -1244,12 +1244,24 @@ button {
 
   background: #fffaf4;
 
+  font-size: 14px;
+
+  margin-top: 6px;
+
+  margin-bottom: 12px;
+
+  transition: border-color 0.2s ease;
+
 }
 
 
-#bookingCode:focus {
+.modal-card input:focus {
 
   border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(201, 154, 69, 0.12);
 
 }
 

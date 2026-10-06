@@ -1,10 +1,204 @@
-"use strict";
+/* =====================================================
+   EMAILJS CONFIGURATION FOR ADMIN NOTIFICATIONS
+===================================================== */
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: "qiKerR2jT2TV2n4eO",
+    SERVICE_ID: "service_cse4f86",
+    TEMPLATE_ID: "template_97nryvr"
+};
 
+// Initialize EmailJS
+if (typeof emailjs !== "undefined" && EMAILJS_CONFIG.PUBLIC_KEY) {
+    try {
+        emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
+    } catch (err) {
+        console.error("EmailJS init error in admin-reservations.js:", err);
+    }
+}
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
+        /* =================================================
+           DYNAMIC RESERVATION RENDERER FROM LOCALSTORAGE
+        ================================================== */
+        function loadDynamicReservations() {
+            const container = document.getElementById("reservationsSection");
+            if (!container) return;
+
+            let history = [];
+            try {
+                const stored = localStorage.getItem("reservationHistory");
+                if (stored) history = JSON.parse(stored);
+            } catch (e) {
+                console.error("Error reading reservationHistory", e);
+            }
+
+            if (!Array.isArray(history) || history.length === 0) return;
+
+            // Remove existing dynamic rows if any
+            const oldDynamic = container.querySelectorAll(".dynamic-reservation-row");
+            oldDynamic.forEach(el => el.remove());
+
+            const tableHeader = container.querySelector(".table-header");
+
+            history.slice().reverse().forEach(res => {
+                const row = document.createElement("article");
+                row.className = "reservation-row dynamic-reservation-row";
+                row.dataset.facility = (res.facilities || []).map(f => f.name.toLowerCase()).join(" ");
+                row.dataset.status = (res.status || "Pending").toLowerCase();
+
+                const formattedPrice = res.prices ? `₱${(res.prices.total || 0).toLocaleString()}` : "₱0";
+                const initials = (res.guestName || "Guest").split(" ").map(n => n[0]).join("").toUpperCase().substring(0, 2);
+                const facilitySummary = (res.facilities || []).map(f => f.name).join(", ") || "Seaside Cottage";
+
+                const isConfirmed = (res.status || "").toLowerCase() === "confirmed";
+                const isCancelled = (res.status || "").toLowerCase() === "cancelled";
+
+                row.innerHTML = `
+                    <div class="booking-ref">
+                        <strong style="color: #bfa15f;">#${res.reference}</strong>
+                        <span>Check-in:<br>${res.checkinDate || "Flexible"}</span>
+                        <small>Guests: ${res.totalGuests || 1}</small>
+                    </div>
+
+                    <div class="guest-details">
+                        <div class="guest-avatar" style="background: #1e3a34; color: #d4af37;">${initials}</div>
+                        <div>
+                            <strong>${res.guestName || "Guest"}</strong>
+                            <span>✉ ${res.email || "No email"}</span>
+                            <small>📱 ${res.mobile || "N/A"}</small>
+                        </div>
+                    </div>
+
+                    <div class="assignment">
+                        <strong>${facilitySummary}</strong>
+                        <span>Stay: ${res.duration || "Standard"}</span>
+                    </div>
+
+                    <div class="mesh-hardware">
+                        <span class="mesh-tag" style="background:#112a23; border:1px solid #285448; color:#7ce8c9; padding:2px 6px; border-radius:4px; font-size:11px;">
+                            ESP32 Node #${Math.floor(1 + Math.random() * 9)} Paired
+                        </span>
+                    </div>
+
+                    <div class="folio">
+                        <strong>${formattedPrice}</strong>
+                        <span class="status-badge" style="font-weight:600; color:${isConfirmed ? '#2e7d32' : isCancelled ? '#c62828' : '#e65100'};">
+                            ● ${res.status || "Pending"}
+                        </span>
+                    </div>
+
+                    <div class="checkin-state">
+                        <span style="font-size: 12px; font-weight: bold; padding: 4px 8px; border-radius: 4px; background: ${isConfirmed ? '#e8f5e9' : isCancelled ? '#ffebee' : '#fff3e0'}; color: ${isConfirmed ? '#2e7d32' : isCancelled ? '#c62828' : '#e65100'};">
+                            ${res.status || "Pending"}
+                        </span>
+                    </div>
+
+                    <div class="actions" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                        <button type="button" class="approve-btn" data-ref="${res.reference}" style="background: #1b5e20; color: white; border: none; padding: 5px 9px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold;">
+                            ✓ APPROVE & EMAIL
+                        </button>
+                        <button type="button" class="cancel-btn" data-ref="${res.reference}" style="background: #b71c1c; color: white; border: none; padding: 5px 9px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold;">
+                            ✕ CANCEL
+                        </button>
+                    </div>
+                `;
+
+                if (tableHeader && tableHeader.nextSibling) {
+                    container.insertBefore(row, tableHeader.nextSibling);
+                } else {
+                    container.appendChild(row);
+                }
+            });
+
+            // Bind Approve / Cancel handlers
+            container.querySelectorAll(".approve-btn").forEach(btn => {
+                btn.addEventListener("click", () => updateReservationStatus(btn.dataset.ref, "Confirmed"));
+            });
+
+            container.querySelectorAll(".cancel-btn").forEach(btn => {
+                btn.addEventListener("click", () => updateReservationStatus(btn.dataset.ref, "Cancelled"));
+            });
+        }
+
+        function updateReservationStatus(reference, newStatus) {
+            let history = [];
+            try {
+                const stored = localStorage.getItem("reservationHistory");
+                if (stored) history = JSON.parse(stored);
+            } catch (e) {
+                console.error(e);
+            }
+
+            const targetIndex = history.findIndex(r => r.reference === reference);
+            if (targetIndex !== -1) {
+                history[targetIndex].status = newStatus;
+                localStorage.setItem("reservationHistory", JSON.stringify(history));
+
+                // Also update currentReservation if reference matches
+                try {
+                    const curr = localStorage.getItem("currentReservation");
+                    if (curr) {
+                        const parsedCurr = JSON.parse(curr);
+                        if (parsedCurr.reference === reference) {
+                            parsedCurr.status = newStatus;
+                            localStorage.setItem("currentReservation", JSON.stringify(parsedCurr));
+                        }
+                    }
+                } catch (e) {}
+
+                loadDynamicReservations();
+                applyFilters();
+
+                // Send email notification via EmailJS
+                sendStatusUpdateEmail(history[targetIndex], newStatus);
+            }
+        }
+
+        function sendStatusUpdateEmail(reservation, newStatus) {
+            if (!reservation || !reservation.email) {
+                alert(`✓ Reservation ${reservation.reference} updated to ${newStatus}.`);
+                return;
+            }
+
+            if (typeof emailjs === "undefined" || !EMAILJS_CONFIG.SERVICE_ID || EMAILJS_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID") {
+                alert(`✓ Reservation ${reservation.reference} updated to ${newStatus}. (EmailJS not configured)`);
+                return;
+            }
+
+            const templateParams = {
+                to_email: reservation.email,
+                email: reservation.email,
+                user_email: reservation.email,
+                guest_name: reservation.guestName || "Valued Guest",
+                email_subject: `Reservation Status Update: ${newStatus.toUpperCase()} - Catherine's Sanctuary`,
+                email_title: `Reservation Status Update: ${newStatus.toUpperCase()}`,
+                message_body: `Your reservation #${reservation.reference} at Catherine's Bagasbas Lighthouse Resort status has been updated to: ${newStatus.toUpperCase()}`,
+                reservation_ref: reservation.reference,
+                booking_ref: reservation.reference,
+                checkin_date: reservation.checkinDate || "TBD",
+                status: newStatus.toUpperCase(),
+                code: `Status: ${newStatus.toUpperCase()}`,
+                verification_code: `Status: ${newStatus.toUpperCase()} (Ref: ${reservation.reference})`
+            };
+
+            emailjs.send(
+                EMAILJS_CONFIG.SERVICE_ID,
+                EMAILJS_CONFIG.TEMPLATE_ID,
+                templateParams,
+                { publicKey: EMAILJS_CONFIG.PUBLIC_KEY }
+            ).then((res) => {
+                console.log("Status update email sent:", res);
+                alert(`✓ Reservation ${reservation.reference} marked as ${newStatus}! Notification email sent to ${reservation.email}.`);
+            }).catch((err) => {
+                console.error("Status update email error:", err);
+                alert(`✓ Reservation ${reservation.reference} marked as ${newStatus}! (Email error: ${err.text || err.message})`);
+            });
+        }
+
+        loadDynamicReservations();
 
         /* =================================================
            SEARCH
@@ -16,12 +210,19 @@ document.addEventListener(
             );
 
 
-        const reservationRows =
-            Array.from(
+        let reservationRows = Array.from(
+            document.querySelectorAll(
+                ".reservation-row"
+            )
+        );
+
+        function updateRowsList() {
+            reservationRows = Array.from(
                 document.querySelectorAll(
                     ".reservation-row"
                 )
             );
+        }
 
 
         function applyFilters() {
